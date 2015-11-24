@@ -1,0 +1,106 @@
+{% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block title %}{{ parent() }} {{ 'accueil'|trans }} {% endblock %}
+
+{% block header %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block maincontainer %}
+
+    <div id="maincontener" class="background-white">
+
+        <h3 class="page-title">{{ CurrentCategory.name }}</h3>
+
+        <div class="user-photo col-sm-2">
+            <img src="{{ asset(CurrentLogoCategory.path) }}"
+                 alt="{{ 'Photo categorie'|trans }} {{ CurrentCategory.name }}">
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-10 description">
+                <p>{{ CurrentCategory.description|raw }}</p>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block pave %}
+    <h2>{{ 'Prestataires liés'|trans }}</h2>
+    </div>
+    <div class="row">
+
+    {% set counter = 0 %}
+
+    {% for provider in CurrentCategory.provider %}
+        {% if counter < 5 %}
+
+            <div class="col-md-2-5">
+            <div class="card-simple">
+                <div class="card-simple-background">
+                    <div class="card-content">
+                        <h2>
+                            <a href="{{ path('wellness_public_provider_show', {slug:provider.slug}) }}">{{ provider.name }}</a>
+                        </h2>
+
+                        <div class="card-simple-actions">
+                            <a href="{{ path('wellness_public_provider_show', {slug:provider.slug}) }}"
+                               class="fa fa-search"></a>
+                        </div>
+                        <!-- /.card-simple-actions -->
+                    </div>
+                    <!-- /.card-simple-content -->
+
+                   {#<div class="card-simple-label"><img src="{{ asset( image.path ) }}"
+                                                        alt="{{ asset(image.description) }}"></div>#}
+
+                </div>
+                <!-- /.card-simple-background -->
+            </div>
+            <!-- /.card-simple -->
+        </div>
+            <!-- /.col-* -->
+        {% endif %}
+        {% set counter = counter + 1 %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block javascript %}
+
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/dataTables.bootstrap.min.js') }}"></script>
+
+
+    <script type="text/javascript" charset="utf-8">
+
+        $(document).ready(function () {
+            $('#table_responsive').dataTable();
+
+        });
+
+        $('.nav-tabs li ').click(function () {
+            $('.table-bordered').dataTable();
+        });
+    </script>
+
+    {#Ce script plante a son lancement et doit etre placé en dernier#}
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/superlist.js') }}"></script>
+
+
+
+
+{% endblock %}

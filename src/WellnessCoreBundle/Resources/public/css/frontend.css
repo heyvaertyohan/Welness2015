@@ -1,0 +1,181 @@
+/*************************/
+/*    Commun             */
+/*************************/
+
+body {
+    background: url("../img/background-wellness.jpg") no-repeat fixed left top / cover;
+    margin-top: 0px;
+}
+
+.page-wrapper {
+    background-color: transparent;
+}
+
+/*************************/
+/*    Header             */
+/*************************/
+
+.header-transparent .container {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.header-wrapper {
+    margin-bottom: 20px;
+}
+
+/*************************/
+/*    Slider             */
+/*************************/
+
+#carousel-slider .item-bg{
+    height: 50px;
+}
+#carousel-slider .item img{
+    margin:auto;
+    height: 270px;
+}
+#carousel-slider .carousel-caption{
+    height: 60px;
+}
+
+/************************/
+/* Category service     */
+/************************/
+
+#serviceSection a{
+    color: #000000;
+}
+
+#menufrontend h1{
+    margin-top: 23px;
+    margin-bottom: 5px;
+}
+
+.submit-zoom{
+    background: url("../img/zoom_btn.png") no-repeat fixed left top / cover;
+}
+
+#input .search{
+    width: 80%;
+    display: inline;
+}
+
+
+/*************************/
+/*    Pave               */
+/*************************/
+
+#maincontener{
+    border-left: 1px solid;
+    padding: 30px 20px 20px 35px;
+    margin-left: -15px;
+}
+
+#mainrow{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cards-simple-wrapper h2{
+    margin-left: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+
+}
+
+.col-md-2-5{
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.col-md-2-5 .card-content{
+    text-align: center;
+    padding: 60px 0px 0px;
+    width: auto;
+}
+
+@media (min-width: 992px) {
+    .cards-simple-wrapper .col-md-2-5 {
+        width: 20%;
+        float: left;
+    }
+}
+
+.col-md-2-5 .card-simple-label img {
+    width: 75px;
+    height: 40px;
+}
+
+.col-md-2-5 .card-simple-label{
+    background-color: transparent;
+    margin-top: -50px;
+}
+
+.col-md-2-5 .card-simple:hover .card-simple-label{
+    margin-top: 5px;
+}
+
+.col-md-2-5 .card-simple-actions{
+    margin-top: 5px;
+}
+
+.col-md-2-5 .card-content h2{
+    margin: 0px;
+}
+
+/*************************/
+/*    Signaletique       */
+/*************************/
+
+#maincontener #tabs_provider{
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+#ulinformation{
+    padding-left: 0px;
+    padding-bottom: 20px;
+}
+
+#ulinformation li{
+    list-style: none;
+}
+
+#tabs_provider {
+    padding-top:20px
+}
+
+.description{
+    text-align: justify;
+}
+
+/*************************/
+/*    Panel              */
+/*************************/
+
+.panel-heading h2{
+    display: inline;
+}
+
+.panel-heading button {
+    position:relative;
+    top:-5px;
+}
+
+/*******************************/
+/*    Provider list            */
+/*******************************/
+
+#table_responsive img{
+    width: 75px;
+    height: 40px;
+}
+
+
+
+
+
+
+

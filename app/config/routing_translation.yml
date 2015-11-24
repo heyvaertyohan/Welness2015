@@ -1,0 +1,16 @@
+redirect_to_lang:
+  pattern: /
+  defaults: { _controller: WellnessCoreBundle:Translation:redirect }
+
+wellness_core:
+    resource: "@WellnessCoreBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    defaults: { _locale: "%locale%" }
+    requirements:
+        _locale: en|fr
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+

@@ -1,0 +1,312 @@
+{% extends '::base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href="{{ asset('bundles/wellnesscore/css/sb-admin.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('bundles/wellnesscore/css/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css">
+
+        <link href="{{ asset('bundles/wellnesscore/css/superlist.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('bundles/wellnesscore/css/frontend.css') }}" rel="stylesheet" type="text/css">
+
+{% endblock %}
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block header %}
+            <header class="header header-transparent">
+                <div class="header-wrapper">
+                    <div class="container">
+                        <div class="header-inner">
+                            <div class="header-logo">
+                                    <a href="{{ path('wellness_public_homepage') }}">
+                                        <img src="{{ asset('bundles/wellnesscore/img/logo_bienetre.png') }}" alt="Logo">
+                                    </a>
+                            </div>
+                            <!-- /.header-logo -->
+                            <div class="header-content">
+                                <div class="header-bottom">
+                                    <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
+                                        <li >
+                                            <a href="{{ path('wellness_public_homepage') }}">{{ 'Accueil'|trans }}<i
+                                                        class="²a"></i></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ path('wellness_public_provider_list') }}">{{ 'Prestataire'|trans }}<i
+                                                        class="fa"></i></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ path('wellness_public_category_list') }}">{{ 'Service '|trans }}<i
+                                                        class="fa"></i></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ path('wellness_public_training') }}">{{ 'Stage '|trans }}<i
+                                                        class="fa"></i></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ path('wellness_public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">{{ 'Langue'|trans }} <i class="fa fa-chevron-down"></i></a>
+
+                                            <ul class="sub-menu">
+                                                <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR
+                                                        </a></li>
+                                                <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN
+                                                        </a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+
+                                            {% if app.user %}
+                                                <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">{{ 'Mon profil'|trans }}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('fos_user_security_logout') }}">{{ 'Se déconnecter'|trans }}</a>
+                                                    </li>
+                                                </ul>
+                                            {% else %}
+                                                <a href="#">{{ 'Connexion'|trans }} <i class="fa fa-chevron-down"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="{{ path('fos_user_security_login') }}">{{ 'Se connecter'|trans }}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('fos_user_change_password') }}">{{ 'S inscrire'|trans }}</a>
+                                                    </li>
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+
+                                    </ul>
+
+                                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                                            data-target=".header-nav-primary">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <!-- /.header-bottom -->
+                            </div>
+                            <!-- /.header-content -->
+                        </div>
+                        <!-- /.header-inner -->
+                    </div>
+                    <!-- /.container -->
+                </div>
+                <!-- /.header-wrapper -->
+            </header>
+            <!-- /.header -->
+
+{% endblock %}
+
+{% block main %}
+            <div class="container">
+                <div class="content">
+                    <div class="mb50 hidden-xs">
+                        <div class="hero-slider">
+                            <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    {% set counter = 0 %}
+                                    {% for image in listImagesSlider %}
+                                        {% if counter == 0 %}
+                                            <div class="item active">
+                                                <div class="item-bg"></div>
+                                                <img src="{{ asset( image.path ) }}"
+                                                     alt="{{ asset(image.description) }}">
+                                            </div>
+                                            <div class="carousel-caption">
+                                                <div class="hero-slider-content">
+                                                    <h1>{{ 'Annuaire bien-être'|trans }}</h1>
+                                                </div>
+                                                <!-- /.hero-slider-content -->
+                                            </div>
+                                            <!-- /.carousel-caption -->
+
+                                        {% else %}
+                                            <div class="item">
+                                                <div class="item-bg"></div>
+                                                <img src="{{ asset( image.path ) }}"
+                                                     alt="{{ asset (image.description) }}">
+                                            </div>
+                                        {% endif %}
+                                        {% set counter = counter + 1 %}
+                                    {% endfor %}
+                                </div>
+                                <!-- /.carousel-inner -->
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-slider" role="button"
+                                   data-slide="prev">
+                                    <i class="fa fa-long-arrow-left"></i>
+                                </a>
+
+                                <a class="right carousel-control" href="#carousel-slider" role="button"
+                                   data-slide="next">
+                                    <i class="fa fa-long-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.hero-slider -->
+
+                    </div>
+                </div>
+                <!-- /.content -->
+
+                <div id="mainrow" class="row background-white">
+                    <div id="menufrontend" class="col-md-2 mt30 mb30">
+                        <form name="" method="post" action="{{ path('wellness_public_category_search') }}">
+                            <h1>{{ "Recherche"|trans }}</h1>
+
+                            <div class="input-group">
+                                <input type="text" name="search" id="search" placeholder="{{ 'Recherche'|trans }}"
+                                       class="form-control input-search">
+                                <button type="submit">
+                                    <img src="{{ asset('bundles/wellnesscore/img/zoom_btn.png') }}"/>
+                                </button>
+                            </div>
+                            <!-- /input-group -->
+                        </form>
+                        <div id='serviceSection'>
+                            <h1>{{ "Service"|trans }}</h1>
+                            <ul>
+                                {% for category in listCategories %}
+
+                                    <li><a href="{{ path('wellness_public_category_show', {slug:category.slug}) }}">{{ category.name }}</a></li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-10 mt30">
+                        {% block maincontainer %}{% endblock %}
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        <div class="cards-simple-wrapper">
+                            <div class="row">
+                                {% block pave %}{% endblock %}
+
+
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+{% endblock %}
+
+{% block footer %}
+
+            <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2> {{ 'A propos de bien etre'|trans }} </h2>
+
+                        <p>Lorem lipsum......</p>
+                    </div>
+                    <!-- /.col-* -->
+
+                    <div class="col-sm-4">
+                        <h2>{{ 'Informations contact'|trans }}</h2>
+
+                        <p>
+                            Your Street 123, Melbourne, Australia<br>
+                            +1-123 -456-789, <a href="#">sample@example.com</a>
+                        </p>
+                    </div>
+                    <!-- /.col-* -->
+
+                    <div class="col-sm-4">
+                        <h2>{{ 'Resté connecté'|trans }}</h2>
+
+                        <ul class="social-links nav nav-pills">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                        </ul>
+                        <!-- /.header-nav-social -->
+                    </div>
+                    <!-- /.col-* -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.footer-top -->
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-left">
+                    &copy; 2015 {{ 'Tout droit réservé'|trans }}. {{ 'Crée par'|trans }}<a href="#"> Heyvaert Yohan</a>.
+                </div>
+                <!-- /.footer-bottom-left -->
+
+                <div class="footer-bottom-right">
+                    <ul class="nav nav-pills">
+                        <li id="home">
+                            <a href="{{ path('wellness_public_homepage') }}">{{ 'Accueil'|trans }}<i class="fa"></i></a>
+                        </li>
+
+                        <li id="provider">
+                            <a href="{{ path('wellness_public_provider_list') }}">{{ 'Prestataire'|trans }}<i
+                                        class="fa"></i></a>
+                        </li>
+
+                        <li id="category">
+                            <a href="{{ path('wellness_public_category_list') }}">{{ 'Service '|trans }}<i
+                                        class="fa"></i></a>
+                        </li>
+
+                        <li id="training">
+                            <a href="{{ path('wellness_public_training') }}">{{ 'Stage '|trans }}<i class="fa"></i></a>
+                        </li>
+
+                        <li id="promo">
+                            <a href="{{ path('wellness_public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
+                        </li>
+
+                    </ul>
+                    <!-- /.nav -->
+                </div>
+                <!-- /.footer-bottom-right -->
+            </div>
+            <!-- /.container -->
+        </div>
+    </footer><!-- /.footer -->
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/jquery-1.11.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('bundles/wellnesscore/libraries/bootstrap-sass/javascripts/bootstrap/carousel.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('bundles/wellnesscore/libraries/bootstrap-sass/javascripts/bootstrap/transition.js') }}"></script>
+{% endblock %}

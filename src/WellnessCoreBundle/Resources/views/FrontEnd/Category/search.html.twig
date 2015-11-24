@@ -1,0 +1,37 @@
+{% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
+
+{% block title %}{{ parent() }} {{ 'accueil'|trans }} {% endblock %}
+
+{% block header %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block maincontainer %}
+
+    <div id="maincontener" class="background-white">
+        <h2>Résultat de la recherche pour "{{ expression }}{#{{ find }}#}"</h2>
+        {% for service in services %}
+            <h3><a href="{{ path('service_show', { 'slug': service.slug }) }}"/>{{ service.title }}</a></h3>
+            <p>{{ service.description | slice(0, 50) | raw }}</p>
+            <hr/>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    {{ parent() }}
+    <script type="text/javascript"
+            src="{{ asset('bundles/wellnesscore/libraries/bootstrap-sass/javascripts/bootstrap/carousel.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('bundles/wellnesscore/libraries/bootstrap-sass/javascripts/bootstrap/transition.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/superlist.js') }}"></script>
+
+{% endblock %}

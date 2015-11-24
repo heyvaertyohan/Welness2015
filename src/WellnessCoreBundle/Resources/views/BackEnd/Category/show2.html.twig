@@ -1,0 +1,105 @@
+Category show
+<div class="row col-sm-7 ">
+    <div class="form-group">
+        <p>{{ CurrentProvider.description|raw }}</p>
+    </div>
+    <div class="form-group">
+        <label for="lname" class="col-sm-3 control-label">{{ 'Nom'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="lname" type="text" class="form-control" value="{{ CurrentProvider.name }}" disabled>
+        </div>
+
+        <label for="lstreet" class="col-sm-3 control-label">{{ 'Rue'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="lstreet" type="text" class="form-control" value="{{ CurrentProvider.addressstreet }}"
+                   disabled>
+        </div>
+
+
+        <label for="lnumber" class="col-sm-3 control-label">{{ 'Numéro'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="lnumber" type="text" class="form-control"
+                   value="{{ CurrentProvider.addressnumber }}" disabled>
+        </div>
+
+        <label for="lpostcode" class="col-sm-3 control-label">{{ 'Code postal'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="lpostcode" type="text" class="form-control"
+                   value="{{ CurrentProvider.postcode.postcode }}" disabled>
+        </div>
+
+        <label for="llocality" class="col-sm-3 control-label">{{ 'Localité'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="llocality" type="text" class="form-control"
+                   value="{{ CurrentProvider.locality.locality }}" disabled>
+        </div>
+
+        <label for="ltown" class="col-sm-3 control-label">{{ 'Commune'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="ltown" type="text" class="form-control"
+                   value="{{ CurrentProvider.town.town }}" disabled>
+        </div>
+
+        <label for="lwebsite" class="col-sm-3 control-label">{{ 'Site internet'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="lwebsite" type="text" class="form-control"
+                   value="{{ CurrentProvider.website }}" disabled>
+        </div>
+
+        <label for="ltelnumber" class="col-sm-3 control-label">{{ 'Téléphone'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="ltelnumber" type="text" class="form-control"
+                   value="{{ CurrentProvider.telnumber }}" disabled>
+        </div>
+
+        <label for="ltvanumber" class="col-sm-3 control-label">{{ 'Numéro TVA'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="ltvanumber" type="text" class="form-control"
+                   value="{{ CurrentProvider.tvanumber }}" disabled>
+        </div>
+
+        <label for="lemail" class="col-sm-3 control-label">{{ 'Adresse mail'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="lemail" type="text" class="form-control"
+                   value="{{ CurrentProvider.email }}" disabled>
+        </div>
+
+        <label for="lpassword" class="col-sm-3 control-label">{{ 'Mot de passe'|trans }}</label>
+
+        <div class="col-sm-9">
+            <input id="lpassword" type="text" class="form-control"
+                   value="{{ CurrentProvider.password }}" disabled>
+        </div>
+
+        {#<label for="linscriptioncf" class="col-sm-3 control-label">{{ 'Inscription'|trans }}</label>
+        <div class="col-sm-9">
+            <input id="linscriptioncf" type="text" class="form-control"
+                   value="{{ CurrentProvider.inscriptioncf }}">
+        </div>
+
+        <label for="ltryingnumber"
+               class="col-sm-3 control-label">{{ 'Nombre essaie'|trans }}</label>
+        <div class="col-sm-9">
+            <input id="ltryingnumber" type="text" class="form-control"
+                   value="{{ CurrentProvider.tryingnumber }}">
+        </div>
+
+        <label for="lbamed"
+               class="col-sm-3 control-label">{{ 'Banni'|trans }}</label>
+        <div class="col-sm-9">
+            <input id="lbamed" type="text" class="form-control"
+                   value="{{ CurrentProvider.bamed }}">
+        </div>#}
+        <!-- /.col-* -->
+    </div>
+</div>

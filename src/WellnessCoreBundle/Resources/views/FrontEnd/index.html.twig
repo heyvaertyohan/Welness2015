@@ -1,0 +1,112 @@
+{% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
+
+{% block title %}{{ parent() }} {{ 'accueil'|trans }} {% endblock %}
+
+{% block header %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block maincontainer %}
+{% endblock %}
+
+{% block pave %}
+
+    {% for image in listProvidersWithLogo %}
+        <div class="col-md-2-5">
+            <div class="card-simple">
+                <div class="card-simple-background">
+                    <div class="card-content">
+                        <h2>
+                            <a href="{{ path('wellness_public_provider_show', {slug:image.user.slug}) }}">{{ image.user.name }}</a>
+                        </h2>
+
+                        <div class="card-simple-actions">
+                            <a href="{{ path('wellness_public_provider_show', {slug:image.user.slug}) }}"
+                               class="fa fa-search"></a>
+                        </div>
+                        <!-- /.card-simple-actions -->
+                    </div>
+                    <!-- /.card-simple-content -->
+
+                    <div class="card-simple-label"><img src="{{ asset( image.path ) }}"
+                                                        alt="{{ asset(image.description) }}"></div>
+
+                </div>
+                <!-- /.card-simple-background -->
+            </div>
+            <!-- /.card-simple -->
+        </div>
+        <!-- /.col-* -->
+    {% endfor %}
+
+    {% if monthService != null %}
+
+        <div class="col-md-2-5">
+            <div class="card-simple">
+                <div class="card-simple-background">
+                    <div class="card-content">
+                        <h2>
+                            <a href="{{ path('wellness_public_category_show', {slug:monthService.slug}) }}">{{ monthService.name }}</a>
+                        </h2>
+
+                        <div class="card-simple-actions">
+                            <a href="{{ path('wellness_public_category_show', {slug:monthService.slug}) }}"
+                               class="fa fa-search"></a>
+                        </div>
+                        <!-- /.card-simple-actions -->
+                    </div>
+                    <!-- /.card-simple-content -->
+
+
+                    <div class="card-simple-label">
+                        <img src="{{ asset( imgMonthService.path ) }}"
+                             alt="{{ asset( imgMonthService.description ) }}">
+                    </div>
+
+                </div>
+                <!-- /.card-simple-background -->
+            </div>
+            <!-- /.card-simple -->
+        </div>
+        <!-- /.col-* -->
+
+    {% endif %}
+    {#<div class="col-sm-5 col-lg-2-5">
+        <div class="card-simple">
+            <div class="card-simple-background">
+                <div class="card-simple-content">
+                    <h2><a href="listing-detail.html">{{ monthService.name }}</a></h2>
+
+                    <div class="card-simple-actions">
+                        <a href="listing-detail.html" class="fa fa-search"></a>
+                    </div>
+                    <!-- /.card-simple-actions -->
+                </div>
+                <!-- /.card-simple-content -->
+
+            </div>
+            <!-- /.card-simple-background -->
+        </div>
+        &#123;&#35;<div class="card-label"><img src="{{ asset( image.path ) }}"
+                                     alt="{{ asset(image.description) }}"></div>&#35;&#125;
+        <!-- /.card-simple -->
+    </div>#}
+    <!-- /.col-* -->
+{% endblock %}
+
+{% block javascript %}
+
+    {{ parent() }}
+    <script type="text/javascript"
+            src="{{ asset('bundles/wellnesscore/libraries/bootstrap-sass/javascripts/bootstrap/carousel.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('bundles/wellnesscore/libraries/bootstrap-sass/javascripts/bootstrap/transition.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/superlist.js') }}"></script>
+
+{% endblock %}
