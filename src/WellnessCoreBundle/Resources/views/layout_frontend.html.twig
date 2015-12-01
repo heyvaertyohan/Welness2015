@@ -83,7 +83,7 @@
                                                         <a href="{{ path('fos_user_security_login') }}">{{ 'Se connecter'|trans }}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{ path('fos_user_change_password') }}">{{ 'S inscrire'|trans }}</a>
+                                                        <a href="{{ path('fos_user_registration_register') }}">{{ 'S inscrire'|trans }}</a>
                                                     </li>
                                                 </ul>
                                             {% endif %}
@@ -136,12 +136,12 @@
                                             </div>
                                             <!-- /.carousel-caption -->
 
-                                        {% else %}
+                                        {#{% else %}
                                             <div class="item">
                                                 <div class="item-bg"></div>
                                                 <img src="{{ asset( image.path ) }}"
                                                      alt="{{ asset (image.description) }}">
-                                            </div>
+                                            </div>#}
                                         {% endif %}
                                         {% set counter = counter + 1 %}
                                     {% endfor %}

@@ -19,7 +19,6 @@ class Image
     const TYPE_LOGO_SERVICE = 'logo_service';
     const TYPE_IMG_SERVICE = 'img_service';
 
-
     /**
      * @var integer
      *

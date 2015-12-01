@@ -1,4 +1,0 @@
-services:
-#    architect_admin.example:
-#        class: UserBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]

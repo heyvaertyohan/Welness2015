@@ -56,56 +56,56 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     protected $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telnumber", type="string", length=255)
+     * @ORM\Column(name="telnumber", type="string", length=255, nullable=true)
      */
     protected $telnumber;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="addressstreet", type="string", length=255)
+     * @ORM\Column(name="addressstreet", type="string", length=255, nullable=true)
      */
     protected $addressstreet;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="addressnumber", type="string", length=255)
+     * @ORM\Column(name="addressnumber", type="string", length=255, nullable=true)
      */
     protected $addressnumber;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="inscriptioncf", type="string", length=255)
+     * @ORM\Column(name="inscriptioncf", type="string", length=255, nullable=true)
      */
     protected $inscriptioncf;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usertype", type="string", length=255)
+     * @ORM\Column(name="usertype", type="string", length=255, nullable=true)
      */
     protected $usertype;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tryingnumber", type="integer")
+     * @ORM\Column(name="tryingnumber", type="integer", nullable=true)
      */
     protected $tryingnumber;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="bamed", type="boolean")
+     * @ORM\Column(name="bamed", type="boolean", nullable=true)
      */
     protected $bamed;
 

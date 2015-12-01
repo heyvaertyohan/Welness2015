@@ -1,30 +1,62 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{# src/Sdz/UserBundle/Resources/views/Security/login.html.twig #}
 
-{% block content %}
-{% trans_default_domain 'FOSUserBundle' %}
+{% extends WellnessCoreBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+{% block head %}
+    {{ parent() }}
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/styles.css') }}"/>
+    {% endblock %}
+{% endblock %}
+{% block title %}{{ parent() }}- Login {% endblock %}
+
+{% block main %}
+
+        <div id="cadre_login_info">
+            <h1>Sign In</h1>
+            <div id="login_info">
+
+                {% if error %}
+                    <div id="login_error">{{ error.message }}</div>
+                {% endif %}
+
+                <form action="{{ path('fos_user_security_check') }}" method="post">
+                    <div id="group_username">
+                        <img id="img_user" src="{{ asset('bundles/myhomeuser/images/user-login.jpg') }}">
+                        <input type="text" id="username" name="_username" value="{{ last_username }}"
+                           placeholder='Username' class="text-input" tabindex="1">
+                    </div>
+
+                    <p id="group_password">
+                        <img id="img_pwd" src="{{ asset('bundles/myhomeuser/images/user-password.jpg') }}">
+                        <input type="password" id="password" name="_password" placeholder='Password'
+                               class="text-input" tabindex="2">
+                    </p>
+
+                    <div id="form_bottom">
+                        <p id="group_remember">
+                            <label for="remember">
+                                <input type="checkbox" id="remember" name="_remember_me" tabindex="3">
+                                Remember me
+                            </label>
+                        </p>
+                        <p>
+                            <button type="submit" id="login_submit" tabindex="4">Login</button>
+                        </p>
+                    </div>
+                    <p id="password_forgot">
+                        <a href="" title="">Password forgot?</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+{% endblock %}
 
 
-    <form action="{{ path("fos_user_security_check") }}" method="post">
 
-        <h1>Nondiju</h1>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
 
-        <label for="username">{{ 'security.login.username'|trans }}</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
 
-        <label for="password">{{ 'security.login.password'|trans }}</label>
-        <input type="password" id="password" name="_password" required="required"/>
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
-    </form>
-{% endblock fos_user_content %}
-{% endblock content %}
+
