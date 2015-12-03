@@ -1,0 +1,29 @@
+{% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <form id="myloginform" action="{{ path('fos_user_security_check') }}" method="post">
+                <input type="hidden" name="_csrf_token" value="iKioj4iX6YjfMb5Lg1wI1I_2FLVkVeJLUzqypphafUc" />
+
+                <label for="username">Nom d&#039;utilisateur</label>
+                <input type="text" id="username" name="_username" value="" required="required" />
+                <br />
+
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="_password" required="required" />
+                <br />
+
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label for="remember_me">Se souvenir de moi</label>
+                <br />
+
+                <input type="submit" id="_submit" name="_submit" value="Connexion" />
+                <br />
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
