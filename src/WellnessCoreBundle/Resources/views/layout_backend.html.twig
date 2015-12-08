@@ -3,8 +3,12 @@
 {% block head %}
     {{ parent() }}
 
-            <link href="{{ asset('bundles/wellnesscore/css/superlist.css') }}" rel="stylesheet" type="text/css">
-            <link href="{{ asset('bundles/wellnesscore/css/backend.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/wellnesscore/css/superlist.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/wellnesscore/css/backend.css') }}" rel="stylesheet" type="text/css">
+    {#décallage de 50px sur le body en backend#}
+    {#<link href="{{ asset('bundles/wellnesscore/css/sb-admin.css') }}" rel="stylesheet" type="text/css">#}
+    <link href="{{ asset('bundles/wellnesscore/css/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/wellnesscore/css/main.css') }}" rel="stylesheet" type="text/css">
 
 {% endblock %}
 {% block title %}
@@ -13,254 +17,410 @@
 
 {% block main %}
 
-            <header class="header header-minimal">
-                <div class="header-wrapper">
-                    <div class="container">
-                        <div class="header-inner">
-                            <div class="header-logo">
-                                <a href="{{ path('wellness_public_homepage') }}">
-                                    <img src="{{ asset('bundles/wellnesscore/img/logo_bienetre.png') }}" alt="Logo">
-                                </a>
+    {#<header class="header header-minimal">
+        <div class="header-wrapper">
+            <div class="container-fluid">
+                <div class="header-inner">
+                    <div class="header-logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo.png" alt="Logo">
+                            <span>Superlist</span>
+                        </a>
+                    </div>
+                    <!-- /.header-logo -->
+
+                    <div class="header-content">
+                        <div class="header-top">
+                            <div class="header-search">
+                                <input type="text" class="form-control" placeholder="Search for...">
                             </div>
-                            <!-- /.header-logo -->
-                            <div class="header-content">
-                                <div class="header-bottom">
-                                    <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
-                                        <li>
-                                            <a href="{{ path('wellness_public_homepage') }}">{{ 'Accueil'|trans }}<i
-                                                        class="fa"></i></a>
-                                        </li>
+                            <!-- /.header-search -->
 
-                                        <li>
-                                            <a href="{{ path('wellness_public_provider_list') }}">{{ 'Prestataire'|trans }}<i
-                                                        class="fa"></i></a>
-                                        </li>
+                            <ul class="header-nav-social social-links nav nav-pills">
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                            <!-- /.header-nav-social -->
 
-                                        <li>
-                                            <a href="{{ path('wellness_public_category_list') }}">{{ 'Service '|trans }}<i
-                                                        class="fa"></i></a>
-                                        </li>
+                            <ul class="header-nav-secondary nav nav-pills">
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="register.html">Register</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.header-top -->
 
-                                        <li>
-                                            <a href="{{ path('wellness_public_training') }}">{{ 'Stage '|trans }}<i
-                                                        class="fa"></i></a>
-                                        </li>
+                        <div class="header-bottom">
+                            <div class="header-action">
+                                <a href="listing-submit.html" class="header-action-inner" title="Add Listing"
+                                   data-toggle="tooltip" data-placement="bottom">
+                                    <i class="fa fa-plus"></i>
+                                </a><!-- /.header-action-inner -->
+                            </div>
+                            <!-- /.header-action -->
 
-                                        <li>
-                                            <a href="{{ path('wellness_public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
-                                        </li>
+                            <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
+                                <li>
+                                    <a href="#">Home <i class="fa fa-chevron-down"></i></a>
 
-                                        <li>
-                                            <a href="#">{{ 'Langue'|trans }} <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="index-video.html">Video v1</a></li>
+                                        <li><a href="index-video-transparent-header.html">Video v2</a></li>
+                                        <li><a href="index-google-map.html">Google Map V1</a></li>
+                                        <li><a href="index-google-map-transparent-header.html">Google Map v2</a></li>
+                                        <li><a href="index-image.html">Image v1</a></li>
+                                        <li><a href="index.html">Image v2</a></li>
+                                        <li><a href="index-bootstrap-slider.html">Boxed Slider</a></li>
+                                    </ul>
+                                </li>
 
-                                            <ul class="sub-menu">
-                                                <li>
-                                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR
-                                                    </a></li>
-                                                <li>
-                                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN
-                                                    </a></li>
+                                <li>
+                                    <a href="#">Listing <i class="fa fa-chevron-down"></i></a>
+
+                                    <ul class="sub-menu">
+                                        <li><a href="listing-detail.html">Detail</a></li>
+                                        <li><a href="listing-map.html">Row + Map</a></li>
+                                        <li><a href="listing-grid.html">Grid</a></li>
+                                        <li><a href="listing-grid-sidebar.html">Grid Sidebar</a></li>
+                                        <li><a href="listing-row.html">Row</a></li>
+                                        <li><a href="listing-row-sidebar.html">Row Sidebar</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="has-mega-menu active">
+                                    <a href="#">Pages <i class="fa fa-chevron-down"></i></a>
+
+                                    <ul class="mega-menu">
+                                        <li>
+                                            <a href="#">General</a>
+
+                                            <ul>
+                                                <li><a href="faq.html">FAQ</a></li>
+                                                <li><a href="invoice.html">Invoice</a></li>
+                                                <li><a href="pricing.html">Pricing</a></li>
+                                                <li><a href="grid.html">Grid System</a></li>
+                                                <li><a href="testimonials.html">Testimonials</a></li>
                                             </ul>
                                         </li>
 
                                         <li>
+                                            <a href="#">User Account</a>
 
-                                            {% if app.user %}
-                                                <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">{{ 'Mon profil'|trans }}</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ path('fos_user_security_logout') }}">{{ 'Se déconnecter'|trans }}</a>
-                                                    </li>
-                                                </ul>
-                                            {% else %}
-                                                <a href="#">{{ 'Connexion'|trans }} <i class="fa fa-chevron-down"></i></a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="{{ path('fos_user_security_login') }}">{{ 'Se connecter'|trans }}</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ path('fos_user_registration_register') }}">{{ 'S inscrire'|trans }}</a>
-                                                    </li>
-                                                </ul>
-                                            {% endif %}
+                                            <ul>
+                                                <li><a href="user-profile-edit.html">Profile Edit</a></li>
+                                                <li><a href="login.html">Login Form</a></li>
+                                                <li><a href="register.html">Register Form</a></li>
+                                                <li><a href="change-password.html">Change Password Form</a></li>
+                                            </ul>
                                         </li>
 
+                                        <li>
+                                            <a href="#">Miscellaneous</a>
+
+                                            <ul>
+                                                <li><a href="sticky-footer.html">Sticky Footer</a></li>
+                                                <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                                                <li><a href="error-403.html">403 - Forbidden</a></li>
+                                                <li><a href="error-404.html">404 - Not Found</a></li>
+                                                <li><a href="error-500.html">500 - Internal Error</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="hidden-xs">
+                                            <div class="special">
+                                                <a href="register.html">Sign Up Now</a>
+                                            </div>
+                                            <!-- /.special-->
+                                        </li>
                                     </ul>
-
-                                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
-                                            data-target=".header-nav-primary">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-                                <!-- /.header-bottom -->
-                            </div>
-                            <!-- /.header-content -->
-                        </div>
-                        <!-- /.header-inner -->
-                    </div>
-                    <!-- /.container -->
-                </div>
-
-                <div class="header-statusbar">
-                    <div class="header-statusbar-inner">
-                        <div class="header-statusbar-left">
-                            <h1>{{ 'Tableau de bord'|trans }}</h1>
-
-                            <div class="display-inline-block">
-                                <div class="hidden-xs visible-lg">
-                                    <div class="header-statusbar-search">
-                                        <input type="text" class="form-control" placeholder="{{ 'Recherche...'|trans }}">
-                                    </div>
-                                    <!-- /.header-search -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.header-statusbar-left -->
-
-                        <div class="header-statusbar-right">
-                            <div class="hidden-xs visible-lg">
-                                {{ 'Navigation'|trans }}
-                                <ul class="breadcrumb">
-                                    <li><a href="{{ path('wellness_admin_homepage') }}">{{ 'Bien-être'|trans }}</a></li>
-                                    <li><a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.header-statusbar-right -->
-                    </div>
-                    <!-- /.header-statusbar-inner -->
-                </div>
-                <!-- /.header-statusbar -->
-            </header>
-            <!-- /.header -->
-
-            <div class="main">
-                <div class="outer-admin">
-                    <div class="wrapper-admin">
-                        <div class="sidebar-secondary-admin">
-                            <ul>
-                                <li class="active">
-                                    <a href="{{ path('wellness_admin_homepage') }}">
-                                        <span class="icon"><i class="fa fa-tachometer"></i></span>
-                                        <span class="title">{{ 'Tableau de bord'|trans }}</span>
-                                        <span class="subtitle">Gérer votre site</span>
-                                    </a>
                                 </li>
-                                <li>
-                                    <a id="li_service" href="#">
-                                        <span class="icon"><i class="fa fa-i-cursor"></i></span>
-                                        <span class="title">{{ 'Services'|trans }}</span>
-                                        <span class="subtitle">{{ 'Gérer les catégories de service'|trans }}</span>
-                                    </a>
 
-                                    <ul id="ul_service">
-                                        <li>
-                                            <a href="{{ path('wellness_admin_category_create') }}">{{ 'Ajouter un service'|trans }}</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('wellness_admin_category_list') }}">{{ 'Liste des services'|trans }}</a>
-                                        </li>
+                                <li>
+                                    <a href="#">Blog <i class="fa fa-chevron-down"></i></a>
+
+                                    <ul class="sub-menu">
+                                        <li><a href="blog-standard-right-sidebar.html">Standard Right Sidebar</a></li>
+                                        <li><a href="blog-standard-left-sidebar.html">Standard Left Sidebar</a></li>
+                                        <li><a href="blog-boxed.html">Boxed Style</a></li>
+                                        <li><a href="blog-condensed.html">Condensed Style</a></li>
+                                        <li><a href="blog-detail.html">Detail Fullwidth</a></li>
+                                        <li><a href="blog-detail-right-sidebar.html">Detail Right Sidebar</a></li>
+                                        <li><a href="blog-detail-left-sidebar.html">Detail Left Sidebar</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#">Admin <i class="fa fa-chevron-down"></i></a>
+
+                                    <ul class="sub-menu">
+                                        <li><a href="admin-dashboard.html">Dashboard</a></li>
+                                        <li><a href="admin-grid.html">Grid System</a></li>
+                                        <li><a href="admin-tables.html">Tables</a></li>
+                                        <li><a href="admin-forms.html">Forms</a></li>
+                                        <li><a href="admin-notifications.html">Notifications</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#">Contact <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="contact-1.html">Contact v1</a></li>
+                                        <li><a href="contact-2.html">Contact v2</a></li>
+                                        <li><a href="contact-3.html">Contact v3</a></li>
                                     </ul>
                                 </li>
                             </ul>
+
+                            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                                    data-target=".header-nav-primary">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
                         </div>
-                        <!-- /.sidebar-secondary-admin -->
-
-                        <div class="content-admin">
-                            <div class="content-admin-wrapper">
-                                <div class="content-admin-main">
-                                    <div class="content-admin-main-inner">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <div class="page-title">
-                                                                <h1>{{ 'Bienvenue'|trans }}</h1>
-                                                            </div>
-                                                            <!-- /.page-title -->
-
-
-                                                            <div class="background-white p20 mb50">
-                                                                <h2 class="page-title"></h2>
-
-                                                                <form class="form-horizontal">
-                                                                    <div class="form-group">
-
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <div class="col-sm-offset-2 col-sm-10">
-                                                                            <div class="checkbox">
-                                                                                <input type="checkbox" id="remember-me">
-                                                                                <label for="remember-me">Remember me</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <div class="col-sm-offset-2 col-sm-10">
-                                                                            <button type="submit" class="btn btn-primary"><i
-                                                                                        class="fa fa-sign-in"></i> Sign in
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.col-* -->
-
-                                                    </div>
-                                                    <!-- /.row -->
-                                                </div>
-                                                <!-- /.col-* -->
-                                            </div>
-                                        </div>
-                                        <!-- /.container-fluid -->
-                                    </div>
-                                    <!-- /.content-admin-main-inner -->
-                                </div>
-                                <!-- /.content-admin-main -->
-
-                                <div class="content-admin-footer">
-                                    <div class="container-fluid">
-                                        <div class="content-admin-footer-inner">
-                                            &copy; 2015 All rights reserved. Created by <a href="#">Aviators</a>.
-                                        </div>
-                                        <!-- /.content-admin-footer-inner -->
-                                    </div>
-                                    <!-- /.container-fluid -->
-                                </div>
-                                <!-- /.content-admin-footer  -->
-                            </div>
-                            <!-- /.content-admin-wrapper -->
-                        </div>
-                        <!-- /.content-admin -->
+                        <!-- /.header-bottom -->
                     </div>
-                    <!-- /.wrapper-admin -->
+                    <!-- /.header-content -->
                 </div>
-                <!-- /.outer-admin -->
+                <!-- /.header-inner -->
             </div>
-            <!-- /.main -->
+            <!-- /.container -->
+        </div>
+        <!-- /.header-wrapper -->
+    </header>#}
+    <!-- /.header -->
+
+    <header class="header header-minimal">
+        <div class="header-wrapper">
+            <div class="container-fluid">
+                <div class="header-inner">
+                    <div class="header-logo">
+                        <a href="index.html">
+                            <img src="{{ asset('bundles/wellnesscore/img/logo_bienetre.png') }}" alt="Logo">
+                        </a>
+                    </div>
+                    <!-- /.header-logo -->
+
+                    <div class="header-content">
+                        <div class="header-bottom">
+
+                            <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
+                                <li>
+                                    <a href="{{ path('wellness_public_homepage') }}">{{ 'Accueil'|trans }}<i
+                                                class="²a"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('wellness_public_provider_list') }}">{{ 'Prestataire'|trans }}<i
+                                                class="fa"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('wellness_public_category_list') }}">{{ 'Service '|trans }}<i
+                                                class="fa"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('wellness_public_training') }}">{{ 'Stage '|trans }}<i
+                                                class="fa"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ path('wellness_public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#">{{ 'Langue'|trans }} <i class="fa fa-chevron-down"></i></a>
+
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">FR
+                                            </a></li>
+                                        <li>
+                                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN
+                                            </a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('fos_user_profile_edit') }}">{{ 'Mon profil'|trans }}</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('fos_user_security_logout') }}">{{ 'Se déconnecter'|trans }}</a>
+                                            </li>
+                                        </ul>
+                                    {% else %}
+                                        <a href="#">{{ 'Connexion'|trans }} <i class="fa fa-chevron-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="{{ path('fos_user_security_login') }}">{{ 'Se connecter'|trans }}</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('fos_user_registration_register') }}">{{ 'S inscrire'|trans }}</a>
+                                            </li>
+                                        </ul>
+                                    {% endif %}
+                                </li>
+
+                            </ul>
+
+                            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                                    data-target=".header-nav-primary">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+
+                            <div class="header-nav-user">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <div class="user-image">
+                                            <img src="assets/img/tmp/agent-2.jpg">
+
+                                            <div class="notification"></div>
+                                            <!-- /.notification-->
+                                        </div>
+                                        <!-- /.user-image -->
+
+                                        <span class="header-nav-user-name">Natasha Samson</span> <i
+                                                class="fa fa-chevron-down"></i>
+                                    </button>
+
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="user-profile-edit.html">Edit Profile</a></li>
+                                        <li><a href="listing-submit.html">Submit Listing</a></li>
+                                        <li><a href="change-password.html">Change Password</a></li>
+                                    </ul>
+                                </div>
+                                <!-- /.dropdown -->
+                            </div>
+                            <!-- /.header-nav-user -->
+
+                        </div>
+                        <!-- /.header-bottom -->
+                    </div>
+                    <!-- /.header-content -->
+                </div>
+                <!-- /.header-inner -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.header-wrapper -->
+
+        <div class="header-statusbar">
+            <div class="header-statusbar-inner">
+                <div class="header-statusbar-left">
+                    <h1>Dashboard</h1>
+
+                    <div class="display-inline-block">
+                        <div class="hidden-xs visible-lg">
+                            <div class="header-statusbar-search">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                            </div>
+                            <!-- /.header-search -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.header-statusbar-left -->
+
+                <div class="header-statusbar-right">
+                    <div class="hidden-xs visible-lg">
+                        Navigation:
+                        <ul class="breadcrumb">
+                            <li><a href="#">Superlist</a></li>
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Statistics</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.header-statusbar-right -->
+            </div>
+            <!-- /.header-statusbar-inner -->
+        </div>
+        <!-- /.header-statusbar -->
+    </header><!-- /.header -->
+
+    <div class="main">
+        <div class="outer-admin">
+            <div class="wrapper-admin">
+                <div class="sidebar-secondary-admin">
+                    <ul class="menu">
+                        <li class="item1">
+                            <a href="{{ path('wellness_admin_homepage') }}">
+                                <span class="icon"><i class="fa fa-tachometer"></i></span>
+                                <span class="title">{{ 'Tableau de bord'|trans }}</span>
+                                <span class="subtitle">Gérer votre site</span>
+                            </a>
+                        </li>
+                        <li class="item2">
+                            <a href="#">
+                                <span class="icon"><i class="fa fa-i-cursor"></i></span>
+                                <span class="title">{{ 'Services'|trans }}</span>
+                                <span class="subtitle">{{ 'Gérer les catégories de service'|trans }}</span>
+                            </a>
+
+                            <ul>
+                                <li>
+                                    <a href="{{ path('wellness_admin_category_create') }}">{{ 'Ajouter un service'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('wellness_admin_category_list') }}">{{ 'Liste des services'|trans }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-secondary-admin -->
+
+                {% block contentadmin %}
+
+                {% endblock %}
+            </div>
+            <!-- /.wrapper-admin -->
+        </div>
+        <!-- /.outer-admin -->
+    </div>
+    <!-- /.main -->
 
 {% endblock %}
 
 
 {% block footer %}
 
-<!-- /.page-wrapper -->
-<script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/jquery.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/backend.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/dropdown.js') }}"></script>
+    <!-- /.page-wrapper -->
 
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/jquery-1.11.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/backend.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/dataTables.bootstrap.min.js') }}"></script>
+
+    <script type="text/javascript" charset="utf-8">
+
+        $(document).ready(function () {
+            $('#table_responsive').dataTable();
+
+        });
+
+        $('.nav-tabs li ').click(function () {
+            $('.table-bordered').dataTable();
+        });
+    </script>
+
+    {#Ce script plante a son lancement et doit etre placé en dernier#}
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/superlist.js') }}"></script>
 {% endblock %}
 

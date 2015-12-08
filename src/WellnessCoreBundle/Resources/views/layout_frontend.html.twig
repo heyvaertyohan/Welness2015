@@ -7,6 +7,7 @@
         <link href="{{ asset('bundles/wellnesscore/css/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css">
 
         <link href="{{ asset('bundles/wellnesscore/css/superlist.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('bundles/wellnesscore/css/main.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('bundles/wellnesscore/css/frontend.css') }}" rel="stylesheet" type="text/css">
 
 {% endblock %}
@@ -63,14 +64,14 @@
 
                                         <li>
 
-                                            {% if app.user %}
+                                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                 <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
                                                 <ul class="sub-menu">
                                                     <li>
                                                         <a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">{{ 'Mon profil'|trans }}</a>
+                                                        <a href="{{ path('fos_user_profile_edit') }}">{{ 'Mon profil'|trans }}</a>
                                                     </li>
                                                     <li>
                                                         <a href="{{ path('fos_user_security_logout') }}">{{ 'Se déconnecter'|trans }}</a>
@@ -120,6 +121,7 @@
                         <div class="hero-slider">
                             <div id="carousel-slider" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner" role="listbox">
+                                    {% if listImagesSlider %}
                                     {% set counter = 0 %}
                                     {% for image in listImagesSlider %}
                                         {% if counter == 0 %}
@@ -145,6 +147,7 @@
                                         {% endif %}
                                         {% set counter = counter + 1 %}
                                     {% endfor %}
+                                    {% endif %}
                                 </div>
                                 <!-- /.carousel-inner -->
 

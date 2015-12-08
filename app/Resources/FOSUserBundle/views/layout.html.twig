@@ -1,29 +1,44 @@
 {% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
 
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/wellnesscore/css/login.css') }}"/>
+{% endblock %}
+
 {% block main %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
 
-                <form id="myloginform" action="{{ path('fos_user_security_check') }}" method="post">
-                <input type="hidden" name="_csrf_token" value="iKioj4iX6YjfMb5Lg1wI1I_2FLVkVeJLUzqypphafUc" />
+    <body>
 
-                <label for="username">Nom d&#039;utilisateur</label>
-                <input type="text" id="username" name="_username" value="" required="required" />
-                <br />
+    <div class="main">
+        <div class="main-inner">
+            <div class="container">
+                <div class="content">
+                    <div class="row">
+                        <div id="myloginform" class="col-sm-4 col-sm-offset-4">
+                            {% if app.request.hasPreviousSession %}
+                                {% for type, messages in app.session.flashbag.all() %}
+                                    {% for message in messages %}
+                                        <div class="flash-{{ type }}">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
 
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="_password" required="required" />
-                <br />
+                            {% block fos_user_content %}
+                            {% endblock fos_user_content %}
 
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                <label for="remember_me">Se souvenir de moi</label>
-                <br />
+                        </div>
+                    </div>
+                    <!-- /.row -->
 
-                <input type="submit" id="_submit" name="_submit" value="Connexion" />
-                <br />
-                </form>
+                </div>
+                <!-- /.content -->
             </div>
+            <!-- /.container -->
         </div>
+        <!-- /.main-inner -->
     </div>
+    <!-- /.main -->
+    </body>
 {% endblock %}

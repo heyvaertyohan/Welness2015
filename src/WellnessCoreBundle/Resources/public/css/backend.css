@@ -5,3 +5,33 @@
 .breadcrumb > li + li::before{
     content: "/ ";
 }
+
+.menu ul li:last-child a {
+    border-bottom: 1px solid #33373d;
+}
+
+.menu > li > a:hover, .menu > li > a.active {
+    background-color: #009F8B;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 159, 139)), to(rgb(0, 159, 139)));
+    background-image: -webkit-linear-gradient(top, rgb(0, 159, 139), rgb(0, 159, 139));
+    background-image: -moz-linear-gradient(top, rgb(0, 159, 139), rgb(0, 159, 139));
+    background-image: -o-linear-gradient(top, rgb(0, 159, 139), rgb(0, 159, 139));
+    background-image: -ms-linear-gradient(top, rgb(0, 159, 139), rgb(0, 159, 139));
+    background-image: linear-gradient(top, rgb(0, 159, 139), rgb(0, 159, 139));
+}
+
+.menu > li > a.active {
+    border-bottom: 1px solid #1a638f;
+}
+
+.menu > li > a:before {
+    content: '';
+
+    font-size: 36px;
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin: -.5em 0 0 0;
+}

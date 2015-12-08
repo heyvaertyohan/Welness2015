@@ -1,0 +1,28 @@
+{% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/wellnesscore/css/login.css') }}"/>
+{% endblock %}
+
+{% block main %}
+    {% block content %}
+        {% block fos_user_content %}{% endblock %}
+    {% endblock %}
+{% endblock %}
+
+{#
+{% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/wellnesscore/css/login.css') }}"/>
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}#}
