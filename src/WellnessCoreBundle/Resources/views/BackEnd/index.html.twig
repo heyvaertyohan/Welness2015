@@ -1,5 +1,11 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block breadcrumb %}
+    <li><a href="#">{{ 'Accueil'|trans }}</a></li>
+{% endblock %}
 {% block contentadmin %}
     <div class="content-admin">
         <div class="content-admin-wrapper">
@@ -24,25 +30,8 @@
 
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="remember-me">
-                                                            <label for="remember-me">Remember
-                                                                me</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
-                                                        <button type="submit"
-                                                                class="btn btn-primary"><i
-                                                                    class="fa fa-sign-in"></i> Sign
-                                                            in
-                                                        </button>
-                                                    </div>
-                                                </div>
+
                                             </form>
                                         </div>
                                     </div>
@@ -59,19 +48,12 @@
                 <!-- /.content-admin-main-inner -->
             </div>
             <!-- /.content-admin-main -->
-
-            <div class="content-admin-footer">
-                <div class="container-fluid">
-                    <div class="content-admin-footer-inner">
-                        &copy; 2015 All rights reserved. Created by <a href="#">Aviators</a>.
-                    </div>
-                    <!-- /.content-admin-footer-inner -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /.content-admin-footer  -->
         </div>
         <!-- /.content-admin-wrapper -->
     </div>
     <!-- /.content-admin -->
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
 {% endblock %}
