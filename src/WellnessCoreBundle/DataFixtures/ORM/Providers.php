@@ -1,16 +1,25 @@
 <?php
-use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
-use WellnessCoreBundle\Entity\Provider;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+use WellnessCoreBundle\Entity\Provider;
 /**
  * Description of CategoryServices
  *
  * @author jHeyvaert
  */
-class Providers extends AbstractFixture implements OrderedFixtureInterface
+class Providers extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
 {
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager){
         $tab_Provider = array(
             array(
@@ -196,7 +205,9 @@ Cadre agréable : entièrement relooké dans un esprit zen, actuel avec un petit
             $provider->setEmail($tab_Provider[$i]['email']);
             $provider->setUsername($tab_Provider[$i]['username']);
             $provider->setEnabled($tab_Provider[$i]['enabled']);
-            $provider->setPlainPassword($tab_Provider[$i]['password']);
+            /*$provider->setPlainPassword($tab_Provider[$i]['password']);*/
+            $provider->setPassword($this->container->get('security.encoder_factory')->getEncoder($provider)->encodePassword($tab_Provider[$i]['password'], $provider->getSalt()));
+
             $provider->setRoles(array($tab_Provider[$i]['role']));
             $provider->setTelnumber($tab_Provider[$i]['tel']);
             $provider->setTvanumber($tab_Provider[$i]['tva']);

@@ -1,16 +1,26 @@
 <?php
-use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
-use WellnessCoreBundle\Entity\Town;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+use WellnessCoreBundle\Entity\Town;
 /**
  * Description of Surfers
  *
  * @author jHeyvaert
  */
-class Surfers extends AbstractFixture implements OrderedFixtureInterface
+class Surfers extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
 {
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager){
 
         $tab_Surfers = array(
@@ -86,7 +96,7 @@ class Surfers extends AbstractFixture implements OrderedFixtureInterface
             $surfer->setUsername($tab_Surfers[$i]['username']);
             $surfer->setEnabled($tab_Surfers[$i]['enabled']);
             $surfer->setEmail($tab_Surfers[$i]['email']);
-            $surfer->setPlainPassword($tab_Surfers[$i]['password']);
+            $surfer->setPassword($this->container->get('security.encoder_factory')->getEncoder($surfer)->encodePassword($tab_Surfers[$i]['password'], $surfer->getSalt()));
             $surfer->setRoles(array($tab_Surfers[$i]['role']));
             $surfer->setTelnumber($tab_Surfers[$i]['tel']);
             $surfer->setInscriptioncf($tab_Surfers[$i]['inscription']);

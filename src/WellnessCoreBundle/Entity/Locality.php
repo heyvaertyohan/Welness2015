@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Locality
  *
- * @ORM\Table()
+ * @ORM\Table("locality")
  * @ORM\Entity
  */
 class Locality

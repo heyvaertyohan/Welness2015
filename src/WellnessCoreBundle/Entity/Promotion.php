@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Promotion
  *
- * @ORM\Table()
+ * @ORM\Table("promotion")
  * @ORM\Entity
  */
 class Promotion

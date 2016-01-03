@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Surfer
  *
- * @ORM\Table()
+ * @ORM\Table("surfer")
  * @ORM\Entity(repositoryClass="WellnessCoreBundle\Entity\SurferRepository")
  */
 class Surfer extends User

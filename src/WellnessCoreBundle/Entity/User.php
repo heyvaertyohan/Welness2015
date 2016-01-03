@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * User
  *
- * @ORM\Table()
+ * @ORM\Table("user")
  * @ORM\Entity(repositoryClass="WellnessCoreBundle\Entity\UserRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")

@@ -1,8 +1,8 @@
 security:
     encoders:
-        # FOS\UserBundle\Model\UserInterface: bcrypt
+        FOS\UserBundle\Model\UserInterface: sha512
         # Symfony\Component\Security\Core\User\User: plaintext
-        WellnessCoreBundle\Entity\User: sha512
+        # WellnessCoreBundle\Entity\User: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

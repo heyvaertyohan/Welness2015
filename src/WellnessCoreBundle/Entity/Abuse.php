@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Abuse
  *
- * @ORM\Table()
+ * @ORM\Table("abuse")
  * @ORM\Entity
  */
 class Abuse

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Training
  *
- * @ORM\Table()
+ * @ORM\Table("training")
  * @ORM\Entity
  */
 class Training

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Bloc
  *
- * @ORM\Table()
+ * @ORM\Table("bloc")
  * @ORM\Entity
  */
 class Bloc
