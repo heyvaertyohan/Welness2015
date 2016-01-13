@@ -1,0 +1,98 @@
+{% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li><a href="#">{{ 'Utilisateur'|trans }}{{ user.username }}</a></li>
+{% endblock %}
+
+{% block contentadmin %}
+    <div class="container">
+        <div class="row">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>{{ 'Utilisateur'|trans }} {{ user.username }}</h2>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="background-white p20 mb50">
+                                <form>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Type'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextUserType" placeholder="" value="{{ user.usertype }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Nom utilisateur'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextUserName" placeholder="Votre nom d'utilisateur" value="{{ user.username }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Nom'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextName" placeholder="Votre nom" value="{{ user.name }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Prénom'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextFirstName" placeholder="Votre prénom" value="{{ user.firstname }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Adresse'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextAddress" placeholder="Votre adresse" value="{{ user.addressstreet }}">
+                                        <input type="text" class="form-control" id="InputTextStreetNumber" placeholder="Votre adresse" value="{{ user.addressnumber }}">
+                                        <input type="text" class="form-control" id="InputTextPostCode" placeholder="Votre adresse" value="{{ user.postcode.postcode }}">
+                                        <input type="text" class="form-control" id="InputTextLocality" placeholder="Votre adresse" value="{{ user.locality.locality }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email </label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Your Email" value="{{ user.email }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Dernière connexion'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextFirstName" placeholder="" value="{{ user.lastlogin }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Numéro téléphone'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextFirstName" placeholder="" value="{{ user.telnumber }}">
+                                    </div>
+
+                                    {#<div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Num tva'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextFirstName" placeholder="" value="{{ user.tvanumber }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Site web'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextFirstName" placeholder="" value="{{ user.website }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputText1">{{ 'Type'|trans }}</label>
+                                        <input type="text" class="form-control" id="InputTextFirstName" placeholder="" value="{{ user.description }}">
+                                    </div>#}
+
+                                    {#<div class="form-group">
+                                        <label for="exampleInputTextarea">Textarea</label>
+                                        <textarea class="form-control" rows="5" id="exampleInputTextarea" placeholder="Some Sweet Words"></textarea>
+                                    </div>#}
+
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-comment"></i> Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.user-->
+
+        </div>
+
+    </div>
+    <!-- /.content-admin -->
+{% endblock %}
+

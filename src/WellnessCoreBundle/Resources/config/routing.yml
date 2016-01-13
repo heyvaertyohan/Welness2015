@@ -2,7 +2,11 @@ wellness_admin_users_list:
     path:     /admin/user/list
     defaults: { _controller: WellnessCoreBundle:BackEnd/User:list }
 
-wellness_admin_users_show:
+wellness_admin_user_create:
+    path:     /admin/user/create
+    defaults: { _controller: WellnessCoreBundle:BackEnd/User:create }
+
+wellness_admin_user_show:
     path:     /admin/user/show/{slug}
     defaults: { _controller: WellnessCoreBundle:BackEnd/User:show }
 

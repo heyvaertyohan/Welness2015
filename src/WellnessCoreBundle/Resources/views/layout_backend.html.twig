@@ -176,14 +176,14 @@
             <div class="wrapper-admin">
                 <div class="sidebar-secondary-admin">
                     <ul class="menu">
-                        <li class="item1">
+                        <li class="liHome">
                             <a href="{{ path('wellness_admin_homepage') }}">
                                 <span class="icon"><i class="fa fa-tachometer"></i></span>
                                 <span class="title">{{ 'Tableau de bord'|trans }}</span>
                                 <span class="subtitle">Gérer votre site</span>
                             </a>
                         </li>
-                        <li class="item2">
+                        <li class="liService">
                             <a href="#">
                                 <span class="icon"><i class="fa fa-i-cursor"></i></span>
                                 <span class="title">{{ 'Services'|trans }}</span>
@@ -197,6 +197,26 @@
                                 <li>
                                     <a href="{{ path('wellness_admin_category_list') }}">{{ 'Liste des services'|trans }}</a>
                                 </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="liUser">
+                            <a href="#">
+                                <span class="icon"><i class="fa fa-i-cursor"></i></span>
+                                <span class="title">{{ 'Utilisateurs'|trans }}</span>
+                                <span class="subtitle">{{ 'Gérer les utilisateurs'|trans }}</span>
+                            </a>
+
+                            <ul>
+                                <li>
+                                    <a href="{{ path('wellness_admin_user_create') }}">{{ 'Ajouter un utilisateur'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('wellness_admin_users_list') }}">{{ 'Liste des utilisateurs'|trans }}</a>
+                                </li>
+
+
                             </ul>
                         </li>
                     </ul>

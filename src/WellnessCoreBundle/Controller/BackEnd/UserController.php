@@ -2,18 +2,44 @@
 
 namespace WellnessCoreBundle\Controller\BackEnd;
 
+use WellnessCoreBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserController extends Controller
 {
     public function listAction()
     {
-        return $this->render('WellnessCoreBundle:BackEnd/User:list.html.twig');
+        $listUsers = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:User')->findAll();
+
+        if ($listUsers == null) {
+            throw $this->createNotFoundException("Pas d'utilisateur trouvé !");
+        }
+
+        return $this->render('WellnessCoreBundle:BackEnd/User:list.html.twig', array(
+            'listUsers' => $listUsers
+        ));
     }
 
-    public function showAction()
+    public function showAction(User $user)
     {
-        return $this->render('WellnessCoreBundle:BackEnd/User:show.html.twig');
+        $myuser = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:User')->find($user->getId());
+
+        if ($myuser->getUsertype() == "surfer")
+        {
+            $fileName = 'WellnessCoreBundle:BackEnd/User:showSurfer.html.twig';
+        }
+        else{
+            $fileName = 'WellnessCoreBundle:BackEnd/User:showProvider.html.twig';
+        }
+
+        return $this->render($fileName, array(
+            'user' => $user
+        ));
+    }
+
+    public function createAction()
+    {
+        return $this->render('WellnessCoreBundle:BackEnd/User:create.html.twig');
     }
 
     public function disableAction()

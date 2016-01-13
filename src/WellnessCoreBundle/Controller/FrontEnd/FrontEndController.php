@@ -9,7 +9,6 @@ class FrontEndController extends Controller
 {
     public function indexAction()
     {
-        dump($this);
         $repo_service = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService');
         $listCategories = $repo_service->findAll();
         $monthService = $repo_service->findOneBy(

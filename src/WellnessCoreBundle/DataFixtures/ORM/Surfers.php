@@ -33,7 +33,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "firstname" => "Yohan",
                 "username" => "yohan",
                 "enabled" => 1,
-                "email" => "heyvaertyohan@outlook.fr",
+                "email" => "heyvaertyohan@gmail.com",
                 "tel" => "042641941",
                 "addressstreet" => "Rue roi albert",
                 "addressnumber" => "75",
