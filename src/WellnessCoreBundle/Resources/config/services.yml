@@ -1,4 +1,5 @@
 services:
-#    wellness_core.example:
-#        class: WellnessCoreBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    user_creation_listener:
+            class: WellnessCoreBundle\EventListeners\UserListener
+            tags:
+                - { name: kernel.event_subscriber }

@@ -91,13 +91,4 @@ fos_user:
     firewall_name: main
     user_class: WellnessCoreBundle\Entity\User
 
-    registration:
-                    confirmation:
-                        enabled: true
-    service:
-            mailer: fos_user.mailer.twig_swift
-
-    from_email:
-            address:        noreply@example.com
-            sender_name:    SWellness App
 

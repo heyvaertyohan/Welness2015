@@ -3,7 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit.html.twig" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/WellnessCoreBundle/Resources/views/BackEnd/Category/list.html.twig" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/WellnessCoreBundle/Resources/views/BackEnd/Provider/list.html.twig" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/WellnessCoreBundle/Resources/views/BackEnd/User/showProvider.html.twig" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/WellnessCoreBundle/Resources/views/BackEnd/User/showSurfer.html.twig" charset="UTF-8" />
   </component>

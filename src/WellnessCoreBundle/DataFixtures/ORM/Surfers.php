@@ -24,11 +24,10 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
     public function load(ObjectManager $manager){
 
         $tab_Surfers = array(
-            array(
+           /* array(
                 "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
                 "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
                 "town" => $manager->getRepository('WellnessCoreBundle:Town')->findOneBy(array('town' => 'Oupeye')),
-                /*"bloc" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('bloc' => 'bloc1')),*/
                 "name" => "Heyvaert",
                 "firstname" => "Yohan",
                 "username" => "yohan",
@@ -45,6 +44,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "inscriptioncf" => "0",
                 "inscription" => "0"
             ),
+        */
             array(
                 "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
                 "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
