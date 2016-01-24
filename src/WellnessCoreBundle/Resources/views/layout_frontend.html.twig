@@ -63,14 +63,17 @@
 
                                 <li>
 
-                                    {% if app.user %}
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                         <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
                                         <ul class="sub-menu">
                                             <li>
                                                 <a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
                                             </li>
                                             <li>
-                                                <a href="#">{{ 'Mon profil'|trans }}</a>
+                                                <a href="{{ path('fos_user_profile_edit') }}">{{ 'Mon profil'|trans }}</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('fos_user_change_password') }}">{{ 'Changer '|trans }} <br/> {{ 'mot de passe'|trans }}</a>
                                             </li>
                                             <li>
                                                 <a href="{{ path('fos_user_security_logout') }}">{{ 'Se déconnecter'|trans }}</a>
@@ -83,7 +86,7 @@
                                                 <a href="{{ path('fos_user_security_login') }}">{{ 'Se connecter'|trans }}</a>
                                             </li>
                                             <li>
-                                                <a href="{{ path('fos_user_change_password') }}">{{ 'S inscrire'|trans }}</a>
+                                                <a href="{{ path('fos_user_registration_register') }}">{{ 'S inscrire'|trans }}</a>
                                             </li>
                                         </ul>
                                     {% endif %}

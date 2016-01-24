@@ -17,15 +17,15 @@ class CategoryController extends Controller
         $listCategories = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService')->findAll();
 
         if ($listImagesSlider == null) {
-            throw $this->createNotFoundException("Pas d'image trouv�e !");
+            throw $this->createNotFoundException("Pas d'image trouvée !");
         }
 
         if ($listCategories == null) {
-            throw $this->createNotFoundException("Pas de categorie trouv�e !");
+            throw $this->createNotFoundException("Pas de categorie trouvée !");
         }
 
         if ($listCategoryWithLogo == null) {
-            throw $this->createNotFoundException("Pas de logo prestataire trouv� !");
+            throw $this->createNotFoundException("Pas de logo prestataire trouvé !");
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/Category:list.html.twig', array(
@@ -35,9 +35,24 @@ class CategoryController extends Controller
         ));
     }
 
-    public function showAction()
+    public function showAction(CategoryService $categoryService)
     {
-        return $this->render('WellnessCoreBundle:BackEnd/Category:show.html.twig');
+        $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
+        $CategoryWithLogo = $rep_img->getImage($categoryService->getId());
+        $CurrentCategory = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:CategoryService')->find($categoryService->getId());
+
+        if ($CurrentCategory == null) {
+            throw $this->createNotFoundException("Pas de categorie trouvée !");
+        }
+
+        if ($CategoryWithLogo == null) {
+            throw $this->createNotFoundException("Pas de logo service trouvé !");
+        }
+
+        return $this->render('WellnessCoreBundle:BackEnd/Category:show.html.twig', array(
+            'CategoryWithLogo' => $CategoryWithLogo,
+            'CurrentCategory' => $CurrentCategory
+        ));
     }
 
     public function createAction()
@@ -45,9 +60,24 @@ class CategoryController extends Controller
         return $this->render('WellnessCoreBundle:BackEnd/Category:create.html.twig');
     }
 
-    public function updateAction()
+    public function updateAction(CategoryService $categoryService)
     {
-        return $this->render('WellnessCoreBundle:BackEnd/Category:update.html.twig');
+        $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
+        $CategoryWithLogo = $rep_img->getImage($categoryService->getId());
+        $CurrentCategory = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:CategoryService')->find($categoryService->getId());
+
+        if ($CurrentCategory == null) {
+            throw $this->createNotFoundException("Pas de categorie trouvée !");
+        }
+
+        if ($CategoryWithLogo == null) {
+            throw $this->createNotFoundException("Pas de logo service trouvé !");
+        }
+
+        return $this->render('WellnessCoreBundle:BackEnd/Category:update.html.twig', array(
+            'CategoryWithLogo' => $CategoryWithLogo,
+            'CurrentCategory' => $CurrentCategory
+        ));
     }
 
     public function deleteAction()

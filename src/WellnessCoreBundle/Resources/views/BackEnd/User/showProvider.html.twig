@@ -19,7 +19,8 @@
                             <div class="background-white p20 mb50">
                                 <form>
                                     {% set typeutilisateur = "" %}
-                                    {% if(user.type) = "surfer" %}
+                                    {% if(user.type) == "surfer" %}
+
                                     <div class="form-group">
                                         <label for="exampleInputText1">{{ 'Type'|trans }}</label>
                                         <input type="text" class="form-control" id="InputTextUserType" placeholder="" value="{{ user.usertype }}">
@@ -59,6 +60,7 @@
                                         <label for="exampleInputText1">{{ 'Numéro téléphone'|trans }}</label>
                                         <input type="text" class="form-control" id="InputTextFirstName" placeholder="" value="{{ user.telnumber }}">
                                     </div>
+                                    {% endif %}
 
                                     {#<div class="form-group">
                                         <label for="exampleInputText1">{{ 'Num tva'|trans }}</label>

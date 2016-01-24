@@ -32,10 +32,14 @@ body {
 }
 #carousel-slider .item img{
     margin:auto;
-    height: 270px;
+    height: 300px;
 }
 #carousel-slider .carousel-caption{
     height: 60px;
+}
+
+#carousel-provider img{
+    margin: 0 auto;
 }
 
 /************************/
@@ -165,7 +169,7 @@ body {
 }
 
 
-#table_responsive img {
+.logo {
     width: 75px;
     height: 40px;
 }

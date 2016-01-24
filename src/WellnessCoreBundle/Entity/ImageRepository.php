@@ -27,11 +27,21 @@ class ImageRepository extends \Doctrine\ORM\EntityRepository
             $qb->setParameter('categServiceId', $categServiceId);
         }
         $query = $qb->getQuery();
+        $result = $query->getResult();
 
-        /*dump($categServiceId);
-        dump($typeImg);
-        dump($query);*/
+        return $result;
+    }
 
+    public function getImage($categServiceId)
+    {
+        $qb = $this->createQueryBuilder('i');
+
+        if ($categServiceId != 0) {
+            $qb->Where('i.categoryService = :categServiceId');
+            $qb->setParameter('categServiceId', $categServiceId);
+        }
+
+        $query = $qb->getQuery();
         $result = $query->getResult();
 
         return $result;

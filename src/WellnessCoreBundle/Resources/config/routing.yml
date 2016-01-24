@@ -40,6 +40,10 @@ wellness_admin_category_list:
     path:     /admin/category/list
     defaults: { _controller: WellnessCoreBundle:BackEnd/Category:list }
 
+wellness_admin_category_update:
+    path:     /admin/category/update/{slug}
+    defaults: { _controller: WellnessCoreBundle:BackEnd/Category:update }
+
 wellness_admin_category_show:
     path:     /admin/category/show/{slug}
     defaults: { _controller: WellnessCoreBundle:BackEnd/Category:show }
@@ -48,9 +52,7 @@ wellness_admin_category_create:
     path:     /admin/category/create
     defaults: { _controller: WellnessCoreBundle:BackEnd/Category:create }
 
-wellness_admin_category_update:
-    path:     /admin/category/update
-    defaults: { _controller: WellnessCoreBundle:BackEnd/Category:update }
+
 
 wellness_admin_category_delete:
     path:     /admin/category/delete

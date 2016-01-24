@@ -31,8 +31,8 @@ Commune: Town
 'Site internet': 'Web site'
 Téléphone: 'Phone number'
 'Numéro TVA': 'TVA number'
-'Adresse mail': 'Email'
-'Mot de passe': 'Password'
+'Adresse mail': Email
+'Mot de passe': Password
 'Photo categorie': 'Category photo'
 'Prestataires associé au service': 'Service provider'
 'Liste des prestataires': 'Provider list'
@@ -41,26 +41,47 @@ Telephone: Phone
 'Photo prestataire': 'Provider photo'
 'Information:': 'Information:'
 'Informations:': 'Informations:'
-Promotion: 'Promotion'
-Commentaire: 'Comment'
-Localisation: 'Localisation'
-Photo: 'Photo'
-Description: 'Description'
-Début: 'Begin'
-Fin: 'End'
-Tarif: 'Rate'
-Pdf: 'Pdf'
-Date: 'Date'
-Cote: 'Cote'
-Titre: 'Title'
-Internaute: 'Surfer'
-Bien-être: 'Wellness'
-'Tableau de bord': 'Dashboard'
-Recherche...: 'Search...'
-Navigation: 'Navigation'
-Services: 'Services'
-'Gérer les catégories de service': 'Management category service'
+Promotion: Promotion
+Commentaire: Comment
+Localisation: Localisation
+Photo: Photo
+Description: Description
+Début: Begin
+Fin: End
+Tarif: Rate
+Pdf: Pdf
+Date: Date
+Cote: Cote
+Titre: Title
+Internaute: Surfer
+Bien-être: Wellness
+'Tableau de bord': Dashboard
+Recherche...: Search...
+Navigation: Navigation
+Services: Services
+'Gérer les catégories de service': 'Service management'
 'Ajouter un service': 'Add a service'
 'Liste des services': 'Services list'
-Langue: 'Language'
-Connexion: 'Connection'
+Langue: Language
+Connexion: Connection
+'Mis en avant': Forward
+Bienvenue: Welcome
+'Liste des utilisateurs': 'Users list'
+Id: Id
+'Nom utilisateur': 'User name'
+Email: Email
+Type: Type
+Utilisateur: User
+Prénom: Firstname
+Adresse: Address
+'Dernière connexion': 'Last connection'
+'Numéro téléphone': 'Phone number'
+'Prestataires liés': 'Provider linked'
+'Liste des promotions': 'Promotions list'
+'Liste des stages': 'Trainings list'
+'Mon profil': 'My profile'
+'Se déconnecter': Logout
+Utilisateurs: Users
+'Gérer les utilisateurs': 'User management'
+'Ajouter un utilisateur': 'Add an user'
+'Gestion site': 'Site management'

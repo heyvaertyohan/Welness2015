@@ -2,7 +2,6 @@
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
-{{ dump(form.username) }}
     {#{{ form_label(form.usertype) }}
     {{ form_widget(form.usertype) }}
     {{ form_errors(form.usertype) }}#}
