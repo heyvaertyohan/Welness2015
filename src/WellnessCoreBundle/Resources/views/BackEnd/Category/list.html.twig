@@ -29,7 +29,7 @@
                                     <tbody>
                                     {% for image in listCategoryWithLogo %}
                                         <tr>
-                                            <td class="center"><img src="{{ asset(image.path) }}"
+                                            <td class="center"><img class="logo" src="{{ asset(image.path) }}"
                                                                     alt="{{ image.description }}"></td>
                                             <td>
                                                 <a href="{{ path('wellness_admin_category_show', {slug:image.categoryservice.slug}) }}">{{ image.categoryservice.name }}</a>

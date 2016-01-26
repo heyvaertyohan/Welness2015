@@ -12,7 +12,7 @@ class UserController extends Controller
         $listUsers = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:User')->findAll();
 
         if ($listUsers == null) {
-            throw $this->createNotFoundException("Pas d'utilisateur trouvé !");
+            throw $this->createNotFoundException("Pas d'utilisateur trouvï¿½ !");
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/User:list.html.twig', array(
