@@ -18,7 +18,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "1",
                 "type" => Image::TYPE_MAINSLIDER,
                 "description" => "Sante bien être image 1",
-                "path" => "bundles /wellnesscore/img/slider_therme_01.jpg",
+                "path" => "bundles/wellnesscore/img/slider_therme_01.jpg",
                 "user" => null,
                 "service" => null,
             ),
