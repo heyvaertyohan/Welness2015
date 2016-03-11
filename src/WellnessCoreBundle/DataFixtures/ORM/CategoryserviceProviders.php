@@ -12,6 +12,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 class CategoryservicesProviders extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager){
+
         $tab_Categ = $manager->getRepository('WellnessCoreBundle:CategoryService')->findAll();
         $tab_Provider = $manager->getRepository('WellnessCoreBundle:Provider')->findAll();
 
@@ -28,7 +29,7 @@ class CategoryservicesProviders extends AbstractFixture implements OrderedFixtur
 
     public function getOrder()
     {
-        return 6;
+        return 7;
     }
     
 }

@@ -9,6 +9,7 @@
     {#<link href="{{ asset('bundles/wellnesscore/css/sb-admin.css') }}" rel="stylesheet" type="text/css">#}
     <link href="{{ asset('bundles/wellnesscore/css/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/wellnesscore/css/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/wellnesscore/css/font-awesome.css') }}" rel="stylesheet" type="text/css">
 
 {% endblock %}
 {% block title %}
@@ -33,27 +34,27 @@
 
                             <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
                                 <li>
-                                    <a href="{{ path('wellness_public_homepage') }}">{{ 'Accueil'|trans }}<i
+                                    <a href="{{ path('public_homepage') }}">{{ 'Accueil'|trans }}<i
                                                 class="²a"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_provider_list') }}">{{ 'Prestataire'|trans }}<i
+                                    <a href="{{ path('public_provider_list') }}">{{ 'Prestataire'|trans }}<i
                                                 class="fa"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_category_list') }}">{{ 'Service '|trans }}<i
+                                    <a href="{{ path('public_category_list') }}">{{ 'Service '|trans }}<i
                                                 class="fa"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_training') }}">{{ 'Stage '|trans }}<i
+                                    <a href="{{ path('public_training') }}">{{ 'Stage '|trans }}<i
                                                 class="fa"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
+                                    <a href="{{ path('public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
                                 </li>
 
                                 <li>
@@ -76,7 +77,7 @@
                                         <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
                                         <ul class="sub-menu">
                                             <li>
-                                                <a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
+                                                <a href="{{ path('admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
                                             </li>
                                             <li>
                                                 <a href="{{ path('fos_user_profile_edit') }}">{{ 'Mon profil'|trans }}</a>
@@ -154,7 +155,7 @@
                     <div class="hidden-xs visible-lg">
                         Navigation:
                         <ul class="breadcrumb">
-                            <li><a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a></li>
+                            <li><a href="{{ path('admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a></li>
                             {% block breadcrumb %}
                             {% endblock %}
                         </ul>
@@ -178,7 +179,7 @@
                 <div class="sidebar-secondary-admin">
                     <ul class="menu">
                         <li class="liHome">
-                            <a href="{{ path('wellness_admin_homepage') }}">
+                            <a href="{{ path('admin_homepage') }}">
                                 <span class="icon"><i class="fa fa-tachometer"></i></span>
                                 <span class="title">{{ 'Tableau de bord'|trans }}</span>
                                 <span class="subtitle">{{ 'Gestion site'|trans }}</span>
@@ -193,15 +194,31 @@
 
                             <ul>
                                 <li>
-                                    <a href="{{ path('wellness_admin_category_create') }}">{{ 'Ajouter un service'|trans }}</a>
+                                    <a href="{{ path('admin_categoryservice_new') }}">{{ 'Ajouter un service'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('wellness_admin_category_list') }}">{{ 'Liste des services'|trans }}</a>
+                                    <a href="{{ path('admin_categoryservice') }}">{{ 'Liste des services'|trans }}</a>
                                 </li>
-
-
                             </ul>
                         </li>
+
+                        <li class="liImage">
+                            <a href="#">
+                                <span class="icon"><i class="fa fa-i-cursor"></i></span>
+                                <span class="title">{{ 'Images'|trans }}</span>
+                                <span class="subtitle">{{ 'Gérer les images'|trans }}</span>
+                            </a>
+
+                            <ul>
+                                <li>
+                                    <a href="{{ path('admin_image_new') }}">{{ 'Ajouter une image'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('admin_image') }}">{{ 'Liste des images'|trans }}</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="liUser">
                             <a href="#">
                                 <span class="icon"><i class="fa fa-i-cursor"></i></span>
@@ -210,12 +227,12 @@
                             </a>
 
                             <ul>
-                                <li>
-                                    <a href="{{ path('wellness_admin_user_create') }}">{{ 'Ajouter un utilisateur'|trans }}</a>
+                                {#<li>
+                                    <a href="{{ path('admin_user_create') }}">{{ 'Ajouter un utilisateur'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('wellness_admin_users_list') }}">{{ 'Liste des utilisateurs'|trans }}</a>
-                                </li>
+                                    <a href="{{ path('admin_users_list') }}">{{ 'Liste des utilisateurs'|trans }}</a>
+                                </li>#}
 
 
                             </ul>
@@ -224,9 +241,29 @@
                 </div>
                 <!-- /.sidebar-secondary-admin -->
 
-                {% block contentadmin %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {% block titlepadding %}
+                        {% endblock %}
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div cclass="table-responsive">
 
-                {% endblock %}
+                                    {% block contentadmin %}
+                                    {% endblock %}
+
+                                </div>
+                            </div>
+                            <!-- /.col-lg-12 (nested) -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.service-->
             </div>
             <!-- /.wrapper-admin -->
         </div>

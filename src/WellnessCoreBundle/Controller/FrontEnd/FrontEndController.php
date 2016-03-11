@@ -58,7 +58,7 @@ class FrontEndController extends Controller
     public function redirectAction()
     {
         $prefLang = $this->getRequest()->getPreferredLanguage(array("fr", "en"));
-        return $this->redirect($this->generateUrl("wellness_public_homepage", array("_locale" => $prefLang ? $prefLang : "en")));
+        return $this->redirect($this->generateUrl("public_homepage", array("_locale" => $prefLang ? $prefLang : "en")));
     }
 
     public function translationAction()

@@ -37,13 +37,16 @@
 {% endblock %}
 
 {% block pave %}
-    <h2>{{ 'Prestataires liés'|trans }}</h2>
-    </div>
-    <div class="row">
+{% if CurrentCategory.provider|length == 0 %}
+<h2>{{ 'Pas de prestataire lié'|trans }}</h2>
+{% else %}
+<h2>{{ 'Prestataires liés'|trans }}</h2>
 
-    {% set counter = 0 %}
+<div class="row">
 
-    {% for provider in CurrentCategory.provider %}
+{% set counter = 0 %}
+
+{% for provider in CurrentCategory.provider %}
         {% if counter < 5 %}
 
             <div class="col-md-2-5">
@@ -51,11 +54,11 @@
                 <div class="card-simple-background">
                     <div class="card-content">
                         <h2>
-                            <a href="{{ path('wellness_public_provider_show', {slug:provider.slug}) }}">{{ provider.name }}</a>
+                            <a href="{{ path('public_provider_show', {slug:provider.slug}) }}">{{ provider.name }}</a>
                         </h2>
 
                         <div class="card-simple-actions">
-                            <a href="{{ path('wellness_public_provider_show', {slug:provider.slug}) }}"
+                            <a href="{{ path('public_provider_show', {slug:provider.slug}) }}"
                                class="fa fa-search"></a>
                         </div>
                         <!-- /.card-simple-actions -->
@@ -75,6 +78,7 @@
         {% set counter = counter + 1 %}
     {% endfor %}
 
+{% endif %}
 {% endblock %}
 
 {% block javascript %}

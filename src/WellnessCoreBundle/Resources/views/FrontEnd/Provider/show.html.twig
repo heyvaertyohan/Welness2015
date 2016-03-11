@@ -80,7 +80,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h2>{{ 'Service'|trans }}</h2>
-                                        <button onclick="{{ path('wellness_public_training') }}">+</button>
+                                        <button onclick="{{ path('public_training') }}">+</button>
                                     </div>
                                     <!-- /.panel-heading -->
                                     <div class="panel-body">
@@ -118,7 +118,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h2>{{ 'Stage'|trans }}</h2>
-                                        <button onclick="{{ path('wellness_public_training') }}">+</button>
+                                        <button onclick="{{ path('public_training') }}">+</button>
                                     </div>
                                     <!-- /.panel-heading -->
                                     <div class="panel-body">
@@ -156,7 +156,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h2>{{ 'Promotion'|trans }}</h2>
-                                        <button onclick="{{ path('wellness_public_training') }}">+</button>
+                                        <button onclick="{{ path('public_training') }}">+</button>
                                     </div>
                                     <!-- /.panel-heading -->
                                     <div class="panel-body">
@@ -194,7 +194,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h2>{{ 'Commentaire'|trans }}</h2>
-                                        <button onclick="{{ path('wellness_public_training') }}">+</button>
+                                        <button onclick="{{ path('public_training') }}">+</button>
                                     </div>
                                     <!-- /.panel-heading -->
                                     <div class="panel-body">
@@ -306,11 +306,11 @@
                 <div class="card-simple-background">
                     <div class="card-content">
                         <h2>
-                            <a href="{{ path('wellness_public_provider_show', {slug:image.user.slug}) }}">{{ image.user.name }}</a>
+                            <a href="{{ path('public_provider_show', {slug:image.user.slug}) }}">{{ image.user.name }}</a>
                         </h2>
 
                         <div class="card-simple-actions">
-                            <a href="{{ path('wellness_public_provider_show', {slug:image.user.slug}) }}"
+                            <a href="{{ path('public_provider_show', {slug:image.user.slug}) }}"
                                class="fa fa-search"></a>
                         </div>
                         <!-- /.card-simple-actions -->

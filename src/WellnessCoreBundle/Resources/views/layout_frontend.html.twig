@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="header-inner">
                     <div class="header-logo">
-                        <a href="{{ path('wellness_public_homepage') }}">
+                        <a href="{{ path('public_homepage') }}">
                             <img src="{{ asset('bundles/wellnesscore/img/logo_bienetre.png') }}" alt="Logo">
                         </a>
                     </div>
@@ -27,27 +27,27 @@
                         <div class="header-bottom">
                             <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
                                 <li >
-                                    <a href="{{ path('wellness_public_homepage') }}">{{ 'Accueil'|trans }}<i
+                                    <a href="{{ path('public_homepage') }}">{{ 'Accueil'|trans }}<i
                                                 class="²a"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_provider_list') }}">{{ 'Prestataire'|trans }}<i
+                                    <a href="{{ path('public_provider_list') }}">{{ 'Prestataire'|trans }}<i
                                                 class="fa"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_category_list') }}">{{ 'Service '|trans }}<i
+                                    <a href="{{ path('public_category_list') }}">{{ 'Service '|trans }}<i
                                                 class="fa"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_training') }}">{{ 'Stage '|trans }}<i
+                                    <a href="{{ path('public_training') }}">{{ 'Stage '|trans }}<i
                                                 class="fa"></i></a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('wellness_public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
+                                    <a href="{{ path('public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
                                 </li>
 
                                 <li>
@@ -67,7 +67,7 @@
                                         <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
                                         <ul class="sub-menu">
                                             <li>
-                                                <a href="{{ path('wellness_admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
+                                                <a href="{{ path('admin_homepage') }}">{{ 'Tableau de bord'|trans }}</a>
                                             </li>
                                             <li>
                                                 <a href="{{ path('fos_user_profile_edit') }}">{{ 'Mon profil'|trans }}</a>
@@ -171,7 +171,7 @@
 
         <div id="mainrow" class="row background-white">
             <div id="menufrontend" class="col-md-2 mt30 mb30">
-                <form name="" method="post" action="{{ path('wellness_public_category_search') }}">
+                <form name="" method="post" action="{{ path('public_category_search') }}">
                     <h1>{{ "Recherche"|trans }}</h1>
 
                     <div class="input-group">
@@ -188,7 +188,7 @@
                     <ul>
                         {% for category in listCategories %}
 
-                            <li><a href="{{ path('wellness_public_category_show', {slug:category.slug}) }}">{{ category.name }}</a></li>
+                            <li><a href="{{ path('public_category_show', {slug:category.slug}) }}">{{ category.name }}</a></li>
                         {% endfor %}
 
                     </ul>
@@ -271,25 +271,25 @@
                 <div class="footer-bottom-right">
                     <ul class="nav nav-pills">
                         <li id="home">
-                            <a href="{{ path('wellness_public_homepage') }}">{{ 'Accueil'|trans }}<i class="fa"></i></a>
+                            <a href="{{ path('public_homepage') }}">{{ 'Accueil'|trans }}<i class="fa"></i></a>
                         </li>
 
                         <li id="provider">
-                            <a href="{{ path('wellness_public_provider_list') }}">{{ 'Prestataire'|trans }}<i
+                            <a href="{{ path('public_provider_list') }}">{{ 'Prestataire'|trans }}<i
                                         class="fa"></i></a>
                         </li>
 
                         <li id="category">
-                            <a href="{{ path('wellness_public_category_list') }}">{{ 'Service '|trans }}<i
+                            <a href="{{ path('public_category_list') }}">{{ 'Service '|trans }}<i
                                         class="fa"></i></a>
                         </li>
 
                         <li id="training">
-                            <a href="{{ path('wellness_public_training') }}">{{ 'Stage '|trans }}<i class="fa"></i></a>
+                            <a href="{{ path('public_training') }}">{{ 'Stage '|trans }}<i class="fa"></i></a>
                         </li>
 
                         <li id="promo">
-                            <a href="{{ path('wellness_public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
+                            <a href="{{ path('public_promo') }}">{{ 'Promo '|trans }}<i class="fa"></i></a>
                         </li>
 
                     </ul>

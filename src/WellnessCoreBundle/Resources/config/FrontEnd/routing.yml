@@ -1,0 +1,87 @@
+public_provider_list:
+    path:     /provider/
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Provider:list }
+
+public_provider_show:
+    path:     /provider/show/{slug}
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Provider:show }
+
+public_provider_search:
+    path:     /provider/search
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Provider:search }
+
+
+public_category_list:
+    path:     /category
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Category:list }
+
+public_category_show:
+    path:     /category/show/{slug}
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Category:show }
+
+public_category_search:
+    path:     /category/search
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Category:search }
+
+
+public_homepage:
+    path:     /
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/FrontEnd:index }
+
+public_contact:
+    path:     /contact
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/FrontEnd:contact }
+
+public_about:
+    path:     /about
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/FrontEnd:about }
+
+public_training:
+    path:     /training
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Training:list }
+
+public_promo:
+    path:     /promo
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Promo:list }
+
+
+public_translationpage:
+    path:     /translation
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/FrontEnd:translation }
+
+
+
+signin_page:
+    path:     /sign-in
+    defaults: { _controller: WellnessCoreBundle:Login:signin }
+
+signup_page:
+    path:     /sign-up
+    defaults: { _controller: WellnessCoreBundle:Login:signup }
+
+
+public_userprofil_show:
+    path:     /myaccount/show/{slug}
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/UserProfile:showProfil }
+
+public_userprofil_edit:
+    path:     /myaccount/edit
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/UserProfile:edit }
+
+public_userprofil_update:
+    path:     /myaccount/update
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/UserProfile:update }
+
+public_userprofil_addtofavorite:
+    path:     /myaccount/addtofavorite
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/UserProfile:addtofavorite }
+
+public_userprofil_publishcomment:
+    path:     /myaccount/publishcomment
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/UserProfile:publishcomment }
+
+
+
+
+
+

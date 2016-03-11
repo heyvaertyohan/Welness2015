@@ -1,0 +1,22 @@
+{% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li><a href="#">{{ entity.slug }}</a></li>
+{% endblock %}
+
+{% block titlepadding %}
+    <h2>{{ 'Ajouter un service'|trans }}</h2>
+{% endblock %}
+
+{% block contentadmin %}
+
+    {{ form(form) }}
+
+    <ul class="table table-striped table-hover record_actions">
+        <li>
+            <a href="{{ path('admin_categoryservice') }}">
+                <i class="icon-backward"></i> {{ 'Retour à la liste'|trans }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

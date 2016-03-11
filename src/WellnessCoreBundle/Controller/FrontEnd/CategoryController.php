@@ -42,6 +42,7 @@ class CategoryController extends Controller
         $listCategories = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService')->findAll();
 
         $CurrentCategory = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:CategoryService')->find($categoryService->getId());
+
         $ListImgProviderCurrentCateg = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Provider')->find($categoryService->getId());
 
         $CurrentLogoCategory = $rep_img->findOneBy(array('categoryService' => $categoryService->getId()));

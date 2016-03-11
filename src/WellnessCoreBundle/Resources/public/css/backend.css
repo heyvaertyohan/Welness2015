@@ -40,3 +40,32 @@
     width: 75px;
     height: 40px;
 }
+
+form input[type="text"], textarea.form-control{
+    width: 50%;
+}
+
+form input[type="checkbox"], input[type="radio"]{
+    display: inline-block;
+    margin: 4px 20px 0;
+}
+
+select, form input{
+    display: block;
+}
+
+form button{
+    background-color: #009f8b;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 10px;
+    transition: background-color 0.15s linear;
+}
+
+form button.active{
+    background-color: #008675 !important;
+    box-shadow: none !important;
+    outline: 0px !important;
+    text-decoration: none;
+}

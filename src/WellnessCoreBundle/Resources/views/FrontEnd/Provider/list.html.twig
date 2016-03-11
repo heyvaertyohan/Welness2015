@@ -43,7 +43,7 @@
                                     {% for image in listProvidersWithLogo %}
                                         <tr>
                                             <td class="center"><img src="{{ asset(image.path) }}" alt="{{ image.description }}"></td>
-                                            <td><a href="{{ path('wellness_public_provider_show', {slug:image.user.slug}) }}">{{ image.user.name }}</a> </td>
+                                            <td><a href="{{ path('public_provider_show', {slug:image.user.slug}) }}">{{ image.user.name }}</a> </td>
                                             <td>{{ image.user.telnumber }}</td>
                                             <td>{{ image.user.email }}</td>
                                             <td>{{ image.user.website }}</td>

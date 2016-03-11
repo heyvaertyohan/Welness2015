@@ -77,6 +77,10 @@ body {
 
 #mainrow{
     margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.container{
     margin-bottom: 30px;
 }
 
@@ -105,6 +109,11 @@ body {
         width: 20%;
         float: left;
     }
+}
+
+#table_responsive img {
+    width: 75px;
+    height: 40px;
 }
 
 .col-md-2-5 .card-simple-label img {

@@ -35,7 +35,7 @@ class Image
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="CategoryService")
+     * @ORM\ManyToOne(targetEntity="CategoryService", cascade={"persist"})
      */
     private $categoryService;
 

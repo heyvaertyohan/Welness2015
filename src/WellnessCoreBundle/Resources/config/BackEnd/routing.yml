@@ -1,0 +1,34 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: WellnessCoreBundle:BackEnd/BackEnd:index }
+
+admin_categoryservice:
+    path:     /categoryservice
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:index" }
+
+admin_categoryservice_show:
+    path:     /categoryservice/{id}/show
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:show" }
+
+admin_categoryservice_new:
+    path:     /categoryservice/new
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:new" }
+
+admin_categoryservice_create:
+    path:     /categoryservice/create
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:create" }
+    methods:  POST
+
+admin_categoryservice_edit:
+    path:     /categoryservice/{id}/edit
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:edit" }
+
+admin_categoryservice_update:
+    path:     /categoryservice/{id}/update
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:update" }
+    methods:  [POST, PUT]
+
+admin_categoryservice_delete:
+    path:     /categoryservice/{id}/delete
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:delete" }
+    methods:  [POST, DELETE]
