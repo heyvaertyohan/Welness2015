@@ -6,6 +6,9 @@
 {% block breadcrumb %}
     <li><a href="#">{{ 'Accueil'|trans }}</a></li>
 {% endblock %}
+{% block title %}
+    {{ parent() }}
+{% endblock %}
 {% block contentadmin %}
     <div class="content-admin">
         <div class="content-admin-wrapper">

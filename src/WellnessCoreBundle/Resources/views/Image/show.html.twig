@@ -1,44 +1,51 @@
-{% extends '::base.html.twig' %}
+{% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
-{% block body -%}
-    <h1>Image</h1>
+{% block breadcrumb %}
+    <li><a href="#">{{ 'Liste de service'|trans }}</a></li>
+{% endblock %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Position</th>
-                <td>{{ entity.position }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ entity.type }}</td>
-            </tr>
-            <tr>
-                <th>Path</th>
-                <td>{{ entity.path }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block title %}
+    {{ parent() }}
+{% endblock %}
 
-        <ul class="record_actions">
+
+{% block contentadmin %}
+
+<table class="record_properties">
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ entity.id }}</td>
+    </tr>
+    <tr>
+        <th>Position</th>
+        <td>{{ entity.position }}</td>
+    </tr>
+    <tr>
+        <th>Type</th>
+        <td>{{ entity.type }}</td>
+    </tr>
+    <tr>
+        <th>Path</th>
+        <td>{{ entity.path }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{ entity.description }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
     <li>
         <a href="{{ path('admin_image') }}">
-            Back to the list
+            <i class="icon-backward"> </i> {{ 'Retour à la liste'|trans }}
         </a>
     </li>
     <li>
         <a href="{{ path('admin_image_edit', { 'id': entity.id }) }}">
-            Edit
+            <i class="icon-edit"> </i> {{ 'Editer'|trans }}
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+    {{ form(delete_form) }}
+    {% endblock %}
