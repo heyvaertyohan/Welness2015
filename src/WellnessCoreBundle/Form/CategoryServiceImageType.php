@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use WellnessCoreBundle\Entity\CategoryService;
 use WellnessCoreBundle\Entity\Image;
 
-class ImageType extends AbstractType
+class CategoryServiceImageType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -24,7 +24,7 @@ class ImageType extends AbstractType
                     3 => '3',
                     4 => '4',
                     5 => '5',
-                    )))
+                )))
             ->add('type', 'choice', array(
                 'choices'  => array(
                     Image::TYPE_MAINSLIDER => 'mainslider',
@@ -42,22 +42,6 @@ class ImageType extends AbstractType
                 'translation_domain' => 'messages'
             ))
             ->add('alt', 'textarea', array('label' => 'Description'))
-            ->add('user', 'entity', array(
-                'required' => false, //permet d'avoir le premier champ à vide
-                'translation_domain' => 'utilisateur',
-                'class' => 'WellnessCoreBundle\Entity\User',
-                'property' => 'name'
-            ))
-            ->add('categoryService', 'entity', array(
-            'required' => false, //permet d'avoir le premier champ à vide
-            'label' => 'Service',
-            'class' => 'WellnessCoreBundle\Entity\CategoryService',
-            'property' => 'name'
-
-           /* ->add('categoryService', new ImageCategoryServiceType(), array(
-                'label' => false*/
-
-            ))
         ;
     }
 

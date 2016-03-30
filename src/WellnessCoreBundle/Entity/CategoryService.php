@@ -30,6 +30,12 @@ class CategoryService
      */
     protected $slug;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="CategoryService")
+     */
+    private $image;
+
+
 
     /**
      * @ORM\ManyToMany(targetEntity="Provider")
@@ -237,5 +243,39 @@ class CategoryService
     public function getProvider()
     {
         return $this->Provider;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \WellnessCoreBundle\Entity\Image $image
+     *
+     * @return CategoryService
+     */
+    public function addImage(\WellnessCoreBundle\Entity\Image $image)
+    {
+        $this->image[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \WellnessCoreBundle\Entity\Image $image
+     */
+    public function removeImage(\WellnessCoreBundle\Entity\Image $image)
+    {
+        $this->image->removeElement($image);
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

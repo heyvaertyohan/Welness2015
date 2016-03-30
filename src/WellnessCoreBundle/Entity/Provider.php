@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Provider
  *
  * @ORM\Table("provider")
- * @ORM\Entity(repositoryClass="WellnessCoreBundle\Entity\ProviderRepository")
+ * @ORM\Entity(repositoryClass="WellnessCoreBundle\Repository\ProviderRepository")
  */
 class Provider extends User
 {

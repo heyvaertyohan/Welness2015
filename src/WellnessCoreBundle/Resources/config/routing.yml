@@ -1,7 +1,3 @@
-wellness_core_admin_image:
-    resource: "@WellnessCoreBundle/Resources/config/routing/image.yml"
-    prefix:   /admin/image
-
 back_end:
     resource: "@WellnessCoreBundle/Resources/config/BackEnd/routing.yml"
     prefix:   /admin

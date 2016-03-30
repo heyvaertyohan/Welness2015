@@ -41,8 +41,8 @@
     height: 40px;
 }
 
-form input[type="text"], textarea.form-control{
-    width: 50%;
+label{
+    display: block;
 }
 
 form input[type="checkbox"], input[type="radio"]{
@@ -50,8 +50,8 @@ form input[type="checkbox"], input[type="radio"]{
     margin: 4px 20px 0;
 }
 
-select, form input{
-    display: block;
+.form-control{
+    width: 50%;
 }
 
 form button{

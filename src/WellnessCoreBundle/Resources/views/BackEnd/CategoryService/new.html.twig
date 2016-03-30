@@ -1,7 +1,7 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
 {% block breadcrumb %}
-    <li><a href="#">{{ entity.slug }}</a></li>
+    <li><a href="#">{{ 'Liste des services'|trans }}</a>/ <a href="#">{{ entity.slug }}</a><</li>
 {% endblock %}
 
 {% block titlepadding %}
@@ -11,6 +11,32 @@
 {% block contentadmin %}
 
     {{ form(form) }}
+    {#{% for image in form['image'] %}
+        {{ image(image) }}
+    {% endfor %}&#35;&#125;#}
+
+    {#{% for image in form['image'] %}
+       &#123;&#35; {{ dump(form_label(image.alt)) }}&#35;&#125;
+        {{ dump(image.value) }}
+        &#123;&#35;<img src="{{ form_widget(image) }}" />&#35;&#125;
+         <br />
+    {% endfor %}#}
+
+    {#{% for image in form['image'] %}
+        {{ image.get('value') }}
+        {% for test in form['label'] %}
+
+            {{ dump(test.label) }}
+            &#123;&#35;{% for test in image['label'] %}&#35;&#125;
+            &#123;&#35;{{ dump(test) }}
+            &#123;&#35;<img src="{{  image }}" />&#35;&#125;
+             <br />&#35;&#125;
+        {% endfor %}
+    {% endfor %}#}
+
+
+
+    {#<img src="{{  form(form.image) }}"/>#}
 
     <ul class="table table-striped table-hover record_actions">
         <li>

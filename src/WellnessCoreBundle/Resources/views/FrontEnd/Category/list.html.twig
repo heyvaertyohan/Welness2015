@@ -41,7 +41,7 @@
                                     {% for image in listCategoryWithLogo %}
                                         <tr>
                                             <td class="center"><img class="logo" src="{{ asset(image.path) }}"
-                                                                    alt="{{ image.description }}"></td>
+                                                                    alt="{{ image.alt }}"></td>
                                             <td>
                                                 <a href="{{ path('public_category_show', {slug:image.categoryservice.slug}) }}">{{ image.categoryservice.name }}</a>
                                             </td>

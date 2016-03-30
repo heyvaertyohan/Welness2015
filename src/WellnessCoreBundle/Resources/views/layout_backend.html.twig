@@ -71,8 +71,6 @@
                                 </li>
 
                                 <li>
-
-
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                         <a href="#">{{ app.user }} <i class="fa fa-chevron-down"></i></a>
                                         <ul class="sub-menu">
@@ -219,6 +217,23 @@
                             </ul>
                         </li>
 
+                        <li class="liNews">
+                            <a href="#">
+                                <span class="icon"><i class="fa fa-i-cursor"></i></span>
+                                <span class="title">{{ 'News'|trans }}</span>
+                                <span class="subtitle">{{ 'Gérer les News'|trans }}</span>
+                            </a>
+
+                            <ul>
+                                <li>
+                                    <a href="{{ path('news_create') }}">{{ 'Ajouter une news'|trans }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('news') }}">{{ 'Liste des News'|trans }}</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="liUser">
                             <a href="#">
                                 <span class="icon"><i class="fa fa-i-cursor"></i></span>
@@ -227,12 +242,12 @@
                             </a>
 
                             <ul>
-                                {#<li>
-                                    <a href="{{ path('admin_user_create') }}">{{ 'Ajouter un utilisateur'|trans }}</a>
+                                <li>
+                                    <a href="{{ path('admin_user_new') }}">{{ 'Ajouter un utilisateur'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('admin_users_list') }}">{{ 'Liste des utilisateurs'|trans }}</a>
-                                </li>#}
+                                    <a href="{{ path('admin_user') }}">{{ 'Liste des utilisateurs'|trans }}</a>
+                                </li>
 
 
                             </ul>

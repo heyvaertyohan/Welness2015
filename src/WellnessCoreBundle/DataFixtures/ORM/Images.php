@@ -17,7 +17,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "1",
                 "type" => Image::TYPE_MAINSLIDER,
-                "description" => "Sante bien être image 1",
+                "description" => "Santé et bien être: therme piscine extérieur",
+                "name" => "Therme piscine extérieur",
                 "path" => "bundles/wellnesscore/img/slider_therme_01.jpg",
                 "user" => null,
                 "service" => null,
@@ -25,7 +26,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "2",
                 "type" => Image::TYPE_MAINSLIDER,
-                "description" => "Sante bien être image 2",
+                "description" => "Sante bien être : massage tempe",
+                "name" => "Therme massage des temps",
                 "path" => "bundles/wellnesscore/img/slider_therme_02.jpg",
                 "user" => null,
                 "service" => null,
@@ -33,7 +35,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "3",
                 "type" => Image::TYPE_MAINSLIDER,
-                "description" => "Sante bien être image 3",
+                "description" => "Sante bien être : ciel",
+                "name" => "Therme ciel",
                 "path" => "bundles/wellnesscore/img/slider_therme_03.jpg",
                 "user" => null,
                 "service" => null,
@@ -41,7 +44,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "1",
                 "type" => Image::TYPE_LOGO_PROVIDER,
-                "description" => "logo Vague à Lame",
+                "description" => "Logo du prestataire Vague Lame",
+                "name" => "logoVagueLame",
                 "path" => "bundles/wellnesscore/img/logoVagueLame.jpg",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Vague à Lame')),
                 "service" => null,
@@ -49,7 +53,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "1",
                 "type" => Image::TYPE_LOGO_PROVIDER,
-                "description" => "logo Audrey Bio Beauté",
+                "description" => "Logo du prestataire Audrey Bio Beauté",
+                "name" => "logoAudreyBioBeauté",
                 "path" => "bundles/wellnesscore/img/logoAudreyBioBeauté.jpg",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Audrey Bio Beauté')),
                 "service" => null,
@@ -57,7 +62,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "1",
                 "type" => Image::TYPE_LOGO_PROVIDER,
-                "description" => "logo therme de spa",
+                "description" => "logo du prestataire therme de spa",
+                "name" => "logo_spa",
                 "path" => "bundles/wellnesscore/img/logo_spa.jpg",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Thermes de Spa')),
                 "service" => null,
@@ -65,7 +71,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "1",
                 "type" => Image::TYPE_LOGO_PROVIDER,
-                "description" => "logo Instant Beauté",
+                "description" => "logo du prestataire Instant Beauté",
+                "name" => "logoInstantBeauté",
                 "path" => "bundles/wellnesscore/img/logoInstantBeauté.jpg",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Instant Beauté')),
                 "service" => null,
@@ -73,7 +80,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
             array(
                 "position" => "1",
                 "type" => Image::TYPE_LOGO_PROVIDER,
-                "description" => "logo Institut Viviane",
+                "description" => "logo du prestataire Institut Viviane",
+                "name" => "logoInstitutViviane",
                 "path" => "bundles/wellnesscore/img/logoInstitutViviane.png",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Institut Viviane')),
                 "service" => null,
@@ -82,6 +90,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "0",
                 "type" => Image::TYPE_LOGO_SERVICE,
                 "description" => "Service solarium logo",
+                "name" => "logo_solarium",
                 "path" => "bundles/wellnesscore/img/logo_solarium.jpg",
                 "user" => null,
                 "service" => $manager->getRepository('WellnessCoreBundle:CategoryService')->findOneBy(array('name' => 'Solarium'))
@@ -90,6 +99,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "0",
                 "type" => Image::TYPE_LOGO_SERVICE,
                 "description" => "Service solarium logo",
+                "name" => "logo_pedicure",
                 "path" => "bundles/wellnesscore/img/logo_pedicure.jpg",
                 "user" => null,
                 "service" => $manager->getRepository('WellnessCoreBundle:CategoryService')->findOneBy(array('name' => 'Pedicure'))
@@ -98,6 +108,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "0",
                 "type" => Image::TYPE_LOGO_SERVICE,
                 "description" => "Service solarium logo",
+                "name" => "logo_epilation",
                 "path" => "bundles/wellnesscore/img/logo_epilation.jpg",
                 "user" => null,
                 "service" => $manager->getRepository('WellnessCoreBundle:CategoryService')->findOneBy(array('name' => 'Epilation'))
@@ -106,6 +117,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "0",
                 "type" => Image::TYPE_LOGO_SERVICE,
                 "description" => "Service solarium logo",
+                "name" => "logo_sauna",
                 "path" => "bundles/wellnesscore/img/logo_sauna.jpg",
                 "user" => null,
                 "service" => $manager->getRepository('WellnessCoreBundle:CategoryService')->findOneBy(array('name' => 'Sauna'))
@@ -114,6 +126,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "0",
                 "type" => Image::TYPE_LOGO_SERVICE,
                 "description" => "Service solarium logo",
+                "name" => "logo_hammam",
                 "path" => "bundles/wellnesscore/img/logo_hammam.jpg",
                 "user" => null,
                 "service" => $manager->getRepository('WellnessCoreBundle:CategoryService')->findOneBy(array('name' => 'Hammam'))
@@ -122,6 +135,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "1",
                 "type" => Image::TYPE_IMG_PROVIDER,
                 "description" => "Institut Viviane image 1",
+                "name" => "institutViviane_01",
                 "path" => "bundles/wellnesscore/img/institutViviane_01.jpg",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Institut Viviane')),
                 "service" => null
@@ -130,6 +144,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "2",
                 "type" => Image::TYPE_IMG_PROVIDER,
                 "description" => "Institut Viviane image 2",
+                "name" => "institutViviane_02",
                 "path" => "bundles/wellnesscore/img/institutViviane_02.jpg",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Institut Viviane')),
                 "service" => null
@@ -138,6 +153,7 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "position" => "3",
                 "type" => Image::TYPE_IMG_PROVIDER,
                 "description" => "Institut Viviane image 3",
+                "name" => "institutViviane_03",
                 "path" => "bundles/wellnesscore/img/institutViviane_03.jpg",
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Institut Viviane')),
                 "service" => null
@@ -146,7 +162,8 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
 
         for($i=0; $i< sizeof($tab_Images); $i++ ){
             $image = new Image();
-            $image->setDescription($tab_Images[$i]['description']);
+            $image->setAlt($tab_Images[$i]['description']);
+            $image->setName($tab_Images[$i]['name']);
             $image->setPath($tab_Images[$i]['path']);
             $image->setPosition($tab_Images[$i]['position']);
             $image->setType($tab_Images[$i]['type']);

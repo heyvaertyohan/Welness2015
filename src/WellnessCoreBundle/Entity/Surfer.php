@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Surfer
  *
  * @ORM\Table("surfer")
- * @ORM\Entity(repositoryClass="WellnessCoreBundle\Entity\SurferRepository")
+ * @ORM\Entity(repositoryClass="WellnessCoreBundle\Repository\SurferRepository")
  */
 class Surfer extends User
 {

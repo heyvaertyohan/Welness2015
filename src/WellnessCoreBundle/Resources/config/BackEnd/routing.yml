@@ -32,3 +32,100 @@ admin_categoryservice_delete:
     path:     /categoryservice/{id}/delete
     defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:delete" }
     methods:  [POST, DELETE]
+
+
+admin_image:
+    path:     /image
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:index" }
+
+admin_image_show:
+    path:     /image/{id}/show
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:show" }
+
+admin_image_new:
+    path:     /image/new
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:new" }
+
+admin_image_create:
+    path:     /image/create
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:create" }
+    methods:  POST
+
+admin_image_edit:
+    path:     /image/{id}/edit
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:edit" }
+
+admin_image_update:
+    path:     /image/{id}/update
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:update" }
+    methods:  [POST, PUT]
+
+admin_image_delete:
+    path:     /image/{id}/delete
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:delete" }
+    methods:  [POST, DELETE]
+
+
+news:
+    path:     /news/
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/News:index" }
+
+news_show:
+    path:     /news/{id}/show
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/News:show" }
+
+news_new:
+    path:     /news/new
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/News:new" }
+
+news_create:
+    path:     /news/create
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/News:create" }
+    methods:  POST
+
+news_edit:
+    path:     /news/{id}/edit
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/News:edit" }
+
+news_update:
+    path:     /news/{id}/update
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/News:update" }
+    methods:  [POST, PUT]
+
+news_delete:
+    path:     /news/{id}/delete
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/News:delete" }
+    methods:  [POST, DELETE]
+
+
+admin_user:
+    path:     /user/
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:index" }
+
+admin_user_show:
+    path:     /user/{id}/show
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:show" }
+
+admin_user_new:
+    path:     /user/new
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:new" }
+
+admin_user_create:
+    path:     /user/create
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:create" }
+    methods:  POST
+
+admin_user_edit:
+    path:     /user/{id}/edit
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:edit" }
+
+admin_user_update:
+    path:     /user/{id}/update
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:update" }
+    methods:  [POST, PUT]
+
+admin_user_delete:
+    path:     /user/{id}/delete
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:delete" }
+    methods:  [POST, DELETE]
+

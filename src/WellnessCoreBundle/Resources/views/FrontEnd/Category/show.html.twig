@@ -20,11 +20,12 @@
 
         <h3 class="page-title">{{ CurrentCategory.name }}</h3>
 
+        {% if CurrentLogoCategory %}
         <div class="user-photo col-sm-2">
             <img src="{{ asset(CurrentLogoCategory.path) }}"
                  alt="{{ 'Photo categorie'|trans }} {{ CurrentCategory.name }}">
         </div>
-
+        {% endif %}
         <div class="row">
 
             <div class="col-md-10 description">

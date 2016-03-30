@@ -42,6 +42,7 @@ class ProviderController extends FrontEndController
         $listImagesSlider = $rep_img->findBy(array('type' => 'mainSlider'));
         $listProvidersWithLogo = $rep_img->getListImages(5, Image::TYPE_LOGO_PROVIDER, null);
         $listProvidersWithImg = $rep_img->getListImages(0, Image::TYPE_IMG_PROVIDER, null);
+        dump($listProvidersWithImg);
         $listCategories = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService')->findAll();
 
         $CurrentImgProvider = $rep_img->findBy(array('user' => $provider->getId()));

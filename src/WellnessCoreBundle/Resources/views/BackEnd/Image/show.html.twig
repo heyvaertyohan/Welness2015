@@ -1,7 +1,7 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
 {% block breadcrumb %}
-    <li><a href="#">{{ 'Liste de service'|trans }}</a></li>
+    <li><a href="{{ path('admin') }}">{{ 'Image'|trans }}{{ entity.id }} </a></li>
 {% endblock %}
 
 {% block title %}
@@ -31,7 +31,7 @@
     </tr>
     <tr>
         <th>Description</th>
-        <td>{{ entity.description }}</td>
+        <td>{{ entity.alt }}</td>
     </tr>
     </tbody>
 </table>

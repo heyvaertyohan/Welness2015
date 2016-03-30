@@ -10,13 +10,17 @@ use FOS\UserBundle\Model\User as BaseUser;
  * User
  *
  * @ORM\Table("user")
- * @ORM\Entity(repositoryClass="WellnessCoreBundle\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass="WellnessCoreBundle\Repository\UserRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"user" = "User", "surfer" = "Surfer", "provider" = "Provider"})
  */
 class User extends BaseUser
 {
+    const TYPE_SURFER = 'surfer';
+    const TYPE_PROVIDER = 'provider';
+    const TYPE_ADMIN = 'admin';
+
     public function __construct()
     {
         parent::__construct();

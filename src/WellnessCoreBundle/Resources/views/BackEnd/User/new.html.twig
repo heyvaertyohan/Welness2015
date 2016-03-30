@@ -1,0 +1,22 @@
+{% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
+
+{% block breadcrumb %}
+    <li><a href="#">{{ 'Liste des utilisateurs'|trans }}</a>/ <a href="#">{{ entity.slug }}</a><</li>
+{% endblock %}
+
+{% block titlepadding %}
+    <h2>{{ 'Ajouter un utlisateur'|trans }}</h2>
+{% endblock %}
+
+{% block contentadmin %}
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_user') }}">
+            <i class="icon-backward"></i> {{ 'Retour à la liste'|trans }}
+        </a>
+    </li>
+</ul>
+{% endblock %}

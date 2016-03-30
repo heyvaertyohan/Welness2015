@@ -19,8 +19,28 @@ class CategoryServiceType extends AbstractType
             ->add('description', 'textarea', array('attr' => array('class' => 'form-control')))
             ->add('forward', 'checkbox', array('required' => false))
             ->add('validated','checkbox', array('required' => false))
+            ->add('image', 'entity', array(
+                'class' => 'WellnessCoreBundle\Entity\Image',
+                'required' => false, //permet d'avoir le premier champ à vide
+                'expanded' => true,
+                'multiple' => true,
+                'label' => 'Image',
+                'property' => 'path'))
+            /*->add('image', 'entity', array(
+                'required' => false, //permet d'avoir le premier champ à vide
+                'label' => 'Image',
+                'class' => 'WellnessCoreBundle\Entity\Image',
+                'property' => 'name'))*/
             ->add('Provider')
         ;
+
+        /*->add('image', 'entity', array(
+        'class' => 'WellnessCoreBundle\Entity\Image',
+        'required' => false, //permet d'avoir le premier champ à vide
+        'expanded' => true, //permet d'avoir le premier champ à vide
+        'multiple' => true, //permet d'avoir le premier champ à vide
+        'label' => 'Image',
+        'property' => 'path'))*/
     }
     
     /**

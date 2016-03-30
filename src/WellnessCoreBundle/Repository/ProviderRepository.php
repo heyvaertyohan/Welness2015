@@ -1,6 +1,6 @@
 <?php
 
-namespace WellnessCoreBundle\Entity;
+namespace WellnessCoreBundle\Repository;
 
 /**
  * ProviderRepository
