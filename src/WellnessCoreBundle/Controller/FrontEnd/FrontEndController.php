@@ -19,6 +19,7 @@ class FrontEndController extends Controller
         $listImagesSlider = $repo_img->findBy(array('type' => 'mainSlider'));
         $imgMonthService = $repo_img->findOneBy(array('categoryService' =>$monthService->getId()));
         $listProvidersWithLogo = $repo_img->getListImages(4, Image::TYPE_LOGO_PROVIDER, null);
+        $listLastNews = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:News')->getListNews(2);
 
         if ($listImagesSlider == null) {
             throw $this->createNotFoundException("Pas d'image trouvée !");
@@ -36,12 +37,17 @@ class FrontEndController extends Controller
             throw $this->createNotFoundException("Pas d'image prestataire trouvée !");
         }
 
+        if ($listLastNews == null){
+            throw $this->createNotFoundException("Pas de news trouvée!");
+        }
+
         return $this->render('WellnessCoreBundle:FrontEnd:index.html.twig', array(
             'listProvidersWithLogo' => $listProvidersWithLogo,
             'listCategories' => $listCategories,
             'listImagesSlider' => $listImagesSlider,
             'monthService' => $monthService,
-            'imgMonthService' => $imgMonthService
+            'imgMonthService' => $imgMonthService,
+            'listLastNews' => $listLastNews
         ));
     }
 

@@ -23,6 +23,10 @@ public_category_search:
     path:     /category/search
     defaults: { _controller: WellnessCoreBundle:FrontEnd/Category:search }
 
+public_news_list:
+    path:     /news/
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/News:list }
+
 
 public_homepage:
     path:     /

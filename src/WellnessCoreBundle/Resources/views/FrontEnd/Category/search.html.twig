@@ -1,6 +1,6 @@
 {% extends 'WellnessCoreBundle::layout_frontend.html.twig' %}
 
-{% block title %}{{ parent() }} {{ 'accueil'|trans }} {% endblock %}
+{% block title %}{{ parent() }} {{ 'recherche'|trans }} {% endblock %}
 
 {% block header %}
 
@@ -14,14 +14,12 @@
 
 {% block maincontainer %}
 
-    <div id="maincontener" class="background-white">
         <h2>Résultat de la recherche pour "{{ expression }}{#{{ find }}#}"</h2>
         {% for service in services %}
             <h3><a href="{{ path('service_show', { 'slug': service.slug }) }}"/>{{ service.title }}</a></h3>
             <p>{{ service.description | slice(0, 50) | raw }}</p>
             <hr/>
         {% endfor %}
-    </div>
 
 {% endblock %}
 

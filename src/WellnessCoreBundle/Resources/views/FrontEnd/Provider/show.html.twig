@@ -16,7 +16,6 @@
 
 {% block maincontainer %}
 
-                <div id="maincontener" class="background-white">
 
                     <h3 class="page-title">{{ CurrentProvider.name }}</h3>
 
@@ -295,10 +294,16 @@
                         </div>
                     </div>
 
-                </div>
 {% endblock %}
 
 {% block pave %}
+
+    <div id="title-index" class="row">
+        <div class="line"></div>
+        <div class="col-provider">
+            <h1>{{ 'Derniers prestataires'|trans }}</h1>
+        </div>
+    </div>
 
     {% for image in listProvidersWithLogo %}
         <div class="col-md-2-5">

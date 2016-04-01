@@ -194,23 +194,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-10 mt30">
+            <div id="maincontainer" class="col-md-10 mt30 background-white">
                 {% block maincontainer %}{% endblock %}
-
+                {% block pave %}{% endblock %}
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-                <div class="cards-simple-wrapper">
-                    <div class="row">
-                        {% block pave %}{% endblock %}
 
-
-                    </div>
-                    <!-- /.row -->
-                </div>
-            </div>
         </div>
 
     </div>

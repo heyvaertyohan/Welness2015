@@ -1,3 +1,7 @@
+wellness_core_news:
+    resource: "@WellnessCoreBundle/Resources/config/routing/news.yml"
+    prefix:   /news
+
 back_end:
     resource: "@WellnessCoreBundle/Resources/config/BackEnd/routing.yml"
     prefix:   /admin

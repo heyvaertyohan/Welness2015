@@ -35,7 +35,7 @@ Téléphone: 'Phone number'
 'Mot de passe': Password
 'Photo categorie': 'Category photo'
 'Prestataires associé au service': 'Service provider'
-'Liste des prestataires': 'Provider list'
+'Liste des prestataires': 'Providers list'
 Telephone: Phone
 'Site web': 'Web site'
 'Photo prestataire': 'Provider photo'
@@ -74,7 +74,7 @@ Type: Type
 Utilisateur: User
 Prénom: Firstname
 Adresse: Address
-'Dernière connexion': 'Last connection'
+'Dernière connexion': 'Lastest connection'
 'Numéro téléphone': 'Phone number'
 'Prestataires liés': 'Provider linked'
 'Liste des promotions': 'Promotions list'
@@ -95,6 +95,22 @@ Images: Images
 'Ajouter une image': 'Add an image'
 'Liste des images': 'Image list'
 Changer: Change
-'mot de passe': 'password'
+'mot de passe': password
 'Pas de prestataire lié': 'No provider linked'
 'Modifier une image': 'Modify an image'
+'Modifier un utilisateur': 'Modify an user'
+'Ajouter un utlisateur': 'Add an user'
+'Modifier une news': 'Modify a news'
+News: News
+'Liste des news': 'News list'
+Image: Image
+'Gérer les News': 'News management'
+'Ajouter une news': 'Add a news'
+'Liste des News': 'News list'
+promotion: promotion
+recherche: search
+'Nos dernières news': 'Lastest news'
+'Liste complète des news': 'News complete list'
+'Derniers prestataires': 'Lastest providers'
+'Service du mois': 'Service month'
+news: news

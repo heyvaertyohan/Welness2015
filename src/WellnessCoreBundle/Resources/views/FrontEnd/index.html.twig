@@ -13,9 +13,63 @@
 {% endblock %}
 
 {% block maincontainer %}
+    <div class="row">
+        <div class="col-sm-4" >
+            <h1>{{ 'Nos derniers stages'|trans }}</h1>
+            <h1>{{ 'Nos dernières promotions'|trans }}</h1>
+        </div>
+        <div id="latestnews" class="col-sm-6">
+            <h1>{{ 'Nos dernières news'|trans }}</h1>
+            <div class="events">
+                {% for news in listLastNews %}
+                    <div class="event">
+
+                        <div class="event-date">
+                            <span class="day">{{ news.createat|date('d')  }}/{{ news.createat|date('m')  }}</span>
+                        </div>
+                        <!-- /.event-date -->
+
+                        <div class="event-content">
+                            <h2>{{ news.title  }}</h2>
+
+                            <p>{{ news.description[:120]  }}...</p>
+
+                            <div class="event-time"><i class="fa fa-clock-o"></i>{{ news.createat|date('H:i')  }} </div>
+                            <!-- /.event-time -->
+                        </div>
+                        <!-- /.event-content -->
+
+
+                    </div>
+                    <!-- /.event -->
+                {% endfor %}
+
+                <li id="newslink">
+                    <a href="{{ path('public_news_list') }}">{{ 'Liste complète des news'|trans }}<i class="fa"></i></a>
+                </li>
+
+
+            </div>
+            <!-- /.events -->
+
+        </div>
+        <!-- /.col-* -->
+    </div>
+    <!-- /.row -->
 {% endblock %}
 
 {% block pave %}
+
+<div class="cards-simple-wrapper">
+    <div id="title-index" class="row">
+        <div class="line"></div>
+        <div class="col-provider">
+            <h1>{{ 'Derniers prestataires'|trans }}</h1>
+        </div>
+        <div class="col-service">
+            <h1>{{ 'Service du mois'|trans }}</h1>
+        </div>
+    </div>
 
     {% for image in listProvidersWithLogo %}
         <div class="col-md-2-5">
@@ -46,9 +100,9 @@
     {% endfor %}
 
     {% if monthService != null %}
-
         <div class="col-md-2-5">
             <div class="card-simple">
+
                 <div class="card-simple-background">
                     <div class="card-content">
                         <h2>
@@ -77,26 +131,8 @@
         <!-- /.col-* -->
 
     {% endif %}
-    {#<div class="col-sm-5 col-lg-2-5">
-        <div class="card-simple">
-            <div class="card-simple-background">
-                <div class="card-simple-content">
-                    <h2><a href="listing-detail.html">{{ monthService.name }}</a></h2>
+</div>
 
-                    <div class="card-simple-actions">
-                        <a href="listing-detail.html" class="fa fa-search"></a>
-                    </div>
-                    <!-- /.card-simple-actions -->
-                </div>
-                <!-- /.card-simple-content -->
-
-            </div>
-            <!-- /.card-simple-background -->
-        </div>
-        &#123;&#35;<div class="card-label"><img src="{{ asset( image.path ) }}"
-                                     alt="{{ asset(image.description) }}"></div>&#35;&#125;
-        <!-- /.card-simple -->
-    </div>#}
     <!-- /.col-* -->
 {% endblock %}
 

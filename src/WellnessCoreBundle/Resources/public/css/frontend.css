@@ -69,10 +69,10 @@ body {
 /*    Pave               */
 /*************************/
 
-#maincontener{
+#maincontainer{
+    padding: 30px 20px 0px 35px;
+    margin-bottom: 20px;
     border-left: 1px solid;
-    padding: 30px 20px 20px 35px;
-    margin-left: -15px;
 }
 
 #mainrow{
@@ -84,18 +84,48 @@ body {
     margin-bottom: 30px;
 }
 
+.col-provider h1, .col-service h1{
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 90px;
+    padding-top: 15px;
+}
 .cards-simple-wrapper h2{
-    margin-left: 20px;
     background-color: rgba(0, 0, 0, 0.4);
     color: #FFFFFF;
+    margin-left: 20px;
+}
 
+#title-index .line{
+    border-top: 3px solid rgba(0, 0, 0, 0.05);
+    margin-left: 30px;
+    margin-right: 45px;
+}
+#title-index .col-provider{
+    float:left;
+    width: 80%;
+    position: relative;
+    min-height: 1px;
+    padding-left: 30px;
+    padding-right: 40px;
+}
+
+#title-index .col-service{
+    width: 17%;
+    position: relative;
+    min-height: 1px;
+    padding-left: 6px;
+    padding-right: 15px;
+    float:left;
 }
 
 .col-md-2-5{
     position: relative;
     min-height: 1px;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 30px;
+    width: 20%;
+    float: left;
 }
 
 .col-md-2-5 .card-content{
@@ -138,11 +168,15 @@ body {
     margin: 0px;
 }
 
+#latestnews{
+    border-left: 1px solid rgba(0, 0, 0, 0.05);;
+}
+
 /*************************/
 /*    Signaletique       */
 /*************************/
 
-#maincontener #tabs_provider{
+#maincontainer #tabs_provider{
     padding-left: 0px;
     padding-right: 0px;
 
@@ -181,6 +215,10 @@ body {
 .logo {
     width: 75px;
     height: 40px;
+}
+
+#newslink{
+    padding-bottom: 20px;
 }
 
 

@@ -2,7 +2,7 @@
 {% block head %}
     {{ parent() }}
 {% endblock %}
-{% block title %}{{ parent() }} {{ 'accueil'|trans }} {% endblock %}
+{% block title %}{{ parent() }} {{ CurrentCategory.name }} {% endblock %}
 
 {% block header %}
 
@@ -16,7 +16,6 @@
 
 {% block maincontainer %}
 
-    <div id="maincontener" class="background-white">
 
         <h3 class="page-title">{{ CurrentCategory.name }}</h3>
 
@@ -34,52 +33,65 @@
 
         </div>
 
-    </div>
 {% endblock %}
 
 {% block pave %}
-{% if CurrentCategory.provider|length == 0 %}
-<h2>{{ 'Pas de prestataire lié'|trans }}</h2>
-{% else %}
-<h2>{{ 'Prestataires liés'|trans }}</h2>
 
-<div class="row">
+<div class="cards-simple-wrapper">
 
-{% set counter = 0 %}
+<div id="title-index" class="row">
+    <div class="line"></div>
+    {% if CurrentCategory.provider|length == 0 %}
+    <div class="col-provider">
+        <h1>{{ 'Pas de prestataire lié'|trans }}</h1>
+    </div>
 
-{% for provider in CurrentCategory.provider %}
-        {% if counter < 5 %}
+    {% else %}
+    <div class="col-provider">
+        <h1>{{ 'Prestataires liés'|trans }}</h1>
+    </div>
+    {% endif %}
+</div>
 
-            <div class="col-md-2-5">
-            <div class="card-simple">
-                <div class="card-simple-background">
-                    <div class="card-content">
-                        <h2>
-                            <a href="{{ path('public_provider_show', {slug:provider.slug}) }}">{{ provider.name }}</a>
-                        </h2>
+{% if CurrentCategory.provider|length != 0 %}
+    <div class="row">
 
-                        <div class="card-simple-actions">
-                            <a href="{{ path('public_provider_show', {slug:provider.slug}) }}"
-                               class="fa fa-search"></a>
+    {% set counter = 0 %}
+
+    {% for provider in CurrentCategory.provider %}
+            {% if counter < 5 %}
+
+                <div class="col-md-2-5">
+                <div class="card-simple">
+                    <div class="card-simple-background">
+                        <div class="card-content">
+                            <h2>
+                                <a href="{{ path('public_provider_show', {slug:provider.slug}) }}">{{ provider.name }}</a>
+                            </h2>
+
+                            <div class="card-simple-actions">
+                                <a href="{{ path('public_provider_show', {slug:provider.slug}) }}"
+                                   class="fa fa-search"></a>
+                            </div>
+                            <!-- /.card-simple-actions -->
                         </div>
-                        <!-- /.card-simple-actions -->
+                        <!-- /.card-simple-content -->
+
+                       {#<div class="card-simple-label"><img src="{{ asset( image.path ) }}"
+                                                            alt="{{ asset(image.description) }}"></div>#}
+
                     </div>
-                    <!-- /.card-simple-content -->
-
-                   {#<div class="card-simple-label"><img src="{{ asset( image.path ) }}"
-                                                        alt="{{ asset(image.description) }}"></div>#}
-
+                    <!-- /.card-simple-background -->
                 </div>
-                <!-- /.card-simple-background -->
+                <!-- /.card-simple -->
             </div>
-            <!-- /.card-simple -->
-        </div>
-            <!-- /.col-* -->
-        {% endif %}
-        {% set counter = counter + 1 %}
-    {% endfor %}
+                <!-- /.col-* -->
+            {% endif %}
+            {% set counter = counter + 1 %}
+        {% endfor %}
 
-{% endif %}
+    {% endif %}
+    </div>
 {% endblock %}
 
 {% block javascript %}

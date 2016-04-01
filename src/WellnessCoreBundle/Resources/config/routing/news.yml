@@ -1,0 +1,10 @@
+news:
+    path:     /
+    defaults: { _controller: "WellnessCoreBundle:News:index" }
+
+news_show:
+    path:     /{id}/show
+    defaults: { _controller: "WellnessCoreBundle:News:show" }
+
+
+
