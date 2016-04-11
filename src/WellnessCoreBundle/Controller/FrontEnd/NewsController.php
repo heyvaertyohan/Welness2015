@@ -7,25 +7,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use WellnessCoreBundle\Entity\News;
 
-/**
- * News controller.
- *
- */
-class NewsController extends Controller
+class NewsController extends FrontEndController
 {
-
-    /**
-     * Lists all News entities.
-     *
-     */
-    public function listAction()
+    public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $listLastNews = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:News')->getListNews(2);
 
-        $entities = $em->getRepository('WellnessCoreBundle:News')->findAll();
+        if ($listLastNews == null){
+            throw $this->createNotFoundException("Pas de news trouvée!");
+        }
 
-        return $this->render('WellnessCoreBundle:FrontEnd/News:list.html.twig', array(
-            'entities' => $entities,
+        return $this->render('WellnessCoreBundle:FrontEnd/News:index.html.twig', array(
+            'listLastNews' => $listLastNews,
         ));
     }
 

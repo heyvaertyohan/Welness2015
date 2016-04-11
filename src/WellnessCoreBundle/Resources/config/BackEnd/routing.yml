@@ -66,33 +66,33 @@ admin_image_delete:
     methods:  [POST, DELETE]
 
 
-news:
+admin_news:
     path:     /news/
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:index" }
 
-news_show:
+admin_news_show:
     path:     /news/{id}/show
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:show" }
 
-news_new:
+admin_news_new:
     path:     /news/new
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:new" }
 
-news_create:
+admin_news_create:
     path:     /news/create
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:create" }
     methods:  POST
 
-news_edit:
+admin_news_edit:
     path:     /news/{id}/edit
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:edit" }
 
-news_update:
+admin_news_update:
     path:     /news/{id}/update
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:update" }
     methods:  [POST, PUT]
 
-news_delete:
+admin_news_delete:
     path:     /news/{id}/delete
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:delete" }
     methods:  [POST, DELETE]

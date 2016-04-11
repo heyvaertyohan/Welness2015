@@ -10,7 +10,7 @@ namespace WellnessCoreBundle\Repository;
  */
 class PromotionRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getListPromotion($maxResult)
+    public function getLastListPromotions($maxResult)
     {
         $qb = $this->createQueryBuilder('p');
         $qb->orderBy('p.id', 'DESC');

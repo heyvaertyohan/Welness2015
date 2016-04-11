@@ -253,7 +253,7 @@
                                                      data-ride="carousel">
                                                     <div class="carousel-inner" role="listbox">
                                                         {% set counter = 0 %}
-                                                        {% for image in listProvidersWithImg %}
+                                                        {% for image in ListImgSliderCurrentProvider %}
                                                             {% if counter == 0 %}
                                                                 <div class="item active">
                                                                     <img src="{{ asset( image.path ) }}"
@@ -305,7 +305,7 @@
         </div>
     </div>
 
-    {% for image in listProvidersWithLogo %}
+    {% for image in listProvidersPave %}
         <div class="col-md-2-5">
             <div class="card-simple">
                 <div class="card-simple-background">

@@ -9,40 +9,32 @@ use WellnessCoreBundle\Form\ProviderType;
 
 class ProviderController extends FrontEndController
 {
-    public function listAction()
+    public function indexAction()
     {
+        parent::initFrontEnd();
+
         $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
-        $listImagesSlider = $rep_img->findBy(array('type' => 'mainSlider'));
         $listProvidersWithLogo = $rep_img->getListImages(5, Image::TYPE_LOGO_PROVIDER, null);
-
-        $listCategories = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService')->findAll();
-
-        if ($listImagesSlider == null) {
-            throw $this->createNotFoundException("Pas d'image trouvée !");
-        }
-
-        if ($listCategories == null) {
-            throw $this->createNotFoundException("Pas de categorie trouvée !");
-        }
 
         if ($listProvidersWithLogo == null) {
             throw $this->createNotFoundException("Pas de logo prestataire trouvé !");
         }
 
-        return $this->render('WellnessCoreBundle:FrontEnd/Provider:list.html.twig', array(
-            'listProvidersWithLogo' => $listProvidersWithLogo,
-            'listCategories' => $listCategories,
-            'listImagesSlider' => $listImagesSlider
+        return $this->render('WellnessCoreBundle:FrontEnd/Provider:index.html.twig', array(
+            'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
+            'listImagesSlider' => $this->getListImageSlider(),
+            'listProvidersWithLogo' => $listProvidersWithLogo
         ));
     }
 
     public function showAction(Provider $provider)
     {
+        parent::initFrontEnd();
+
         $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
         $listImagesSlider = $rep_img->findBy(array('type' => 'mainSlider'));
-        $listProvidersWithLogo = $rep_img->getListImages(5, Image::TYPE_LOGO_PROVIDER, null);
-        $listProvidersWithImg = $rep_img->getListImages(0, Image::TYPE_IMG_PROVIDER, null);
-        dump($listProvidersWithImg);
+        $listProvidersPave = $rep_img->getListImages(5, Image::TYPE_LOGO_PROVIDER, null);
+        $ListImgSliderCurrentProvider = $rep_img->getListImages(0, Image::TYPE_IMG_PROVIDER, null);
         $listCategories = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService')->findAll();
 
         $CurrentImgProvider = $rep_img->findBy(array('user' => $provider->getId()));
@@ -60,31 +52,30 @@ class ProviderController extends FrontEndController
             throw $this->createNotFoundException("Pas de categorie trouvée !");
         }
 
-        if ($listProvidersWithLogo == null) {
+        if ($listProvidersPave == null) {
             throw $this->createNotFoundException("Pas de logo prestataire trouvé !");
         }
 
-        if ($listProvidersWithImg == null) {
+        if ($ListImgSliderCurrentProvider == null) {
             throw $this->createNotFoundException("Pas d'image prestataire trouvée !");
         }
-
 
         if($CurrentProvider == null){
             throw $this->createNotFoundException("Pas de fournisseur trouvé!!");
         }
 
         return $this->render('WellnessCoreBundle:FrontEnd/Provider:show.html.twig', array(
-            'listProvidersWithLogo' => $listProvidersWithLogo,
-            'listProvidersWithImg' =>$listProvidersWithImg,
-            'listCategories' => $listCategories,
-            'listImagesSlider' => $listImagesSlider,
+            'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
+            'listImagesSlider' => $this->getListImageSlider(),
+
+            'listProvidersPave' => $listProvidersPave,
+            'ListImgSliderCurrentProvider' =>$ListImgSliderCurrentProvider,
+
             'CurrentProvider' => $CurrentProvider,
             'CurrentImgProvider' => $CurrentImgProvider,
-
             'CurrentTrainingProvider' => $CurrentTrainingProvider,
             'CurrentPromotionProvider' => $CurrentPromotionProvider,
             'CurrentCommentProvider' => $CurrentCommentProvider,
-            'monthService' => null
         ));
     }
 

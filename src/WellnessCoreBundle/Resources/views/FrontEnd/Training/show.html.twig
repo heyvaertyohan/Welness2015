@@ -2,7 +2,7 @@
 {% block head %}
     {{ parent() }}
 {% endblock %}
-{% block title %}{{ parent() }} {{ CurrentLogoCategory.name }} {% endblock %}
+{% block title %}{{ parent() }} {{ CurrentTraining.name }} {% endblock %}
 
 {% block header %}
 
@@ -17,18 +17,12 @@
 {% block maincontainer %}
 
 
-        <h3 class="page-title">{{ CurrentLogoCategory.CategoryService.name }}</h3>
+        <h3 class="page-title">{{ CurrentTraining.name }}</h3>
 
-        {% if CurrentLogoCategory %}
-        <div class="user-photo col-sm-2">
-            <img src="{{ asset(CurrentLogoCategory.path) }}"
-                 alt="{{ 'Photo categorie'|trans }} {{ CurrentLogoCategory.CategoryService.name }}">
-        </div>
-        {% endif %}
         <div class="row">
 
             <div class="col-md-10 description">
-                <p>{{ CurrentLogoCategory.CategoryService.description|raw }}</p>
+                <p>{{ CurrentTraining.description|raw }}</p>
             </div>
 
         </div>
@@ -41,36 +35,30 @@
 
 <div id="title-index" class="row">
     <div class="line"></div>
-    {% if CurrentLogoCategory.CategoryService.provider|length == 0 %}
+    {% if CurrentTraining.provider|length == 0 %}
     <div class="col-provider">
         <h1>{{ 'Pas de prestataire lié'|trans }}</h1>
     </div>
 
     {% else %}
     <div class="col-provider">
-        <h1>{{ 'Prestataires liés'|trans }}</h1>
+        <h1>{{ 'Prestataire lié'|trans }}</h1>
     </div>
     {% endif %}
 </div>
 
-{% if CurrentLogoCategory.CategoryService.provider|length != 0 %}
+{% if CurrentTraining.provider|length != 0 %}
     <div class="row">
-
-    {% set counter = 0 %}
-
-    {% for provider in CurrentLogoCategory.CategoryService.provider %}
-            {% if counter < 5 %}
-
                 <div class="col-md-2-5">
                 <div class="card-simple">
                     <div class="card-simple-background">
                         <div class="card-content">
                             <h2>
-                                <a href="{{ path('public_provider_show', {slug:provider.slug}) }}">{{ provider.name }}</a>
+                                <a href="{{ path('public_provider_show', {slug:CurrentTraining.provider.slug}) }}">{{ CurrentTraining.provider.name }}</a>
                             </h2>
 
                             <div class="card-simple-actions">
-                                <a href="{{ path('public_provider_show', {slug:provider.slug}) }}"
+                                <a href="{{ path('public_provider_show', {slug:CurrentTraining.provider.slug}) }}"
                                    class="fa fa-search"></a>
                             </div>
                             <!-- /.card-simple-actions -->
@@ -85,10 +73,7 @@
                 </div>
                 <!-- /.card-simple -->
             </div>
-                <!-- /.col-* -->
-            {% endif %}
-            {% set counter = counter + 1 %}
-        {% endfor %}
+            <!-- /.col-* -->
 
     {% endif %}
     </div>

@@ -3,6 +3,7 @@
 namespace WellnessCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Training
@@ -34,9 +35,17 @@ class Training
     private $name;
 
     /**
+     *
+     * @var type String
+     * @Gedmo\Slug(fields={"id","name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    protected $slug;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
@@ -307,5 +316,29 @@ class Training
     public function getProvider()
     {
         return $this->provider;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Training
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

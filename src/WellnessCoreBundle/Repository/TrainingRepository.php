@@ -10,10 +10,10 @@ namespace WellnessCoreBundle\Repository;
  */
 class TrainingRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getListTraining($maxResult)
+    public function getLastListTrainings($maxResult)
     {
-        $qb = $this->createQueryBuilder('p');
-        $qb->orderBy('p.id', 'DESC');
+        $qb = $this->createQueryBuilder('t');
+        $qb->orderBy('t.id', 'DESC');
 
         if($maxResult!=0){
             $qb->setMaxResults($maxResult);

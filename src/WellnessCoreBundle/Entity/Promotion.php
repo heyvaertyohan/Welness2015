@@ -3,6 +3,7 @@
 namespace WellnessCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Promotion
@@ -37,6 +38,14 @@ class Promotion
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     *
+     * @var type String
+     * @Gedmo\Slug(fields={"id","name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    protected $slug;
 
     /**
      * @var string
@@ -305,5 +314,29 @@ class Promotion
     public function getCategoryService()
     {
         return $this->categoryservice;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Promotion
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

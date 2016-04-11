@@ -7,48 +7,41 @@ use WellnessCoreBundle\Entity\Image;
 
 class FrontEndController extends Controller
 {
-    public function indexAction()
-    {
-        $repo_service = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService');
-        $listCategories = $repo_service->findAll();
-        $monthService = $repo_service->findOneBy(
-            array("forward" => "1")
-        );
+    private $listImagesSlider;
+    private $listCategoryWithLogo;
+    private $listProvidersWithLogo;
 
-        $repo_img = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:Image');
-        $listImagesSlider = $repo_img->findBy(array('type' => 'mainSlider'));
-        $imgMonthService = $repo_img->findOneBy(array('categoryService' =>$monthService->getId()));
-        $listProvidersWithLogo = $repo_img->getListImages(4, Image::TYPE_LOGO_PROVIDER, null);
-        $listLastNews = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:News')->getListNews(2);
+    protected function getListImageSlider(){
+        return $this->listImagesSlider;
+    }
 
-        if ($listImagesSlider == null) {
+    protected function getListCategoryWithLogo(){
+        return $this->listCategoryWithLogo;
+    }
+
+    protected function getListProviderWithLogo(){
+        return $this->listProvidersWithLogo;
+    }
+
+    protected function initFrontEnd(){
+
+        $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
+        $this->listCategoryWithLogo = $rep_img->getListImages(5, Image::TYPE_LOGO_SERVICE, null);
+
+        $this->listImagesSlider = $rep_img->findBy(array('type' => 'mainSlider'));
+        $this->listProvidersWithLogo = $rep_img->getListImages(4, Image::TYPE_LOGO_PROVIDER, null);
+
+        if ($this->listImagesSlider == null) {
             throw $this->createNotFoundException("Pas d'image trouvée !");
         }
 
-        if ($listCategories == null) {
+        if ($this->listCategoryWithLogo == null) {
             throw $this->createNotFoundException("Pas de categorie trouvée !");
         }
 
-        if ($monthService == null) {
-            throw $this->createNotFoundException("Pas de service du mois trouvé !");
-        }
-
-        if ($listProvidersWithLogo == null) {
+        if ($this->listProvidersWithLogo == null) {
             throw $this->createNotFoundException("Pas d'image prestataire trouvée !");
         }
-
-        if ($listLastNews == null){
-            throw $this->createNotFoundException("Pas de news trouvée!");
-        }
-
-        return $this->render('WellnessCoreBundle:FrontEnd:index.html.twig', array(
-            'listProvidersWithLogo' => $listProvidersWithLogo,
-            'listCategories' => $listCategories,
-            'listImagesSlider' => $listImagesSlider,
-            'monthService' => $monthService,
-            'imgMonthService' => $imgMonthService,
-            'listLastNews' => $listLastNews
-        ));
     }
 
     public function aboutAction()

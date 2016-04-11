@@ -1,6 +1,6 @@
 public_provider_list:
     path:     /provider/
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/Provider:list }
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Provider:index }
 
 public_provider_show:
     path:     /provider/show/{slug}
@@ -13,7 +13,7 @@ public_provider_search:
 
 public_category_list:
     path:     /category
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/Category:list }
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Category:index }
 
 public_category_show:
     path:     /category/show/{slug}
@@ -25,28 +25,36 @@ public_category_search:
 
 public_news_list:
     path:     /news/
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/News:list }
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/News:index }
 
 
 public_homepage:
     path:     /
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/FrontEnd:index }
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Home:index }
 
 public_contact:
     path:     /contact
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/FrontEnd:contact }
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Home:contact }
 
 public_about:
     path:     /about
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/FrontEnd:about }
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Home:about }
 
 public_training:
     path:     /training
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/Training:list }
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Training:index }
+
+public_training_show:
+    path:     /training/show/{slug}
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Training:show }
 
 public_promo:
-    path:     /promo
-    defaults: { _controller: WellnessCoreBundle:FrontEnd/Promo:list }
+    path:     /promotion
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Promo:index }
+
+public_promo_show:
+    path:     /promotion/show/{slug}
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/Promo:show }
 
 
 public_translationpage:

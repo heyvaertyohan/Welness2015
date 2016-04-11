@@ -3,33 +3,42 @@
 namespace WellnessCoreBundle\Controller\FrontEnd;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use WellnessCoreBundle\Entity\Promotion;
 
-class PromoController extends Controller
+class PromoController extends FrontEndController
 {
-    public function listAction()
+    public function indexAction()
     {
-        $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
-        $listImagesSlider = $rep_img->findBy(array('type' => 'mainSlider'));
+        parent::initFrontEnd();
+
         $listPromotions = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:Promotion')->findAll();
-
-        $listCategories = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService')->findAll();
-
-        if ($listImagesSlider == null) {
-            throw $this->createNotFoundException("Pas d'image trouvée !");
-        }
-
-        if ($listCategories == null) {
-            throw $this->createNotFoundException("Pas de categorie trouvée !");
-        }
 
         if ($listPromotions == null) {
             throw $this->createNotFoundException("Pas de stage trouvé !");
         }
 
-        return $this->render('WellnessCoreBundle:FrontEnd:promo.html.twig', array(
-            'listPromotions' => $listPromotions,
-            'listCategories' => $listCategories,
-            'listImagesSlider' => $listImagesSlider
+        return $this->render('WellnessCoreBundle:FrontEnd/Promotion:index.html.twig', array(
+            'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
+            'listImagesSlider' => $this->getListImageSlider(),
+            'listPromotions' => $listPromotions
+
+        ));
+    }
+
+    public function showAction(Promotion $promotion)
+    {
+        parent::initFrontEnd();
+
+        $CurrentPromotion= $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:Promotion')->findOneBy(array('id' => $promotion->getId()));
+
+        if ($CurrentPromotion == null) {
+            throw $this->createNotFoundException("Pas de promotion trouvée !");
+        }
+
+        return $this->render('WellnessCoreBundle:FrontEnd/Promotion:show.html.twig', array(
+            'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
+            'listImagesSlider' => $this->getListImageSlider(),
+            'CurrentPromotion' => $CurrentPromotion
         ));
     }
 }

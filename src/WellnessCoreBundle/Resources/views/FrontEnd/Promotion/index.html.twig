@@ -30,9 +30,10 @@
                             <table class="table table-striped table-bordered" id="table_responsive">
                                 <thead>
                                 <tr>
+                                    <th>{{ 'Id'|trans }}</th>
+                                    <th>{{ 'Nom'|trans }}</th>
                                     <th>{{ 'Début'|trans }}</th>
                                     <th>{{ 'Fin'|trans }}</th>
-                                    <th>{{ 'Nom'|trans }}</th>
                                     <th>{{ 'Description'|trans }}</th>
                                     <th>{{ 'Pdf'|trans }}</th>
                                     <th>{{ 'Prestataire'|trans }}</th>
@@ -43,9 +44,12 @@
 
                                 {% for promotion in listPromotions %}
                                     <tr>
+                                        <td>{{ promotion.id }}</td>
+                                        <td>
+                                            <a href="{{ path('public_promo_show', {slug:promotion.slug}) }}">{{ promotion.name }}</a>
+                                        </td>
                                         <td>{{ promotion.begin|date('d-m-y') }}</td>
                                         <td>{{ promotion.end|date('d-m-y') }}</td>
-                                        <td>{{ promotion.name }}</td>
                                         <td>{{ promotion.description }}</td>
                                         <td>{{ promotion.pdfdocument }}</td>
                                         <td>{{ promotion.provider.name }}</td>

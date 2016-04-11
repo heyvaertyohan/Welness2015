@@ -34,12 +34,12 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('news') }}">
+        <a href="{{ path('admin_news') }}">
             <i class="icon-backward"></i> {{ 'Retour à la liste'|trans }}
         </a>
     </li>
     <li>
-        <a href="{{ path('news_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('admin_news_edit', { 'id': entity.id }) }}">
             <i class="icon-edit"> </i> {{ 'Editer'|trans }}
         </a>
     </li>

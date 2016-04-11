@@ -221,6 +221,24 @@ body {
     padding-bottom: 20px;
 }
 
+.event-latest{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 10px;
+}
+
+.event-latest h2{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #FFFFFF;
+    background-color: #009f8b;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: lighter;
+}
+
+.event-latest h2:hover{
+    font-weight: normal ;
+}
 
 
 
