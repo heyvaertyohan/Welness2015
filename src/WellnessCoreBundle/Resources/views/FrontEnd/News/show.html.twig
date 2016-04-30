@@ -24,7 +24,7 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>{{ 'Titre'|trans }}</th>
                 <td>{{ entity.title }}</td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>Createat</th>
+                <th>{{ 'Date de création'|trans }}</th>
                 <td>{{ entity.createat|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>

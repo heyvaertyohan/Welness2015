@@ -7,7 +7,7 @@ admin_categoryservice:
     defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:index" }
 
 admin_categoryservice_show:
-    path:     /categoryservice/{id}/show
+    path:     /categoryservice/show/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:show" }
 
 admin_categoryservice_new:
@@ -20,16 +20,16 @@ admin_categoryservice_create:
     methods:  POST
 
 admin_categoryservice_edit:
-    path:     /categoryservice/{id}/edit
+    path:     /categoryservice/edit/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:edit" }
 
 admin_categoryservice_update:
-    path:     /categoryservice/{id}/update
+    path:     /categoryservice/update/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:update" }
     methods:  [POST, PUT]
 
 admin_categoryservice_delete:
-    path:     /categoryservice/{id}/delete
+    path:     /categoryservice/delete/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/CategoryService:delete" }
     methods:  [POST, DELETE]
 
@@ -39,7 +39,7 @@ admin_image:
     defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:index" }
 
 admin_image_show:
-    path:     /image/{id}/show
+    path:     /image/show/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:show" }
 
 admin_image_new:
@@ -52,16 +52,16 @@ admin_image_create:
     methods:  POST
 
 admin_image_edit:
-    path:     /image/{id}/edit
+    path:     /image/edit/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:edit" }
 
 admin_image_update:
-    path:     /image/{id}/update
+    path:     /image/update/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:update" }
     methods:  [POST, PUT]
 
 admin_image_delete:
-    path:     /image/{id}/delete
+    path:     /image/delete/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/Image:delete" }
     methods:  [POST, DELETE]
 
@@ -71,7 +71,7 @@ admin_news:
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:index" }
 
 admin_news_show:
-    path:     /news/{id}/show
+    path:     /news/show/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:show" }
 
 admin_news_new:
@@ -84,16 +84,16 @@ admin_news_create:
     methods:  POST
 
 admin_news_edit:
-    path:     /news/{id}/edit
+    path:     /news/edit/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:edit" }
 
 admin_news_update:
-    path:     /news/{id}/update
+    path:     /news/update/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:update" }
     methods:  [POST, PUT]
 
 admin_news_delete:
-    path:     /news/{id}/delete
+    path:     /news/delete/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/News:delete" }
     methods:  [POST, DELETE]
 
@@ -103,7 +103,7 @@ admin_user:
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:index" }
 
 admin_user_show:
-    path:     /user/{id}/show
+    path:     /user/show/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:show" }
 
 admin_user_new:
@@ -116,16 +116,16 @@ admin_user_create:
     methods:  POST
 
 admin_user_edit:
-    path:     /user/{id}/edit
+    path:     /user/edit/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:edit" }
 
 admin_user_update:
-    path:     /user/{id}/update
+    path:     /user/update/{slug}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:update" }
     methods:  [POST, PUT]
 
 admin_user_delete:
-    path:     /user/{id}/delete
+    path:     /user/delete/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:delete" }
     methods:  [POST, DELETE]
 

@@ -29,6 +29,7 @@ class Promotion
 
     /**
      * @ORM\ManyToOne(targetEntity="CategoryService")
+     * @ORM\JoinColumn(name="categoryservice", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $categoryservice;
 

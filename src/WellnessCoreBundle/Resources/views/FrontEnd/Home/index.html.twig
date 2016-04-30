@@ -17,9 +17,9 @@
         <div class="col-sm-5" >
             <h1>{{ 'Nos derniers stages'|trans }}</h1>
             <div class="events">
-                {% for stages in listLastStages %}
+                {% for training in listLastTraining %}
                     <div class="event-latest">
-                                <a href="{{ path('public_news_list') }}"><h2>{{ stages.name  }} {{ stages.provider.name  }}</h2><i class="fa"></i></a>
+                        <a href="{{ path('public_training_show', {slug:training.slug}) }}"><h2>{{ training.name  }} {{ training.provider.name  }}</h2><i class="fa"></i></a>
                         <!-- /.event-content -->
                     </div>
                     <!-- /.event -->
@@ -31,7 +31,8 @@
             <div class="events">
                 {% for promotion in listLastPromotions %}
                     <div class="event-latest">
-                        <a href="{{ path('public_news_list') }}"><h2>{{ promotion.name  }} {{ promotion.provider.name  }}</h2><i class="fa"></i></a>
+
+                        <a href="{{ path('public_promo_show', {slug:promotion.slug}) }}"><h2>{{ promotion.name  }} {{ promotion.provider.name  }}</h2><i class="fa"></i></a>
                         <!-- /.event-content -->
                     </div>
                     <!-- /.event -->

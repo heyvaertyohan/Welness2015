@@ -14,11 +14,6 @@ use WellnessCoreBundle\Form\CategoryServiceType;
  */
 class CategoryServiceController extends Controller
 {
-
-    /**
-     * Lists all CategoryService entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -29,10 +24,7 @@ class CategoryServiceController extends Controller
             'entities' => $entities,
         ));
     }
-    /**
-     * Creates a new CategoryService entity.
-     *
-     */
+
     public function createAction(Request $request)
     {
         $entity = new CategoryService();
@@ -44,7 +36,7 @@ class CategoryServiceController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_categoryservice_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_categoryservice_show', array('slug' => $entity->getSlug())));
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/CategoryService:new.html.twig', array(
@@ -53,13 +45,6 @@ class CategoryServiceController extends Controller
         ));
     }
 
-    /**
-     * Creates a form to create a CategoryService entity.
-     *
-     * @param CategoryService $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createCreateForm(CategoryService $entity)
     {
         $form = $this->createForm(new CategoryServiceType(), $entity, array(
@@ -72,10 +57,6 @@ class CategoryServiceController extends Controller
         return $form;
     }
 
-    /**
-     * Displays a form to create a new CategoryService entity.
-     *
-     */
     public function newAction()
     {
         $entity = new CategoryService();
@@ -87,21 +68,17 @@ class CategoryServiceController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a CategoryService entity.
-     *
-     */
-    public function showAction($id)
+    public function showAction(CategoryService $categoryService)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($categoryService->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find CategoryService entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($categoryService->getId());
 
         return $this->render('WellnessCoreBundle:BackEnd/CategoryService:show.html.twig', array(
             'entity'      => $entity,
@@ -109,22 +86,17 @@ class CategoryServiceController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing CategoryService entity.
-     *
-     */
-    public function editAction($id)
+    public function editAction(CategoryService $categoryService)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($id);
-
+        $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($categoryService->getId());
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find CategoryService entity.');
         }
-
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($categoryService->getId());
+
+
 
         return $this->render('WellnessCoreBundle:BackEnd/CategoryService:edit.html.twig', array(
             'entity'      => $entity,
@@ -133,46 +105,37 @@ class CategoryServiceController extends Controller
         ));
     }
 
-    /**
-    * Creates a form to edit a CategoryService entity.
-    *
-    * @param CategoryService $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(CategoryService $entity)
     {
         $form = $this->createForm(new CategoryServiceType(), $entity, array(
-            'action' => $this->generateUrl('admin_categoryservice_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_categoryservice_update', array('slug' => $entity->getSlug())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $translated = $this->get('translator')->trans('Mise à jour');
+        $form->add('submit', 'submit', array('label' => $translated));
 
         return $form;
     }
-    /**
-     * Edits an existing CategoryService entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
+
+    public function updateAction(Request $request, CategoryService $categoryService)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($categoryService->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find CategoryService entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($categoryService->getId());
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_categoryservice_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_categoryservice'));
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/CategoryService:edit.html.twig', array(
@@ -181,18 +144,15 @@ class CategoryServiceController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    /**
-     * Deletes a CategoryService entity.
-     *
-     */
-    public function deleteAction(Request $request, $id)
+
+    public function deleteAction(Request $request, CategoryService $categoryService)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($categoryService->getId());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($id);
+            $entity = $em->getRepository('WellnessCoreBundle:CategoryService')->find($categoryService->getId());
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find CategoryService entity.');
@@ -205,19 +165,13 @@ class CategoryServiceController extends Controller
         return $this->redirect($this->generateUrl('admin_categoryservice'));
     }
 
-    /**
-     * Creates a form to delete a CategoryService entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm($id)
     {
+        $translated = $this->get('translator')->trans('Suppression');
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_categoryservice_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => $translated))
             ->getForm()
         ;
     }

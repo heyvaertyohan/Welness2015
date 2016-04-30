@@ -28,7 +28,7 @@ class UserListener implements EventSubscriberInterface{
     
     public function onUserRegistrationInitialize(UserEvent $event){
         $user = $event->getUser();
-        $type = $event->getRequest()->query->get('type', 'membre');
+        $type = $event->getRequest()->query->get('type', 'surfer');
 
         var_dump($type);
         

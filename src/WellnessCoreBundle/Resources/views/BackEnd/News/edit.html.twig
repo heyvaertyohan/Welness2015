@@ -1,23 +1,25 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
 {% block breadcrumb %}
-    <li><a href="#">{{ entity.id }}</a></li>
+    <li><a href="{{ path('admin_news') }}">{{ 'Liste news'|trans }}</a></li>
+    <li>{{ entity.title }}</li>
 {% endblock %}
 
 {% block titlepadding %}
-    <h2>{{ 'Modifier une news'|trans }}</h2>
+    <h2>{{ 'Modifier news'|trans }} {{ entity.title }}</h2>
 {% endblock %}
 
 {% block contentadmin %}
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_news') }}">
-            <i class="icon-backward"></i> {{ 'Retour à la liste'|trans }}
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>{{ form(delete_form) }}</li>
+        <li>
+            <a href="{{ path('admin_news') }}">
+                <i class="icon-backward"></i> {{ 'Retour à la liste'|trans }}
+            </a>
+        </li>
+
+    </ul>
 {% endblock %}

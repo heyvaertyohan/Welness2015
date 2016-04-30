@@ -1,7 +1,8 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
 {% block breadcrumb %}
-    <li><a href="#">{{ 'Liste des services'|trans }}</a>/ <a href="#">{{ entity.slug }}</a><</li>
+    <li><a href="{{ path('admin_categoryservice') }}">{{ 'Liste services'|trans }}</a></li>
+    <li>{{ 'Ajout'|trans}}</li>
 {% endblock %}
 
 {% block titlepadding %}

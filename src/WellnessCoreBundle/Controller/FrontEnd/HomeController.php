@@ -22,7 +22,7 @@ class HomeController extends FrontEndController
         $imgMonthService = $rep_img->findOneBy(array('categoryService' =>$monthService->getId()));
 
         $listLastNews = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:News')->getListNews(2);
-        $listLastStages = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:Training')->getLastListTrainings(4);
+        $listLastTraining = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:Training')->getLastListTrainings(4);
         $listLastPromotions = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:Promotion')->getLastListPromotions(4);
 
         if ($monthService == null) {
@@ -44,7 +44,7 @@ class HomeController extends FrontEndController
             'imgMonthService' => $imgMonthService,
             'monthService' => $monthService,
             'listLastNews' => $listLastNews,
-            'listLastStages' => $listLastStages,
+            'listLastTraining' => $listLastTraining,
             'listLastPromotions' => $listLastPromotions
         ));
     }

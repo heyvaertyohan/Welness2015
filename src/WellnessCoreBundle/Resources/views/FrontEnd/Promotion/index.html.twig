@@ -34,8 +34,6 @@
                                     <th>{{ 'Nom'|trans }}</th>
                                     <th>{{ 'Début'|trans }}</th>
                                     <th>{{ 'Fin'|trans }}</th>
-                                    <th>{{ 'Description'|trans }}</th>
-                                    <th>{{ 'Pdf'|trans }}</th>
                                     <th>{{ 'Prestataire'|trans }}</th>
                                     <th>{{ 'Service'|trans }}</th>
                                 </tr>
@@ -50,8 +48,6 @@
                                         </td>
                                         <td>{{ promotion.begin|date('d-m-y') }}</td>
                                         <td>{{ promotion.end|date('d-m-y') }}</td>
-                                        <td>{{ promotion.description }}</td>
-                                        <td>{{ promotion.pdfdocument }}</td>
                                         <td>{{ promotion.provider.name }}</td>
                                         <td>{{ promotion.categoryservice.name }}</td>
 

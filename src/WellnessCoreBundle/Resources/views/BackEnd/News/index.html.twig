@@ -1,7 +1,7 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
 {% block breadcrumb %}
-    <li><a href="#">{{ 'Liste des news'|trans }}</a></li>
+    <li>{{ 'Liste des news'|trans }}</li>
 {% endblock %}
 
 {% block titlepadding %}
@@ -14,22 +14,20 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Createat</th>
+                <th>{{ 'Date de création'|trans }}</th>
+                <th>{{ 'Titre'|trans }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('admin_news_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.title }}</td>
-                <td>{{ entity.description }}</td>
+                <td>{{ entity.id }}</td>
                 <td>{% if entity.createat %}{{ entity.createat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.title }}</td>
                 <td>
-                    <a href="{{ path('admin_news_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
-                    <a href="{{ path('admin_news_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                    <a href="{{ path('admin_news_show', { 'slug': entity.slug }) }}"><i class="icon-book"></i></a>
+                    <a href="{{ path('admin_news_edit', { 'slug': entity.slug }) }}"><i class="icon-edit"></i></a>
                 </td>
             </tr>
         {% endfor %}

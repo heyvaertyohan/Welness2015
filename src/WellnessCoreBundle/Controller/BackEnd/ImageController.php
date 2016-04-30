@@ -8,17 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use WellnessCoreBundle\Entity\Image;
 use WellnessCoreBundle\Form\ImageType;
 
-/**
- * Image controller.
- *
- */
 class ImageController extends Controller
 {
-
-    /**
-     * Lists all Image entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -29,10 +20,7 @@ class ImageController extends Controller
             'entities' => $entities,
         ));
     }
-    /**
-     * Creates a new Image entity.
-     *
-     */
+
     public function createAction(Request $request)
     {
         $entity = new Image();
@@ -44,7 +32,7 @@ class ImageController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_image_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_image_show', array('slug' => $entity->getSlug())));
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/Image:new.html.twig', array(
@@ -53,13 +41,6 @@ class ImageController extends Controller
         ));
     }
 
-    /**
-     * Creates a form to create a Image entity.
-     *
-     * @param Image $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createCreateForm(Image $entity)
     {
         $form = $this->createForm(new ImageType(), $entity, array(
@@ -72,10 +53,6 @@ class ImageController extends Controller
         return $form;
     }
 
-    /**
-     * Displays a form to create a new Image entity.
-     *
-     */
     public function newAction()
     {
         $entity = new Image();
@@ -87,21 +64,17 @@ class ImageController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Image entity.
-     *
-     */
-    public function showAction($id)
+    public function showAction(Image $image)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:Image')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:Image')->find($image->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Image entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($image->getId());
 
         return $this->render('WellnessCoreBundle:BackEnd/Image:show.html.twig', array(
             'entity'      => $entity,
@@ -109,22 +82,18 @@ class ImageController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing Image entity.
-     *
-     */
-    public function editAction($id)
+    public function editAction(Image $image)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:Image')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:Image')->find($image->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Image entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($image->getId());
 
         return $this->render('WellnessCoreBundle:BackEnd/Image:edit.html.twig', array(
             'entity'      => $entity,
@@ -133,46 +102,37 @@ class ImageController extends Controller
         ));
     }
 
-    /**
-    * Creates a form to edit a Image entity.
-    *
-    * @param Image $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(Image $entity)
     {
         $form = $this->createForm(new ImageType(), $entity, array(
-            'action' => $this->generateUrl('admin_image_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_image_update', array('slug' => $entity->getSlug())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $translated = $this->get('translator')->trans('Mise à jour');
+        $form->add('submit', 'submit', array('label' => $translated));
 
         return $form;
     }
-    /**
-     * Edits an existing Image entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
+
+    public function updateAction(Request $request, Image $image)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:Image')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:Image')->find($image->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Image entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($image->getId());
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_image_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_image'));
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/Image:edit.html.twig', array(
@@ -214,10 +174,11 @@ class ImageController extends Controller
      */
     private function createDeleteForm($id)
     {
+        $translated = $this->get('translator')->trans('Suppression');
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_image_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => $translated))
             ->getForm()
         ;
     }

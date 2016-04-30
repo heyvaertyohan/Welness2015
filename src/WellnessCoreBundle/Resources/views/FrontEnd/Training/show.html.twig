@@ -16,16 +16,42 @@
 
 {% block maincontainer %}
 
-
         <h3 class="page-title">{{ CurrentTraining.name }}</h3>
 
-        <div class="row">
+    <div class="row">
+        <div class="col-md-4 card-row-properties">
+            <dl>
+                <dd>{{ 'Date de début:'|trans }}</dd><dt>{{ CurrentTraining.begin|date('Y-m-d') }}</dt>
+                <dd>{{ 'Date de fin:'|trans }}</dd><dt>{{ CurrentTraining.end|date('Y-m-d') }}</dt>
+            </dl>
+        </div><!-- /.card-row-properties -->
 
-            <div class="col-md-10 description">
-                <p>{{ CurrentTraining.description|raw }}</p>
-            </div>
+        <div class="col-md-4 card-row-properties">
+            <dl>
+                <dd>{{ "Date d'affichage: "|trans }}</dd><dt>{{ CurrentTraining.displayfrom|date('Y-m-d') }}</dt>
+                <dd>{{ "Affiché jusqu'au: "|trans }}</dd><dt>{{ CurrentTraining.displayto|date('Y-m-d') }}</dt>
+            </dl>
+        </div><!-- /.card-row-properties -->
 
+        <div class="col-md-4 card-row-properties">
+        <dl>
+            <dd>{{ "Tarif :"|trans }}</dd><dt>{{ CurrentTraining.rate }}</dt>
+        </dl>
         </div>
+    </div>
+
+    <div class="row">
+        <h2>{{ 'Description:'|trans }}</h2>
+        <div class="col-md-10 description">
+            <p>{{ CurrentTraining.description|raw }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <h2>{{ 'Informations:'|trans }}</h2>
+        <div class="col-md-10 description">
+            <p>{{ CurrentTraining.info|raw }}</p>
+        </div>
+    </div><!-- /.card-row-properties -->
 
 {% endblock %}
 

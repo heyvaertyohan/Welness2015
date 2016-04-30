@@ -16,16 +16,43 @@
 
 {% block maincontainer %}
 
+    <h3 class="page-title">{{ CurrentPromotion.name }}</h3>
 
-        <h3 class="page-title">{{ CurrentPromotion.name }}</h3>
+    <div class="row">
+        <div class="col-md-4 card-row-properties">
+            <dl>
+                <dd>{{ 'Date de début:'|trans }}</dd><dt>{{ CurrentPromotion.begin|date('Y-m-d') }}</dt>
+                <dd>{{ 'Date de fin:'|trans }}</dd><dt>{{ CurrentPromotion.end|date('Y-m-d') }}</dt>
+            </dl>
+        </div><!-- /.card-row-properties -->
 
-        <div class="row">
+        <div class="col-md-4 card-row-properties">
+            <dl>
+                <dd>{{ "Date d'affichage: "|trans }}</dd><dt>{{ CurrentPromotion.displayfrom|date('Y-m-d') }}</dt>
+                <dd>{{ "Affiché jusqu'au: "|trans }}</dd><dt>{{ CurrentPromotion.displayto|date('Y-m-d') }}</dt>
+            </dl>
+        </div><!-- /.card-row-properties -->
 
-            <div class="col-md-10 description">
-                <p>{{ CurrentPromotion.description|raw }}</p>
-            </div>
-
+        <div class="col-md-4 card-row-properties">
+        <dl>
+            <dd>{{ "Document pdf :"|trans }}</dd><dt>{{ CurrentPromotion.pDfDocument }}</dt>
+        </dl>
         </div>
+    </div>
+
+    <div class="row">
+        <h2>{{ 'Description:'|trans }}</h2>
+        <div class="col-md-10 description">
+            <p>{{ CurrentPromotion.description|raw }}</p>
+        </div>
+    </div>
+    {#<div class="row">
+        <div class="col-md-4 card-row-properties">
+            <dl>
+                <dd>{{ "Document pdf :"|trans }}</dd><dt>{{ CurrentPromotion.pDfDocument }}</dt>
+            </dl>
+        </div>
+   </div>#}
 
 {% endblock %}
 

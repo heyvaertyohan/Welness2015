@@ -15,23 +15,37 @@ class CategoryServiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('name', 'text', array(
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Nom',
+                'translation_domain' => 'messages'
+                ))
             ->add('description', 'textarea', array('attr' => array('class' => 'form-control')))
-            ->add('forward', 'checkbox', array('required' => false))
-            ->add('validated','checkbox', array('required' => false))
-            ->add('image', 'entity', array(
+            ->add('forward', 'checkbox',
+                    array(
+                        'required' => false,
+                        'label' => 'Mis en avant',
+                        'translation_domain' => 'messages'
+                    )
+                )
+            ->add('validated','checkbox', array(
+                'required' => false,
+                'label' => 'Validé',
+                'translation_domain' => 'messages'
+            ))
+            /*->add('image', 'entity', array(
                 'class' => 'WellnessCoreBundle\Entity\Image',
                 'required' => false, //permet d'avoir le premier champ à vide
                 'expanded' => true,
                 'multiple' => true,
                 'label' => 'Image',
-                'property' => 'path'))
+                'property' => 'path'))*/
             /*->add('image', 'entity', array(
                 'required' => false, //permet d'avoir le premier champ à vide
                 'label' => 'Image',
                 'class' => 'WellnessCoreBundle\Entity\Image',
                 'property' => 'name'))*/
-            ->add('Provider')
+            /*->add('Provider')*/
         ;
 
         /*->add('image', 'entity', array(
@@ -42,7 +56,7 @@ class CategoryServiceType extends AbstractType
         'label' => 'Image',
         'property' => 'path'))*/
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

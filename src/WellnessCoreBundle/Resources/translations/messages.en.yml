@@ -68,7 +68,7 @@ Connexion: Connection
 Bienvenue: Welcome
 'Liste des utilisateurs': 'Users list'
 Id: Id
-'Nom utilisateur': 'User name'
+'Nom utilisateur': 'Username'
 Email: Email
 Type: Type
 Utilisateur: User
@@ -114,3 +114,27 @@ recherche: search
 'Derniers prestataires': 'Lastest providers'
 'Service du mois': 'Service month'
 news: news
+'Adresse email': Email
+'Type utilisateur': 'User type'
+Actions: Actions
+'Nos derniers stages': 'Last training'
+'Nos dernières promotions': 'Last promotion'
+'Date de début:': 'Begin date:'
+'Date de fin:': 'End date:'
+'Date d''affichage:': 'Display date'
+'Affiché jusqu''au:': 'Display to'
+'Document pdf :': 'Pdf document:'
+'Description:': 'Description:'
+'Prestataire lié': 'Provider link:'
+'Tarif :': 'Rate :'
+'Confirmation inscription': 'Inscription confirmation'
+'Nombre d''essaie': 'Trying number'
+Banni: Bammed
+'Date de création': 'Create at'
+Chemin: Path
+Position: Position
+'Liste services': 'Service list'
+Ajout: Add
+'Liste image': 'Image list'
+'Mise à jour' : 'Update'
+'Suppression' : 'Delete'

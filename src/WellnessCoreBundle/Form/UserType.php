@@ -17,8 +17,14 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('telnumber')
+            ->add('username', 'text', array(
+                'label' => 'Nom utilisateur',
+                'translation_domain' => 'messages'
+            ))
+            ->add('telnumber', 'text', array(
+                'label' => 'Numéro téléphone',
+                'translation_domain' => 'messages'
+            ))
             ->add('usertype', 'choice', array(
                 'required' => false, //permet d'avoir le premier champ à vide
                 'choices'  => array(
@@ -26,17 +32,36 @@ class UserType extends AbstractType
                     User::TYPE_PROVIDER => 'provider',
                     User::TYPE_ADMIN => 'admin'
                 ),
+                'translation_domain' => 'messages',
+                'label' => 'Type utilisateur'
+            ))
+            ->add('email', 'text', array(
+                'label' => 'Email',
                 'translation_domain' => 'messages'
             ))
-            ->add('email')
-            ->add('password', 'password')
-            ->add('tryingnumber')
-            ->add('bamed')
-            ->add('addressstreet')
-            ->add('addressnumber')
+            ->add('password', 'password', array(
+                'label' => 'Mot de passe',
+                'translation_domain' => 'messages'
+            ))
+            ->add('tryingnumber', 'integer', array(
+                'label' => "Nombre d'essais",
+                'translation_domain' => 'messages'
+            ))
+            ->add('bamed', 'checkbox', array(
+                'label' => 'Banni'
+            ))
+            ->add('addressstreet', 'text', array(
+                'label' => 'Rue',
+                'translation_domain' => 'messages'
+            ))
+            ->add('addressnumber', 'integer', array(
+                'label' => 'Numéro',
+                'translation_domain' => 'messages'
+            ))
             ->add('postcode', 'entity', array(
                 'required' => false, //permet d'avoir le premier champ à vide
-                'translation_domain' => 'Code postal',
+                'label' => "Code postal",
+                'translation_domain' => 'messages',
                 'class' => 'WellnessCoreBundle\Entity\Postcode',
                 'property' => 'postcode',
                 'query_builder' => function(EntityRepository $er) {
@@ -45,7 +70,8 @@ class UserType extends AbstractType
             ))
             ->add('town', 'entity', array(
                 'required' => false, //permet d'avoir le premier champ à vide
-                'translation_domain' => 'Commune',
+                'translation_domain' => 'messages',
+                'label' => 'Commune',
                 'class' => 'WellnessCoreBundle\Entity\Town',
                 'property' => 'town',
                 'query_builder' => function(EntityRepository $er) {
@@ -54,7 +80,8 @@ class UserType extends AbstractType
             ))
             ->add('locality', 'entity', array(
                 'required' => false, //permet d'avoir le premier champ à vide
-                'translation_domain' => 'Localité',
+                'translation_domain' => 'messages',
+                'label' => 'Localité',
                 'class' => 'WellnessCoreBundle\Entity\Locality',
                 'property' => 'locality',
                 'query_builder' => function(EntityRepository $er) {

@@ -3,6 +3,7 @@
 namespace WellnessCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * News
@@ -27,6 +28,14 @@ class News
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+
+    /**
+     * @var string
+     * @Gedmo\Slug(fields={"id", "title"})
+     * @ORM\Column(name="slug", length=128)
+     *
+     */
+    private $slug;
 
     /**
      * @var string
@@ -124,5 +133,28 @@ class News
     {
         return $this->createat;
     }
-}
 
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return News
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+}

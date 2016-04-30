@@ -8,17 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use WellnessCoreBundle\Entity\News;
 use WellnessCoreBundle\Form\NewsType;
 
-/**
- * News controller.
- *
- */
 class NewsController extends Controller
 {
-
-    /**
-     * Lists all News entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -29,10 +20,7 @@ class NewsController extends Controller
             'entities' => $entities,
         ));
     }
-    /**
-     * Creates a new News entity.
-     *
-     */
+
     public function createAction(Request $request)
     {
         $entity = new News();
@@ -53,13 +41,6 @@ class NewsController extends Controller
         ));
     }
 
-    /**
-     * Creates a form to create a News entity.
-     *
-     * @param News $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createCreateForm(News $entity)
     {
         $form = $this->createForm(new NewsType(), $entity, array(
@@ -72,10 +53,6 @@ class NewsController extends Controller
         return $form;
     }
 
-    /**
-     * Displays a form to create a new News entity.
-     *
-     */
     public function newAction()
     {
         $entity = new News();
@@ -87,21 +64,17 @@ class NewsController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a News entity.
-     *
-     */
-    public function showAction($id)
+    public function showAction(News $news)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:News')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:News')->find($news->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($news->getId());
 
         return $this->render('WellnessCoreBundle:BackEnd/News:show.html.twig', array(
             'entity'      => $entity,
@@ -109,22 +82,18 @@ class NewsController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing News entity.
-     *
-     */
-    public function editAction($id)
+    public function editAction(News $news)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:News')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:News')->find($news->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($news->getId());
 
         return $this->render('WellnessCoreBundle:BackEnd/News:edit.html.twig', array(
             'entity'      => $entity,
@@ -133,46 +102,37 @@ class NewsController extends Controller
         ));
     }
 
-    /**
-    * Creates a form to edit a News entity.
-    *
-    * @param News $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(News $entity)
     {
         $form = $this->createForm(new NewsType(), $entity, array(
-            'action' => $this->generateUrl('admin_news_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_news_update', array('slug' => $entity->getSlug())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $translated = $this->get('translator')->trans('Mise à jour');
+        $form->add('submit', 'submit', array('label' => $translated));
 
         return $form;
     }
-    /**
-     * Edits an existing News entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
+
+    public function updateAction(Request $request, News $news)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:News')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:News')->find($news->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($news->getId());
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_news_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_news'));
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/News:edit.html.twig', array(
@@ -181,10 +141,7 @@ class NewsController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    /**
-     * Deletes a News entity.
-     *
-     */
+
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
@@ -202,22 +159,16 @@ class NewsController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('news'));
+        return $this->redirect($this->generateUrl('admin_news'));
     }
 
-    /**
-     * Creates a form to delete a News entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm($id)
     {
+        $translated = $this->get('translator')->trans('Suppression');
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_news_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => $translated))
             ->getForm()
         ;
     }

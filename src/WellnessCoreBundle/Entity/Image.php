@@ -4,6 +4,7 @@ namespace WellnessCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Image
@@ -73,6 +74,13 @@ class Image
      * @ORM\Column(type="string",length=255, nullable=true)
      */
     private $name;
+
+    /**
+     * @var type String
+     * @Gedmo\Slug(fields={"id","name"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
@@ -364,5 +372,29 @@ class Image
     public function getCategoryService()
     {
         return $this->categoryService;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Image
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

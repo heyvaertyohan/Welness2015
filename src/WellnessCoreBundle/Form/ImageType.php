@@ -25,6 +25,10 @@ class ImageType extends AbstractType
                     4 => '4',
                     5 => '5',
                     )))
+            ->add('name', 'text', array(
+                'label' => 'Nom',
+                'translation_domain' => 'messages'
+            ))
             ->add('type', 'choice', array(
                 'choices'  => array(
                     Image::TYPE_MAINSLIDER => 'mainslider',
@@ -41,18 +45,24 @@ class ImageType extends AbstractType
                 'label' => 'Chemin acces',
                 'translation_domain' => 'messages'
             ))
-            ->add('alt', 'textarea', array('label' => 'Description'))
+            ->add('alt', 'textarea', array(
+                'label' => 'Description',
+                'translation_domain' => 'messages'
+            ))
             ->add('user', 'entity', array(
                 'required' => false, //permet d'avoir le premier champ à vide
-                'translation_domain' => 'utilisateur',
+                'translation_domain' => 'messages',
                 'class' => 'WellnessCoreBundle\Entity\User',
-                'property' => 'name'
+                'property' => 'name',
+                'label'=>'Utilisateur',
+                'translation_domain' => 'messages'
             ))
             ->add('categoryService', 'entity', array(
-            'required' => false, //permet d'avoir le premier champ à vide
-            'label' => 'Service',
-            'class' => 'WellnessCoreBundle\Entity\CategoryService',
-            'property' => 'name'
+                'required' => false, //permet d'avoir le premier champ à vide
+                'label' => 'Service',
+                'translation_domain' => 'messages',
+                'class' => 'WellnessCoreBundle\Entity\CategoryService',
+                'property' => 'name'
 
            /* ->add('categoryService', new ImageCategoryServiceType(), array(
                 'label' => false*/

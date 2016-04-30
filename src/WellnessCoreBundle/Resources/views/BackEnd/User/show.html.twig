@@ -1,11 +1,16 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
 {% block breadcrumb %}
-    <li><a href="#">{{ 'Liste des utilisateurs'|trans }}</a></li>
+    <li><a href="{{ path('admin_user') }}">{{ 'Liste news'|trans }}</a></li>
+    <li>{{ entity.name }}</li>
 {% endblock %}
 
 {% block title %}
     {{ parent() }}
+{% endblock %}
+
+{% block titlepadding %}
+    <h2>{{ 'Utilisateur'|trans }} {{ entity.name }}</h2>
 {% endblock %}
 
 
@@ -19,39 +24,35 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Slug</th>
-                <td>{{ entity.slug }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
+                <th>{{ 'Nom'|trans }}</th>
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
-                <th>Telnumber</th>
+                <th>{{ 'Numéro téléphone'|trans }}</th>
                 <td>{{ entity.telnumber }}</td>
             </tr>
             <tr>
-                <th>Addressstreet</th>
+                <th>{{ 'Rue'|trans }}</th>
                 <td>{{ entity.addressstreet }}</td>
             </tr>
             <tr>
-                <th>Addressnumber</th>
+                <th>{{ 'Numéro'|trans }}</th>
                 <td>{{ entity.addressnumber }}</td>
             </tr>
             <tr>
-                <th>Inscriptioncf</th>
+                <th>{{ 'Confirmation inscription'|trans }}</th>
                 <td>{{ entity.inscriptioncf }}</td>
             </tr>
             <tr>
-                <th>Usertype</th>
+                <th>{{ 'Type utilisateur'|trans }}</th>
                 <td>{{ entity.usertype }}</td>
             </tr>
             <tr>
-                <th>Tryingnumber</th>
+                <th>{{ "Nombre d'essaie"|trans }}</th>
                 <td>{{ entity.tryingnumber }}</td>
             </tr>
             <tr>
-                <th>Bamed</th>
+                <th>{{ 'Banni'|trans }}</th>
                 <td>{{ entity.bamed }}</td>
             </tr>
         </tbody>

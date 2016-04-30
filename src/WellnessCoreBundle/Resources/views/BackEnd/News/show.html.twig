@@ -1,11 +1,12 @@
 {% extends 'WellnessCoreBundle::layout_backend.html.twig' %}
 
 {% block breadcrumb %}
-    <li><a href="#">{{ 'News'|trans }} {{ entity.title }}</a></li>
+    <li><a href="{{ path('admin_news') }}">{{ 'Liste news'|trans }}</a></li>
+    <li>{{ entity.title }}</li>
 {% endblock %}
 
-{% block title %}
-    {{ parent() }}
+{% block titlepadding %}
+    <h2>{{ 'News'|trans }} {{ entity.title }}</h2>
 {% endblock %}
 
 
@@ -18,7 +19,7 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>{{ 'Titre'|trans }}</th>
                 <td>{{ entity.title }}</td>
             </tr>
             <tr>
@@ -26,7 +27,7 @@
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>Createat</th>
+                <th>{{ 'Date de création'|trans }}</th>
                 <td>{{ entity.createat|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
@@ -39,7 +40,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ path('admin_news_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('admin_news_edit', { 'slug': entity.slug }) }}">
             <i class="icon-edit"> </i> {{ 'Editer'|trans }}
         </a>
     </li>

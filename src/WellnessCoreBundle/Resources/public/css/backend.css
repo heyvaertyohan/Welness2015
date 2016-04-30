@@ -61,6 +61,14 @@ form button{
     padding: 5px 10px;
     margin: 10px;
     transition: background-color 0.15s linear;
+
+}
+.record_actions{
+    padding-left: 0px;
+}
+.record_actions li{
+    list-style: none;
+
 }
 
 form button.active{

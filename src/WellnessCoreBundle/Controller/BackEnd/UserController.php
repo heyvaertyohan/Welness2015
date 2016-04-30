@@ -8,31 +8,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use WellnessCoreBundle\Entity\User;
 use WellnessCoreBundle\Form\UserType;
 
-/**
- * User controller.
- *
- */
 class UserController extends Controller
 {
-
-    /**
-     * Lists all User entities.
-     *
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('WellnessCoreBundle:User')->findAll();
+        dump($entities);
 
         return $this->render('WellnessCoreBundle:BackEnd/User:index.html.twig', array(
             'entities' => $entities,
         ));
     }
-    /**
-     * Creates a new User entity.
-     *
-     */
+
     public function createAction(Request $request)
     {
         $entity = new User();
@@ -53,13 +42,6 @@ class UserController extends Controller
         ));
     }
 
-    /**
-     * Creates a form to create a User entity.
-     *
-     * @param User $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createCreateForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
@@ -72,10 +54,6 @@ class UserController extends Controller
         return $form;
     }
 
-    /**
-     * Displays a form to create a new User entity.
-     *
-     */
     public function newAction()
     {
         $entity = new User();
@@ -87,21 +65,17 @@ class UserController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a User entity.
-     *
-     */
-    public function showAction($id)
+    public function showAction(User $user)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:BackEnd/User')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:BackEnd/User')->find($user->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($user->getId());
 
         return $this->render('WellnessCoreBundle:BackEnd/User:show.html.twig', array(
             'entity'      => $entity,
@@ -109,22 +83,18 @@ class UserController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing User entity.
-     *
-     */
-    public function editAction($id)
+    public function editAction(User $user)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:User')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:User')->find($user->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($user->getId());
 
         return $this->render('WellnessCoreBundle:BackEnd/User:edit.html.twig', array(
             'entity'      => $entity,
@@ -133,46 +103,37 @@ class UserController extends Controller
         ));
     }
 
-    /**
-    * Creates a form to edit a User entity.
-    *
-    * @param User $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('admin_user_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_user_update', array('slug' => $entity->getSlug())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $translated = $this->get('translator')->trans('Mise à jour');
+        $form->add('submit', 'submit', array('label' => $translated));
 
         return $form;
     }
-    /**
-     * Edits an existing User entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
+
+    public function updateAction(Request $request, User $user)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:User')->find($id);
+        $entity = $em->getRepository('WellnessCoreBundle:User')->find($user->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($user->getId());
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_user_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_user'));
         }
 
         return $this->render('WellnessCoreBundle:BackEnd/User:edit.html.twig', array(
@@ -181,10 +142,7 @@ class UserController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    /**
-     * Deletes a User entity.
-     *
-     */
+
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
@@ -205,19 +163,13 @@ class UserController extends Controller
         return $this->redirect($this->generateUrl('admin_user'));
     }
 
-    /**
-     * Creates a form to delete a User entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm($id)
     {
+        $translated = $this->get('translator')->trans('Suppression');
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_user_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => $translated))
             ->getForm()
         ;
     }
