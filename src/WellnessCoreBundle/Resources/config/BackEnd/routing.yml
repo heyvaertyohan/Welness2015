@@ -103,7 +103,7 @@ admin_user:
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:index" }
 
 admin_user_show:
-    path:     /user/show/{slug}
+    path:     /user/show/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:show" }
 
 admin_user_new:
@@ -116,11 +116,11 @@ admin_user_create:
     methods:  POST
 
 admin_user_edit:
-    path:     /user/edit/{slug}
+    path:     /user/edit/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:edit" }
 
 admin_user_update:
-    path:     /user/update/{slug}
+    path:     /user/update/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:update" }
     methods:  [POST, PUT]
 
@@ -128,4 +128,3 @@ admin_user_delete:
     path:     /user/delete/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:delete" }
     methods:  [POST, DELETE]
-

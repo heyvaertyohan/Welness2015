@@ -91,6 +91,18 @@ fos_user:
     firewall_name: main
     user_class: WellnessCoreBundle\Entity\User
 
+    registration:
+        form:
+            type: my_user_registration
+        confirmation:
+            enabled: false
+            from_email:
+                address:        heyvaaertyohan@gmail.com
+                sender_name:    Wellness registration
+    service:
+            mailer: fos_user.mailer.default
+
+
 services:
     fos_user.doctrine_registry:
         alias: doctrine

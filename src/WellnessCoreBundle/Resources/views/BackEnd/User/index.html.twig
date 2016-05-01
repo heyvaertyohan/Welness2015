@@ -28,8 +28,8 @@
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.usertype }}</td>
                 <td>
-                    <a href="{{ path('admin_user_show', { 'slug': entity.slug }) }}"><i class="icon-book"></i></a>
-                    <a href="{{ path('admin_user_edit', { 'slug': entity.slug }) }}"><i class="icon-edit"></i></a>
+                    <a href="{{ path('admin_user_show', { 'id': entity.id }) }}"><i class="icon-book"></i></a>
+                    <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
                 </td>
             </tr>
         {% endfor %}

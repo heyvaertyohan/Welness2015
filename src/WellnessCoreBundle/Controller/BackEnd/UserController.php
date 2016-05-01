@@ -65,17 +65,17 @@ class UserController extends Controller
         ));
     }
 
-    public function showAction(User $user)
+    public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:BackEnd/User')->find($user->getId());
+        $entity = $em->getRepository('WellnessCoreBundle:User')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($user->getId());
+        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('WellnessCoreBundle:BackEnd/User:show.html.twig', array(
             'entity'      => $entity,
@@ -83,18 +83,18 @@ class UserController extends Controller
         ));
     }
 
-    public function editAction(User $user)
+    public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:User')->find($user->getId());
+        $entity = $em->getRepository('WellnessCoreBundle:User')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($user->getId());
+        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('WellnessCoreBundle:BackEnd/User:edit.html.twig', array(
             'entity'      => $entity,
@@ -106,7 +106,7 @@ class UserController extends Controller
     private function createEditForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('admin_user_update', array('slug' => $entity->getSlug())),
+            'action' => $this->generateUrl('admin_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 

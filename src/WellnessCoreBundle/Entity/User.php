@@ -139,6 +139,7 @@ class User extends BaseUser
 
     /**
      * Get name
+     * Get name
      *
      * @return string
      */
