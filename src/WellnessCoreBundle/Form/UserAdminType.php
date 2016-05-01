@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Doctrine\ORM\EntityRepository;
 use WellnessCoreBundle\Entity\User;
 
-class UserType extends AbstractType
+class UserAdminType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,7 +18,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username', 'text', array(
-                'label' => 'Nom utilisateur',
+                'label' => 'Nom utilisateur admin',
                 'translation_domain' => 'messages'
             ))
             ->add('telnumber', 'text', array(
@@ -46,6 +46,17 @@ class UserType extends AbstractType
                 'first_options' => array('label' => 'form.password'),
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
+            ))
+            /*->add('password', 'repeated', array(
+                'label' => 'Mot de passe',
+                'translation_domain' => 'messages'
+            ))*/
+            ->add('tryingnumber', 'integer', array(
+                'label' => "Nombre d'essais",
+                'translation_domain' => 'messages'
+            ))
+            ->add('bamed', 'checkbox', array(
+                'label' => 'Banni'
             ))
             ->add('addressstreet', 'text', array(
                 'label' => 'Rue',
@@ -85,24 +96,6 @@ class UserType extends AbstractType
                     return $er->createQueryBuilder('l')
                         ->orderBy('l.locality', 'ASC'); }
             ))
-            /*->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
-                $user = $event->getData();
-                if($user->getId()){
-                    $form = $event->getForm();
-                    switch($user->getType()){
-                        case 'ROLE_USER' :
-                        case 'ROLE_SURFER' :
-                            $formProperty = 'surfer';
-                            $formType = new SurferType();
-                            break;
-                        case 'ROLE_PROVIDER':
-                            $formProperty = 'provider';
-                            $formType = new ProviderType();
-                            break;
-                    }
-                    $form->add($formProperty, $formType);
-                }
-            });*/
             ;
     }
     

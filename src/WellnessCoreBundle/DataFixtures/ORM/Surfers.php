@@ -24,7 +24,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
     public function load(ObjectManager $manager){
 
         $tab_Surfers = array(
-           /*array(
+            /*array(
                 "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
                 "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
                 "town" => $manager->getRepository('WellnessCoreBundle:Town')->findOneBy(array('town' => 'Oupeye')),
@@ -38,12 +38,32 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "addressnumber" => "75",
                 "usertype" => "surfer",
                 "password" => "yohan",
-                "role" => "ROLE_SUPER_ADMIN",
+                "role" => "ROLE_ADMIN",
                 "tryingnumber" => "4",
                 "bamed" => "0",
                 "inscriptioncf" => "0",
                 "inscription" => "0"
             ),*/
+           array(
+                "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
+                "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
+                "town" => $manager->getRepository('WellnessCoreBundle:Town')->findOneBy(array('town' => 'Oupeye')),
+                "name" => "admin",
+                "firstname" => "admin",
+                "username" => "admin",
+                "enabled" => 1,
+                "email" => "admin@gmail.com",
+                "tel" => "042641941",
+                "addressstreet" => "Rue roi albert",
+                "addressnumber" => "75",
+                "usertype" => "surfer",
+                "password" => "admin",
+                "role" => "ROLE_SUPER_ADMIN",
+                "tryingnumber" => "4",
+                "bamed" => "0",
+                "inscriptioncf" => "0",
+                "inscription" => "0"
+            ),
             array(
                 "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
                 "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
@@ -59,7 +79,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "addressnumber" => "75",
                 "usertype" => "surfer",
                 "password" => "marie",
-                "role" => "ROLE_SUPER_ADMIN",
+                "role" => "ROLE_ADMIN",
                 "tryingnumber" => "4",
                 "bamed" => "0",
                 "inscriptioncf" => "0",
@@ -80,7 +100,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "addressnumber" => "7",
                 "usertype" => "surfer",
                 "password" => "testpwd",
-                "role" => "ROLE_SUPER_ADMIN",
+                "role" => "ROLE_ADMIN",
                 "tryingnumber" => "4",
                 "bamed" => "0",
                 "inscriptioncf" => "0",

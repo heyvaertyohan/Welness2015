@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use WellnessCoreBundle\Entity\User;
+use WellnessCoreBundle\Form\UserAdminType;
 use WellnessCoreBundle\Form\UserType;
 
 class UserController extends Controller
@@ -13,12 +14,11 @@ class UserController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('WellnessCoreBundle:User')->findAll();
-        dump($entities);
-
+        $currentuser = $this->get('security.context')->getToken()->getUser();
         return $this->render('WellnessCoreBundle:BackEnd/User:index.html.twig', array(
             'entities' => $entities,
+            'currentuser' => $currentuser
         ));
     }
 
@@ -44,7 +44,7 @@ class UserController extends Controller
 
     private function createCreateForm(User $entity)
     {
-        $form = $this->createForm(new UserType(), $entity, array(
+        $form = $this->createForm(new UserAdminType(), $entity, array(
             'action' => $this->generateUrl('admin_user_create'),
             'method' => 'POST',
         ));
@@ -68,7 +68,6 @@ class UserController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('WellnessCoreBundle:User')->find($id);
 
         if (!$entity) {
@@ -86,7 +85,6 @@ class UserController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('WellnessCoreBundle:User')->find($id);
 
         if (!$entity) {
@@ -105,10 +103,29 @@ class UserController extends Controller
 
     private function createEditForm(User $entity)
     {
-        $form = $this->createForm(new UserType(), $entity, array(
-            'action' => $this->generateUrl('admin_user_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $find = false;
+        foreach ($entity->getRoles() as $role)
+        {
+            if ($role == "ROLE_SUPER_ADMIN"){
+                $find = true;
+            }
+        }
+
+        if ($find)
+        {
+            $form = $this->createForm(new UserAdminType(), $entity, array(
+                'action' => $this->generateUrl('admin_user_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+            ));
+        }
+        else{
+
+            $form = $this->createForm(new UserType(), $entity, array(
+                'action' => $this->generateUrl('admin_user_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+            ));
+        }
+
 
         $translated = $this->get('translator')->trans('Mise à jour');
         $form->add('submit', 'submit', array('label' => $translated));
@@ -131,6 +148,12 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($entity);
+            $password = $encoder->encodePassword($editForm->get('password')->getData(), $entity->getSalt());
+            $entity->setPassword($password);
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_user'));

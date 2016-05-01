@@ -8,6 +8,9 @@ class BackEndController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('WellnessCoreBundle:BackEnd:index.html.twig');
+        $currentuser = $this->get('security.context')->getToken()->getUser();
+        return $this->render('WellnessCoreBundle:BackEnd:index.html.twig', array(
+            'currentuser' => $currentuser
+        ));
     }
 }

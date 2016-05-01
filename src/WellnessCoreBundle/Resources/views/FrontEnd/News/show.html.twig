@@ -2,7 +2,7 @@
 {% block head %}
     {{ parent() }}
 {% endblock %}
-{% block title %}{{ parent() }} {{ entity.title }} {% endblock %}
+{% block title %}{{ parent() }} {{ CurrentNews.title }} {% endblock %}
 
 {% block header %}
 
@@ -15,34 +15,101 @@
 {% endblock %}
 
 {% block maincontainer %}
-    <h1>News</h1>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'Titre'|trans }}</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'Date de création'|trans }}</th>
-                <td>{{ entity.createat|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h3 class="page-title">{{ CurrentNews.title }}</h3>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('news') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="row">
+        <div class="col-md-4 card-row-properties">
+            <dl>
+                <dd>{{ 'Date de création:'|trans }}</dd><dt>{{ CurrentNews.createat|date('Y-m-d') }}</dt>
+            </dl>
+        </div><!-- /.card-row-properties -->
+
+    </div>
+
+    <div class="row">
+        <h2>{{ 'Description:'|trans }}</h2>
+        <div class="col-md-10 description">
+            <p>{{ CurrentNews.description|raw }}</p>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block pave %}
+
+<div class="cards-simple-wrapper">
+
+{#<div id="title-index" class="row">
+    <div class="line"></div>
+    {% if CurrentNews.provider|length == 0 %}
+    <div class="col-provider">
+        <h1>{{ 'Pas de prestataire lié'|trans }}</h1>
+    </div>
+
+    {% else %}
+    <div class="col-provider">
+        <h1>{{ 'Prestataire lié'|trans }}</h1>
+    </div>
+    {% endif %}
+</div>
+
+{% if CurrentNews.provider|length != 0 %}
+    <div class="row">
+                <div class="col-md-2-5">
+                <div class="card-simple">
+                    <div class="card-simple-background">
+                        <div class="card-content">
+                            <h2>
+                                <a href="{{ path('public_provider_show', {slug:CurrentNews.provider.slug}) }}">{{ CurrentNews.provider.name }}</a>
+                            </h2>
+
+                            <div class="card-simple-actions">
+                                <a href="{{ path('public_provider_show', {slug:CurrentNews.provider.slug}) }}"
+                                   class="fa fa-search"></a>
+                            </div>
+                            <!-- /.card-simple-actions -->
+                        </div>
+                        <!-- /.card-simple-content -->
+
+                       &#123;&#35;<div class="card-simple-label"><img src="{{ asset( image.path ) }}"
+                                                            alt="{{ asset(image.description) }}"></div>&#35;&#125;
+
+                    </div>
+                    <!-- /.card-simple-background -->
+                </div>
+                <!-- /.card-simple -->
+            </div>
+            <!-- /.col-* -->
+
+    {% endif %}
+    </div>#}
+{% endblock %}
+
+{% block javascript %}
+
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/dataTables.bootstrap.min.js') }}"></script>
+
+
+    <script type="text/javascript" charset="utf-8">
+
+        $(document).ready(function () {
+            $('#table_responsive').dataTable();
+
+        });
+
+        $('.nav-tabs li ').click(function () {
+            $('.table-bordered').dataTable();
+        });
+    </script>
+
+    {#Ce script plante a son lancement et doit etre placé en dernier#}
+    <script type="text/javascript" src="{{ asset('bundles/wellnesscore/js/superlist.js') }}"></script>
+
+
+
+
 {% endblock %}

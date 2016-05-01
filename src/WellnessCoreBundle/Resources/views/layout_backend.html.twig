@@ -35,7 +35,7 @@
                             <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
                                 <li>
                                     <a href="{{ path('public_homepage') }}">{{ 'Accueil'|trans }}<i
-                                                class="²a"></i></a>
+                                                class="fa"></i></a>
                                 </li>
 
                                 <li>
@@ -234,6 +234,7 @@
                             </ul>
                         </li>
 
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <li class="liUser">
                             <a href="#">
                                 <span class="icon"><i class="fa fa-i-cursor"></i></span>
@@ -248,10 +249,28 @@
                                 <li>
                                     <a href="{{ path('admin_user') }}">{{ 'Liste des utilisateurs'|trans }}</a>
                                 </li>
-
-
                             </ul>
                         </li>
+                        {% endif %}
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li class="liUser">
+                                <a href="#">
+                                    <span class="icon"><i class="fa fa-i-cursor"></i></span>
+                                    <span class="title">{{ 'Mon profil'|trans }}</span>
+                                    <span class="subtitle">{{ 'Gérer le profil'|trans }}</span>
+                                </a>
+
+                            {% if currentuser is defined %}
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('admin_user_edit', { 'id': currentuser.id }) }}">{{ 'Editer profil'|trans }}</a>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                        {% endif %}
+                        </li>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-secondary-admin -->

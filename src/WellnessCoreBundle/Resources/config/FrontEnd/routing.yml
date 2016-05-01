@@ -27,6 +27,10 @@ public_news_list:
     path:     /news/
     defaults: { _controller: WellnessCoreBundle:FrontEnd/News:index }
 
+public_news_show:
+    path:     /news/show/{slug}
+    defaults: { _controller: WellnessCoreBundle:FrontEnd/News:show }
+
 
 public_homepage:
     path:     /

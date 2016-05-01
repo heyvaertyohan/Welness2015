@@ -37,8 +37,6 @@ class TrainingController extends FrontEndController
             throw $this->createNotFoundException("Pas de stage trouvé !");
         }
 
-        dump($CurrentTraining);
-
         return $this->render('WellnessCoreBundle:FrontEnd/Training:show.html.twig', array(
             'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
             'listImagesSlider' => $this->getListImageSlider(),

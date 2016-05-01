@@ -35,8 +35,6 @@ class PromoController extends FrontEndController
             throw $this->createNotFoundException("Pas de promotion trouvée !");
         }
 
-        dump($CurrentPromotion);
-
         return $this->render('WellnessCoreBundle:FrontEnd/Promotion:show.html.twig', array(
             'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
             'listImagesSlider' => $this->getListImageSlider(),

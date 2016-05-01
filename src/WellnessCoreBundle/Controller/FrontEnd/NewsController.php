@@ -11,6 +11,8 @@ class NewsController extends FrontEndController
 {
     public function indexAction()
     {
+        parent::initFrontEnd();
+
         $listLastNews = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:News')->getListNews(2);
 
         if ($listLastNews == null){
@@ -18,7 +20,9 @@ class NewsController extends FrontEndController
         }
 
         return $this->render('WellnessCoreBundle:FrontEnd/News:index.html.twig', array(
-            'listLastNews' => $listLastNews,
+            'listImagesSlider' => $this->getListImageSlider(),
+            'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
+            'entities' => $listLastNews
         ));
     }
 
@@ -26,18 +30,22 @@ class NewsController extends FrontEndController
      * Finds and displays a News entity.
      *
      */
-    public function showAction($id)
+    public function showAction(News $news)
     {
+        parent::initFrontEnd();
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('WellnessCoreBundle:News')->find($id);
+        $CurrentNews = $em->getRepository('WellnessCoreBundle:News')->find($news->getId());
 
-        if (!$entity) {
+        if (!$CurrentNews) {
             throw $this->createNotFoundException('Unable to find News entity.');
         }
 
         return $this->render('WellnessCoreBundle:FrontEnd/News:show.html.twig', array(
-            'entity'      => $entity,
+            'listImagesSlider' => $this->getListImageSlider(),
+            'listCategoryWithLogo' => $this->getListCategoryWithLogo(),
+            'CurrentNews'      => $CurrentNews
         ));
     }
 }
