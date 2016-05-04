@@ -2,6 +2,8 @@
 
 namespace WellnessCoreBundle\Repository;
 
+use Doctrine\ORM\Query\ResultSetMapping;
+
 /**
  * ProviderRepository
  *
@@ -24,6 +26,53 @@ class ProviderRepository extends \Doctrine\ORM\EntityRepository
         $qb->leftJoin('p.categoryservice', 'c');
         $qb->where('p.id =:id');
         $qb->setParameter('id', $id);
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+
+        return $result;
+    }
+
+
+    /*public function SearchProvider($searchName, $searchCategory, $searchLocality)
+    {
+        $rsm = new ResultSetMapping();
+        $rsm->addEntityResult('WellnessCoreBundle\Entity\Provider', 'provider');
+        $rsm->addFieldResult('provider', 'id', 'id');
+        $rsm->addFieldResult('provider', 'name', 'name');
+
+        $sql = 'SELECT provider.name FROM provider';
+
+        $query = $this->_em->createNativeQuery($sql, $rsm);
+        return $query->getResult();
+
+       /* $rsm = new ResultSetMapping;
+        $rsm->addEntityResult('WellnessCoreBundle\Entity\Provider', 'p');
+        $rsm->addFieldResult('p', 'id', 'id');
+        $rsm->addFieldResult('p', 'name', 'name');
+
+        $query = $this->_em->createNativeQuery('SELECT id, name FROM provider WHERE name = ?', $rsm);
+        $query->setParameter(1, $searchName);
+
+        return $query->getResult();
+    }*/
+
+    public function SearchProvider($searchName, $searchCategory, $searchLocality){
+
+        $qb = $this->createQueryBuilder('p');
+        $qb->leftJoin('p.CategoryService', 'c');
+       /* $qb->leftJoin('p.user', 'u');
+        $qb->leftJoin('u.Locality', 'l');*/
+        $qb->orderBy('p.name', 'ASC');
+
+        $qb->where('p.name =:name');
+        $qb->setParameter('name', $searchName);
+
+        /*$qb->where('c.CategoryService =:Category');
+        $qb->setParameter('Category', $searchCategory);*/
+
+        /*$qb->where('p.Locality =:Locality');
+        $qb->setParameter('Locality', $searchLocality);*/
+
         $query = $qb->getQuery();
         $result = $query->getResult();
 

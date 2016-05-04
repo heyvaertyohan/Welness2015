@@ -16,9 +16,11 @@
 
 {% block maincontainer %}
 
+    {% block searchForm  %}{{ parent() }}{% endblock %}
     <h3 class="page-title">{{ CurrentPromotion.name }}</h3>
 
     <div class="row">
+
         <div class="col-md-4 card-row-properties">
             <dl>
                 <dd>{{ 'Date de début:'|trans }}</dd><dt>{{ CurrentPromotion.begin|date('Y-m-d') }}</dt>

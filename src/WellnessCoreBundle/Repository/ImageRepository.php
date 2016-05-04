@@ -26,6 +26,7 @@ class ImageRepository extends \Doctrine\ORM\EntityRepository
             $qb->andWhere('i.categoryService = :categServiceId');
             $qb->setParameter('categServiceId', $categServiceId);
         }
+
         $query = $qb->getQuery();
         $result = $query->getResult();
 

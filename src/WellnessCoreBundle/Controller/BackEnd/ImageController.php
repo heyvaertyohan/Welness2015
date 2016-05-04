@@ -14,7 +14,22 @@ class ImageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('WellnessCoreBundle:Image')->findAll();
+        $currentProvider = $this->get('security.context')->getToken()->getUser();
+        $findCurrentProvider = false;
+
+        foreach($currentProvider->getRoles() as $role){
+            if($role == 'ROLE_PROVIDER'){
+                $findCurrentProvider = true;
+            }
+        }
+
+        if (!$findCurrentProvider) {
+            $entities = $em->getRepository('WellnessCoreBundle:Image')->findAll();
+        }
+        else{
+            $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
+            $entities = $rep_img->findBy(array('user' => $currentProvider->getId(), 'type' => Image::TYPE_IMG_PROVIDER));
+        }
 
         return $this->render('WellnessCoreBundle:BackEnd/Image:index.html.twig', array(
             'entities' => $entities,

@@ -16,7 +16,7 @@
 
 {% block maincontainer %}
 
-
+    {% block searchForm  %}{{ parent() }}{% endblock %}
                     <h3 class="page-title">{{ CurrentProvider.name }}</h3>
 
                     <div class="user-photo col-sm-2">
@@ -25,6 +25,7 @@
                     </div>
 
                     <div class="row">
+
                         <div class="col-md-10 description">
                             <h2>{{ 'Description:'|trans }}</h2>
                             <p>{{ CurrentProvider.description|raw }}</p>

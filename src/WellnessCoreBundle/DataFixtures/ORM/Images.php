@@ -158,6 +158,33 @@ class Images extends AbstractFixture implements OrderedFixtureInterface
                 "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Institut Viviane')),
                 "service" => null
             ),
+            array(
+                "position" => "1",
+                "type" => Image::TYPE_IMG_PROVIDER,
+                "description" => "Vague à Lame image 1",
+                "name" => "Vague_Lame_01",
+                "path" => "bundles/wellnesscore/img/Vague_Lame_01.jpg",
+                "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Vague à Lame')),
+                "service" => null
+            ),
+            array(
+                "position" => "2",
+                "type" => Image::TYPE_IMG_PROVIDER,
+                "description" => "Vague à Lame image 2",
+                "name" => "Vague_Lame_02",
+                "path" => "bundles/wellnesscore/img/Vague_Lame_02.jpg",
+                "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Vague à Lame')),
+                "service" => null
+            ),
+            array(
+                "position" => "3",
+                "type" => Image::TYPE_IMG_PROVIDER,
+                "description" => "Vague à Lame image 3",
+                "name" => "Vague_Lame_03",
+                "path" => "bundles/wellnesscore/img/Vague_Lame_03.jpg",
+                "user" => $manager->getRepository('WellnessCoreBundle:Provider')->findOneBy(array('name' => 'Vague à Lame')),
+                "service" => null
+            ),
         );
 
         for($i=0; $i< sizeof($tab_Images); $i++ ){

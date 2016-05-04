@@ -3,6 +3,7 @@
 namespace WellnessCoreBundle\Controller\FrontEnd;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use WellnessCoreBundle\Entity\CategoryService;
 use WellnessCoreBundle\Entity\Image;
 
@@ -38,6 +39,14 @@ class CategoryController extends FrontEndController
 
     public function searchAction()
     {
-        return $this->render('WellnessCoreBundle:FrontEnd/Category:search.html.twig');
+        parent::initFrontEnd();
+
+        $rep_cat = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:CategoryService');
+        $ListCategories = $rep_cat->findBy(array('name' => $_REQUEST['searchFields']));
+
+        return $this->render('WellnessCoreBundle:FrontEnd/Category:search.html.twig', array(
+            'listCategory' => $ListCategories,
+            'listImagesSlider' => $this->getListImageSlider()
+        ));
     }
 }

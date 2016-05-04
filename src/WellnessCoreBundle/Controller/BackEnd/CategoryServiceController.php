@@ -18,7 +18,23 @@ class CategoryServiceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('WellnessCoreBundle:CategoryService')->findAll();
+        $currentProvider = $this->get('security.context')->getToken()->getUser();
+        $findProvider = false;
+        foreach($currentProvider->getRoles() as $role){
+            if ($role == 'ROLE_PROVIDER'){
+                $findProvider = true;
+            }
+        }
+        if (!$findProvider){
+            $entities = $em->getRepository('WellnessCoreBundle:CategoryService')->findAll();
+        }
+        else{
+            $entities = $currentProvider->getCategoryService();
+        }
+
+        if($entities == null){
+            throw $this->createNotFoundException("Pas de fournisseur trouvé!!");
+        }
 
         return $this->render('WellnessCoreBundle:BackEnd/CategoryService:index.html.twig', array(
             'entities' => $entities,

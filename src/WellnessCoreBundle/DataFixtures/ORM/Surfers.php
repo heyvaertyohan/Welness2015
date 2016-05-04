@@ -24,26 +24,6 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
     public function load(ObjectManager $manager){
 
         $tab_Surfers = array(
-            /*array(
-                "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
-                "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
-                "town" => $manager->getRepository('WellnessCoreBundle:Town')->findOneBy(array('town' => 'Oupeye')),
-                "name" => "Heyvaert",
-                "firstname" => "Yohan",
-                "username" => "yohan",
-                "enabled" => 1,
-                "email" => "heyvaertyohan@gmail.com",
-                "tel" => "042641941",
-                "addressstreet" => "Rue roi albert",
-                "addressnumber" => "75",
-                "usertype" => "surfer",
-                "password" => "yohan",
-                "role" => "ROLE_ADMIN",
-                "tryingnumber" => "4",
-                "bamed" => "0",
-                "inscriptioncf" => "0",
-                "inscription" => "0"
-            ),*/
            array(
                 "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
                 "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
@@ -79,7 +59,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "addressnumber" => "75",
                 "usertype" => "surfer",
                 "password" => "marie",
-                "role" => "ROLE_ADMIN",
+                "role" => "ROLE_SURFER",
                 "tryingnumber" => "4",
                 "bamed" => "0",
                 "inscriptioncf" => "0",
@@ -100,12 +80,32 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "addressnumber" => "7",
                 "usertype" => "surfer",
                 "password" => "testpwd",
-                "role" => "ROLE_ADMIN",
+                "role" => "ROLE_SURFER",
                 "tryingnumber" => "4",
                 "bamed" => "0",
                 "inscriptioncf" => "0",
                 "inscription" => "0"
             )
+            /*, array(
+                "postcode" => $manager->getRepository('WellnessCoreBundle:Postcode')->findOneBy(array('postcode' => '4680')),
+                "localite" => $manager->getRepository('WellnessCoreBundle:Locality')->findOneBy(array('locality' => 'Oupeye')),
+                "town" => $manager->getRepository('WellnessCoreBundle:Town')->findOneBy(array('town' => 'Oupeye')),
+                "name" => "Heyvaert",
+                "firstname" => "Yohan",
+                "username" => "yohan",
+                "enabled" => 1,
+                "email" => "heyvaertyohan@gmail.com",
+                "tel" => "042641941",
+                "addressstreet" => "Rue roi albert",
+                "addressnumber" => "75",
+                "usertype" => "surfer",
+                "password" => "yohan",
+                "role" => "ROLE_ADMIN",
+                "tryingnumber" => "4",
+                "bamed" => "0",
+                "inscriptioncf" => "0",
+                "inscription" => "0"
+            )*/
         );
 
         for ($i = 0; $i < sizeof($tab_Surfers); $i++) {

@@ -34,7 +34,6 @@ class ProviderController extends FrontEndController
         $rep_img = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Image');
         $listImagesSlider = $rep_img->findBy(array('type' => 'mainSlider'));
         $listProvidersPave = $rep_img->getListImages(5, Image::TYPE_LOGO_PROVIDER, null);
-        $ListImgSliderCurrentProvider = $rep_img->getListImages(0, Image::TYPE_IMG_PROVIDER, null);
         $listCategories = $this->getDoctrine()->getEntityManager()->getRepository('WellnessCoreBundle:CategoryService')->findAll();
 
         $CurrentImgProvider = $rep_img->findBy(array('user' => $provider->getId()));
@@ -43,6 +42,8 @@ class ProviderController extends FrontEndController
         $CurrentPromotionProvider = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Promotion')->findBy(array('provider' => $provider->getId()));
         $CurrentCommentProvider = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Comment')->findBy(array('provider' => $provider->getId()));
         $CurrentProvider = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Provider')->find($provider->getId());
+
+        $ListImgSliderCurrentProvider = $rep_img->findBy(array('user' => $provider->getId(), 'type' => Image::TYPE_IMG_PROVIDER));
 
         if ($listImagesSlider == null) {
             throw $this->createNotFoundException("Pas d'image trouvée !");
@@ -54,10 +55,6 @@ class ProviderController extends FrontEndController
 
         if ($listProvidersPave == null) {
             throw $this->createNotFoundException("Pas de logo prestataire trouvé !");
-        }
-
-        if ($ListImgSliderCurrentProvider == null) {
-            throw $this->createNotFoundException("Pas d'image prestataire trouvée !");
         }
 
         if($CurrentProvider == null){
@@ -79,7 +76,7 @@ class ProviderController extends FrontEndController
         ));
     }
 
-    public function searchAction()
+    /*public function searchAction()
     {
         $request = $this->get('request');
         if ($request->getMethod() == 'POST') {
@@ -93,6 +90,27 @@ class ProviderController extends FrontEndController
         return $this->render('WellnessAnnuaireBundle:Search:show.html.twig', array(
             'expression' => $expression,
             'services' => $services,
+        ));
+    }*/
+
+    public function searchAction()
+    {
+        parent::initFrontEnd();
+
+        $rep_provider = $this->getDoctrine()->getManager()->getRepository('WellnessCoreBundle:Provider');
+
+        dump($_REQUEST['searchCategory']);
+        $ListProvider =
+            $rep_provider->SearchProvider
+            (
+                $_REQUEST['searchName'],
+                $_REQUEST['searchCategory'],
+                $_REQUEST['searchLocality']
+            );
+
+        return $this->render('WellnessCoreBundle:FrontEnd/Provider:search.html.twig', array(
+            'listProvider' => $ListProvider,
+            'listImagesSlider' => $this->getListImageSlider()
         ));
     }
 }

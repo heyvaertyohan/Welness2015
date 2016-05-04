@@ -183,6 +183,7 @@
                                 <span class="subtitle">{{ 'Gestion site'|trans }}</span>
                             </a>
                         </li>
+                        {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_PROVIDER') %}
                         <li class="liService">
                             <a href="#">
                                 <span class="icon"><i class="fa fa-i-cursor"></i></span>
@@ -233,7 +234,7 @@
                                 </li>
                             </ul>
                         </li>
-
+                        {% endif %}
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <li class="liUser">
                             <a href="#">
@@ -253,7 +254,7 @@
                         </li>
                         {% endif %}
 
-                        {% if is_granted('ROLE_ADMIN') %}
+                        {% if is_granted('ROLE_SURFER') or is_granted('ROLE_PROVIDER') %}
                         <li class="liUser">
                                 <a href="#">
                                     <span class="icon"><i class="fa fa-i-cursor"></i></span>

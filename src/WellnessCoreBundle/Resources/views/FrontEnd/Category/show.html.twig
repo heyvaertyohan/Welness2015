@@ -16,7 +16,7 @@
 
 {% block maincontainer %}
 
-
+        {% block searchForm  %}{{ parent() }}{% endblock %}
         <h3 class="page-title">{{ CurrentLogoCategory.CategoryService.name }}</h3>
 
         {% if CurrentLogoCategory %}

@@ -179,7 +179,7 @@
                     <h1>{{ "Recherche"|trans }}</h1>
 
                     <div class="input-group">
-                        <input type="text" name="search" id="search" placeholder="{{ 'Recherche'|trans }}"
+                        <input type="text" name="searchFields" id="search" placeholder="{{ 'Recherche'|trans }}"
                                class="form-control input-search">
                         <button type="submit">
                             <img src="{{ asset('bundles/wellnesscore/img/zoom_btn.png') }}"/>
@@ -190,21 +190,56 @@
                 <div id='serviceSection'>
                     <h1>{{ "Service"|trans }}</h1>
                     <ul>
-                        {% for category in listCategoryWithLogo %}
-                            <li><a href="{{ path('public_category_show', {slug:category.CategoryService.slug}) }}">{{ category.CategoryService.name }}</a></li>
-                        {% endfor %}
+                        {% if listCategoryWithLogo is defined %}
+                            {% for category in listCategoryWithLogo %}
+                                <li><a href="{{ path('public_category_show', {slug:category.CategoryService.slug}) }}">{{ category.CategoryService.name }}</a></li>
+                            {% endfor %}
+                        {% endif %}
 
                     </ul>
                 </div>
             </div>
             <div id="maincontainer" class="col-md-10 mt30 background-white">
-                {% block maincontainer %}{% endblock %}
+                {% block maincontainer %}
+
+
+                {% endblock %}
                 {% block pave %}{% endblock %}
             </div>
 
         </div>
 
     </div>
+{% endblock %}
+
+{% block searchForm  %}
+<form name="" method="post" action="{{ path('public_provider_search') }}">
+    <div id="search" class="row">
+
+        <h2>{{ "Recherche"|trans }}</h2>
+        <div class="search col-md-3">
+            <div class="input-group">
+                <input type="text" name="searchName" id="searchName" placeholder="{{ 'Nom'|trans }}"
+                       class="form-control input-search">
+            </div>
+        </div>
+        <div class="search col-md-3">
+            <div class="input-group">
+                <input type="text" name="searchCategory" id="searchCategory" placeholder="{{ 'Catégorie de service'|trans }}"
+                       class="form-control input-search">
+            </div>
+        </div>
+        <div class="search col-md-3">
+            <div class="input-group">
+                <input type="text" name="searchLocality" id="searchLocality" placeholder="{{ 'Localité'|trans }}"
+                       class="form-control input-search">
+                <button type="submit">
+                    <img src="{{ asset('bundles/wellnesscore/img/zoom_btn.png') }}"/>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
 {% endblock %}
 
 {% block footer %}
