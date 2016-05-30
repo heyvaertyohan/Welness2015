@@ -119,10 +119,6 @@ admin_user_edit:
     path:     /user/edit/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:edit" }
 
-admin_profile_edit:
-    path:     /user/profileedit/{id}
-    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:profileedit" }
-
 admin_user_update:
     path:     /user/update/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:update" }
@@ -132,3 +128,7 @@ admin_user_delete:
     path:     /user/delete/{id}
     defaults: { _controller: "WellnessCoreBundle:BackEnd/User:delete" }
     methods:  [POST, DELETE]
+
+admin_profile_edit:
+    path:     /user/profileedit/{id}
+    defaults: { _controller: "WellnessCoreBundle:BackEnd/User:profileedit" }

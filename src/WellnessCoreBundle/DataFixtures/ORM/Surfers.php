@@ -5,7 +5,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use WellnessCoreBundle\Entity\User;
 use WellnessCoreBundle\Entity\Town;
 /**
  * Description of Surfers
@@ -36,7 +36,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "tel" => "042641941",
                 "addressstreet" => "Rue roi albert",
                 "addressnumber" => "75",
-                "usertype" => "surfer",
+                "usertype" => User::TYPE_SURFER,
                 "password" => "admin",
                 "role" => "ROLE_SUPER_ADMIN",
                 "tryingnumber" => "4",
@@ -57,7 +57,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "tel" => "042641941",
                 "addressstreet" => "Rue roi albert",
                 "addressnumber" => "75",
-                "usertype" => "surfer",
+                "usertype" => User::TYPE_SURFER,
                 "password" => "marie",
                 "role" => "ROLE_SURFER",
                 "tryingnumber" => "4",
@@ -78,7 +78,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "tel" => "0484134231",
                 "addressstreet" => "Rue bouxhtay",
                 "addressnumber" => "7",
-                "usertype" => "surfer",
+                "usertype" => User::TYPE_SURFER,
                 "password" => "testpwd",
                 "role" => "ROLE_SURFER",
                 "tryingnumber" => "4",
@@ -98,7 +98,7 @@ class Surfers extends AbstractFixture implements ContainerAwareInterface, Ordere
                 "tel" => "042641941",
                 "addressstreet" => "Rue roi albert",
                 "addressnumber" => "75",
-                "usertype" => "surfer",
+                "usertype" => User::TYPE_SURFER,
                 "password" => "yohan",
                 "role" => "ROLE_ADMIN",
                 "tryingnumber" => "4",

@@ -4,6 +4,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/wellnesscore/css/login.css') }}"/>
 {% endblock %}
+{% block title %}{{ parent() }} | {{ 'Authentification'|trans }}{% endblock %}
 
 {% block main %}
 
